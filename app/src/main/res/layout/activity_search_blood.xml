@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/Activity_SearchBlood_TextInputLayout_District">
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_SearchBlood_TextInputLayout_EditText_SubDistrict"
+            android:id="@+id/Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"

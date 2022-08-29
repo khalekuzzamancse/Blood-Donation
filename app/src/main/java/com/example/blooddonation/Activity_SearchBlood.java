@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,6 +32,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         setContentView(R.layout.activity_search_blood);
         setBloodGroup();
         DistrictList();
+
     }
     private void setBloodGroup()
     {
@@ -77,7 +79,8 @@ public class Activity_SearchBlood extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("Hello", document.getId() + " => " + document.getData());
-                                String name=(String)document.get("Name");
+                               // String name=(String)document.get("Name");
+                                String name=(String)document.getId();
                                 Log.i("District",name);
                                 districtList.add(name);
                             }
@@ -92,8 +95,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     String s=  parent.getItemAtPosition(position).toString();
                                     Log.i("Clickeed",s);
-
-
+                                    setSubDistrict(s);
                                 }
                             });
                         }
@@ -105,9 +107,48 @@ public class Activity_SearchBlood extends AppCompatActivity {
                     }
                 });
     }
-    private void setSubDistrict()
+    private void setSubDistrict(String s)
     {
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("DistrictList")
+                .document(s)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        List<String> subDistrictList = (List<String>) document.get("SubDistrict");
+                        for (String it : subDistrictList) {
+                            Log.d("Upozilla", it);
+                        }
+                        ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_SearchBlood.this,R.layout.layout_drop_down_menu_single_item,subDistrictList);
+                        AutoCompleteTextView d=
+                                findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict);
+                        d.setAdapter(adapter);
+
+                        d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                String s=  parent.getItemAtPosition(position).toString();
+                                Log.i("Clickeed",s);
+
+
+                            }
+                        });
+
+
+
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
 }
