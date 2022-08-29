@@ -14,6 +14,9 @@
         android:theme="@style/Theme.BloodDonation"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_Become_Donar"
+            android:exported="false" />
+        <activity
             android:name=".Activity_Register"
             android:exported="false" />
         <activity
