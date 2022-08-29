@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Register">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_Register_TextInputLayout_Name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_Register_TextInputLayout_Email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Email"
+        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Name"
+        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Name"
+        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_Register_TextInputLayout_PhoneNumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Phone Number"
+        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Email"
+        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Email"
+        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_PhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_Register_TextInputLayout_UserName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="User Name"
+        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_PhoneNumber"
+        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_PhoneNumber">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_UserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_Register_TextInputLayout_Password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:endIconMode="password_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Password"
+        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_UserName"
+        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_UserName"
+        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_UserName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_Register_TextInputLayout_ConfirmPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:endIconMode="password_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Confirm Password"
+        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Password"
+        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Password"
+        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_ConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/Activity_Register_Button_Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toStartOf="@+id/Activity_Register_Button_Cancel"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/Activity_Register_TextInputLayout_ConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_Register_TextInputLayout_ConfirmPassword" />
+
+    <Button
+        android:id="@+id/Activity_Register_Button_Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="@+id/Activity_Register_TextInputLayout_ConfirmPassword"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Activity_Register_Button_Submit"
+        app:layout_constraintTop_toTopOf="@+id/Activity_Register_Button_Submit" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

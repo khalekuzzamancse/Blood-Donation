@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Login">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ActivityLogin_TextInputLayout_Email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter Email"
+        app:boxStrokeColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/icon_email"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ActivityLogin_EditText_Email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ActivityLogin_TextInputLayout_Password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter Password"
+        app:boxStrokeColor="@color/black"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="@+id/ActivityLogin_TextInputLayout_Email"
+
+        app:layout_constraintStart_toStartOf="@+id/ActivityLogin_TextInputLayout_Email"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityLogin_TextInputLayout_Email"
+        app:startIconDrawable="@drawable/icon_password">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ActivityLogin_TextInputLayout_EditText_Password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/ActivityLogin_Button_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="@+id/ActivityLogin_TextInputLayout_Password"
+        app:layout_constraintStart_toStartOf="@+id/ActivityLogin_TextInputLayout_Password"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityLogin_TextInputLayout_Password" />
+
+    <TextView
+        android:id="@+id/ActivityLogin_Button_DoNotHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account ?"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ActivityLogin_Button_Register"
+        app:layout_constraintEnd_toStartOf="@+id/ActivityLogin_Button_Register"
+        app:layout_constraintTop_toTopOf="@+id/ActivityLogin_Button_Register" />
+
+    <Button
+        android:id="@+id/ActivityLogin_Button_Register"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="15sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/ActivityLogin_Button_ForgetPassword"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityLogin_Button_ForgetPassword" />
+
+    <Button
+        android:id="@+id/ActivityLogin_Button_ForgetPassword"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:text="Forget Password ?"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/ActivityLogin_Button_Login"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityLogin_Button_Login" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
