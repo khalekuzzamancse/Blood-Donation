@@ -100,7 +100,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Activity_BecomeDonar_TextInputLayout_Gender"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -111,19 +111,20 @@
         app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Age"
         app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Age">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/Activity_Register_TextInputLayout_EditText_Gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="15sp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -134,11 +135,11 @@
         app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Gender"
         app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Gender">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_BloodGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="15sp" />

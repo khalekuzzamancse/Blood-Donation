@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_SearchBlood">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_SearchBlood_TextInputLayout_BloodGroup"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Blood Group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/Activity_Register_TextInputLayout_EditText_Gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_SearchBlood_TextInputLayout_District"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="District"
+        app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
+        app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
+        app:layout_constraintTop_toBottomOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup">
+
+        <AutoCompleteTextView
+            android:id="@+id/Activity_SearchBlood_TextInputLayout_EditText_District"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Sub District"
+        app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_District"
+        app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_District"
+        app:layout_constraintTop_toBottomOf="@id/Activity_SearchBlood_TextInputLayout_District">
+
+        <AutoCompleteTextView
+            android:id="@+id/Activity_SearchBlood_TextInputLayout_EditText_SubDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/Activity_SearchBlood_Button_Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toStartOf="@+id/Activity_SearchBlood_Button_Cancel"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict" />
+
+    <Button
+        android:id="@+id/Activity_SearchBlood_Button_Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Activity_SearchBlood_Button_Submit"
+        app:layout_constraintTop_toTopOf="@+id/Activity_SearchBlood_Button_Submit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
