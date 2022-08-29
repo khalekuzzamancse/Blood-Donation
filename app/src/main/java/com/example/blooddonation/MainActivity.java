@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,7 +50,31 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent=new Intent(MainActivity.this,Activity_Login.class);
                     startActivity(intent);
                 }
-
+              else if(id==R.id.ActivityMain_NavDrawerMenu_BecomeADonor)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_Become_Donar.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.ActivityMain_NavDrawerMenu_AboutUs)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_AboutUs.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.ActivityMain_NavDrawerMenu_SearchBlood)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_SearchBlood.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.ActivityMain_NavDrawerMenu_WhyDonateBlood)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_WhyDonateBlood.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.ActivityMain_NavDrawerMenu_ContactUs)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_ContactSendMessage.class);
+                    startActivity(intent);
+                }
                 return true;
             }
         });
@@ -102,5 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 
 }
