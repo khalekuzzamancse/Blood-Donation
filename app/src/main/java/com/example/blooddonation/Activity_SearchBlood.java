@@ -1,5 +1,8 @@
 package com.example.blooddonation;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +28,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_blood);
         setBloodGroup();
+        DistrictList();
     }
     private void setBloodGroup()
     {
@@ -44,5 +54,24 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void DistrictList()
+    {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("DistrictList")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("Hello", document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
     }
 }
