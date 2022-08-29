@@ -50,7 +50,7 @@
             android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
@@ -72,7 +72,7 @@
             android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 
