@@ -7,7 +7,7 @@
     tools:context=".Activity_Become_Donar">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_Name"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Name"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -30,7 +30,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_Email"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,12 +38,12 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Email"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Name"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Name"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Name">
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Name"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Name"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Email"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -53,7 +53,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_PhoneNumber"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,12 +61,12 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Phone Number"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Email"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Email"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Email">
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Email"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Email"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Email">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_PhoneNumber"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_PhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -76,7 +76,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_Age"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Age"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,12 +84,12 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Age"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_PhoneNumber"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_PhoneNumber"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_PhoneNumber">
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_PhoneNumber">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Age"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -99,7 +99,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_Gender"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Gender"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,9 +107,9 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Gender"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Age"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Age"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Age">
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Age"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Age"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Age">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Activity_Register_TextInputLayout_EditText_Gender"
@@ -122,7 +122,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_BloodGroup"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,12 +130,12 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Blood Group"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Gender"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Gender"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Gender">
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Gender"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Gender"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Gender">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_BloodGroup"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_BloodGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -145,7 +145,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_Address"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Address"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -153,12 +153,12 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Address"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_BloodGroup"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_BloodGroup"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_BloodGroup">
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Address"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
@@ -168,25 +168,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/Activity_Register_Button_Submit"
+        android:id="@+id/Activity_BecomeDonar_Button_Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Submit"
-        app:layout_constraintEnd_toStartOf="@+id/Activity_Register_Button_Cancel"
+        app:layout_constraintEnd_toStartOf="@+id/Activity_BecomeDonar_Button_Cancel"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/Activity_Register_TextInputLayout_Address"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_Register_TextInputLayout_Address" />
+        app:layout_constraintStart_toStartOf="@+id/Activity_BecomeDonar_TextInputLayout_Address"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_BecomeDonar_TextInputLayout_Address" />
 
     <Button
-        android:id="@+id/Activity_Register_Button_Cancel"
+        android:id="@+id/Activity_BecomeDonar_Button_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="@+id/Activity_Register_TextInputLayout_Address"
+        app:layout_constraintEnd_toEndOf="@+id/Activity_BecomeDonar_TextInputLayout_Address"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/Activity_Register_Button_Submit"
-        app:layout_constraintTop_toTopOf="@+id/Activity_Register_Button_Submit" />
+        app:layout_constraintStart_toEndOf="@+id/Activity_BecomeDonar_Button_Submit"
+        app:layout_constraintTop_toTopOf="@+id/Activity_BecomeDonar_Button_Submit" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
