@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Activity_SearchBlood extends AppCompatActivity {
+    List<String> districtList=new ArrayList<>();
+    List<String> subDistrictList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,13 @@ public class Activity_SearchBlood extends AppCompatActivity {
             }
         });
     }
+//    private void setDistrictList()
+//    {
+//        List<String> BloodGroupList=new ArrayList<>();
+//
+//
+//    }
+//
 
     private void DistrictList()
     {
