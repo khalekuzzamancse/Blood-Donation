@@ -9,6 +9,6 @@ public class Activity_Become_Donar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_become_donar);
+        setContentView(R.layout.activity_become_donar_scrollable);
     }
 }

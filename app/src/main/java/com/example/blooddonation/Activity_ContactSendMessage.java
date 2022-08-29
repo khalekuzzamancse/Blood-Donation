@@ -9,6 +9,6 @@ public class Activity_ContactSendMessage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_send_message);
+        setContentView(R.layout.activity_contact_send_message_scrolable);
     }
 }
