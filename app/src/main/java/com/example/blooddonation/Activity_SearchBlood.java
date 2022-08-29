@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Activity_SearchBlood extends AppCompatActivity {
-    List<String> districtList=new ArrayList<>();
+
     List<String> subDistrictList=new ArrayList<>();
 
     @Override
@@ -67,6 +67,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
     private void DistrictList()
     {
+        List<String> districtList=new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("DistrictList")
                 .get()
@@ -76,11 +77,37 @@ public class Activity_SearchBlood extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("Hello", document.getId() + " => " + document.getData());
+                                String name=(String)document.get("Name");
+                                Log.i("District",name);
+                                districtList.add(name);
                             }
-                        } else {
+
+                            ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_SearchBlood.this,R.layout.layout_drop_down_menu_single_item,districtList);
+                            AutoCompleteTextView d=
+                                    findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);
+                           d.setAdapter(adapter);
+
+                           d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    String s=  parent.getItemAtPosition(position).toString();
+                                    Log.i("Clickeed",s);
+
+
+                                }
+                            });
+                        }
+
+
+                        else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });
     }
+    private void setSubDistrict()
+    {
+
+    }
+
 }
