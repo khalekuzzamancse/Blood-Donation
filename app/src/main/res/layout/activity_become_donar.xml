@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Age">
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Gender"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_Gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Gender">
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_BloodGroup"
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_BloodGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
