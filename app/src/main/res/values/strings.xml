@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Blood Donation</string>
+    <string name="OpenDrawer">Open</string>
+    <string name="CloseDrawer">Close</string>
 </resources>

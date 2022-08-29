@@ -3,15 +3,21 @@ package com.example.blooddonation;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -26,8 +32,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DrawerLayout drawerLayout=findViewById(R.id.MainActivity_DrawerLayout);
+        NavigationView navigationView=findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
+        Toolbar toolbar=findViewById(R.id.ActivityMain_ToolBar);
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle
+                (this,drawerLayout,toolbar,R.string.OpenDrawer,R.string.CloseDrawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id=item.getItemId();
+                if(id==R.id.ActivityMain_NavDrawerMenu_Login)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_Login.class);
+                    startActivity(intent);
+                }
+
+                return true;
+            }
+        });
 //        Read();
 //        Write();
+
 
     }
 

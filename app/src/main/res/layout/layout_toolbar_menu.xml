@@ -15,9 +15,9 @@
         android:id="@+id/ActivityMain_ToolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/MainActivity_Appbar"
-        app:layout_constraintStart_toStartOf="@+id/MainActivity_Appbar"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivity_Appbar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
