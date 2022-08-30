@@ -15,7 +15,10 @@ import android.widget.EditText;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Activity_Register extends AppCompatActivity {
@@ -54,23 +57,7 @@ public class Activity_Register extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void Register(String email,String password)
-    {
-        FirebaseAuth mAuth=FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener((Task<AuthResult> task)->{
-                    if(!task.isSuccessful())
-                    {
-                        Log.i("Logined","Next,Inshallah");
-                    }
-                    else
-                    {
-                        Log.i("Logined","Alhadulliah");
-                        Intent intent=new Intent(this,MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
-    }
+
     private void SetUserInfo()
     {
         EditText Name=findViewById(R.id.Activity_Register_TextInputLayout_EditText_Name);
@@ -137,8 +124,61 @@ public class Activity_Register extends AppCompatActivity {
             ConfirmPassWord.setError("Password does not match");
             return;
         }
+        Register(email,password);
+
+        HashMap<String,Object>Data=new HashMap<>();
+        Data.put("Name",name);
+        Data.put("Email",email);
+        Data.put("UserName",userName);
+        Data.put("Password",password);
+        Data.put("PhoneNumber",phoneNumber);
+
+        setDataToDatabase(Data);
+
         Log.i("Alhamdulillah",name+"\n"+email+"\n"+phoneNumber+"\n"+userName+"\n"+password+"\n"+confirmPassword);
 
+
     }
+    private void Register(String email,String password)
+    {
+
+        FirebaseAuth mAuth=FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener((Task<AuthResult> task)->{
+                    if(!task.isSuccessful())
+                    {
+                        Log.i("Registraion Failed","Next,Inshallah");
+                    }
+                    else
+                    {
+                        Log.i("Registered","Alhadulliah");
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        Intent intent=new Intent(this,Activity_Login.class);
+                        startActivity(intent);
+                    }
+                });
+
+    }
+    private void setDataToDatabase(HashMap<String,Object>Data)
+    {
+        String email= (String) Data.get("Email");
+        FirebaseFirestore db= FirebaseFirestore.getInstance();
+        db.collection("UserInfo")
+                .document(email)
+                .set(Data)
+                .addOnCompleteListener((Task<Void>task)->{
+                    if(!task.isSuccessful())
+                    {
+                        Log.i("Failed to Added to database","Next,Inshallah");
+                    }
+                    else
+                    {
+                        Log.i("Added to Database","Alhadulliah");
+                    }
+                });
+
+    }
+
 
 }
