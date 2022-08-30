@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="6dp"
     tools:context=".Activity_Login">
-    <include layout="@layout/layout_toolbar_for_non_home_activity"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ActivityLogin_TextInputLayout_Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:hint="Enter Email"
         app:boxStrokeColor="@color/black"

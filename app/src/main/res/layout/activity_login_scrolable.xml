@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginBottom="50dp"
-    android:layout_height="wrap_content">
-    <include
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        layout="@layout/activity_login"
-        />
+    android:layout_height="match_parent"
+    tools:context=".Activity_AboutUs">
 
-</ScrollView>
+    <include
+        android:id="@+id/ActivityScrollable_IncludedToolbar"
+        layout="@layout/layout_toolbar_for_non_home_activity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/ActivityScrollable_IncludedToolbar"
+        app:layout_constraintStart_toStartOf="@+id/ActivityScrollable_IncludedToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityScrollable_IncludedToolbar">
+
+        <include
+            layout="@layout/activity_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
