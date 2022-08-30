@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity_WhyDonateBlood">
-
+    <include layout="@layout/layout_toolbar_for_non_home_activity"/>
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

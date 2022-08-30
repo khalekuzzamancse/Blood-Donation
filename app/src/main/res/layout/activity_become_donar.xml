@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity_Become_Donar">
+    <include layout="@layout/layout_toolbar_for_non_home_activity"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Activity_BecomeDonar_TextInputLayout_Name"
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/ActivityMain_NavDrawerMenu_SearchBlood"
+        android:id="@+id/NonHomeActivity_MenuItem_SearchBlood"
         android:icon="@drawable/icon_search"
         android:title="Search"
         app:showAsAction="always" />
     <item
-        android:id="@+id/ActivityMain_NavDrawerMenu_BecomeADonor"
+        android:id="@+id/NonHomeActivity_MenuItem_BecomeADonor"
         android:icon="@drawable/icon_logout"
         android:title="LogOut"
         app:showAsAction="always" />
