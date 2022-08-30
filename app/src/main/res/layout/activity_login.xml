@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:elevation="6dp"
     tools:context=".Activity_Login">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ActivityLogin_TextInputLayout_Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
