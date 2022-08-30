@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth=FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+        if (user!=null)
+        {
+            showProfile();
+
+        }
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -81,6 +88,14 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Intent intent=new Intent(MainActivity.this,Activity_ContactSendMessage.class);
                     startActivity(intent);
+
+                }
+                else if(id==R.id.ActivityMain_NavDrawerMenu_LogOut)
+                {
+                    FirebaseAuth.getInstance().signOut();
+                    TextView t=findViewById(R.id.headerTextView);
+                    t.setText("something");
+
                 }
                 return true;
             }
@@ -134,7 +149,43 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+    private void showProfile()
+    {
+        FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
+      FirebaseUser  user = mAuth.getCurrentUser();
 
+        Log.i("UserEmail",user.getEmail());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("UserInfo")
+                .document(user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String name= (String) document.get("Name");
+                                String email= (String) document.get("Email");
+                                String phone= (String) document.get("PhoneNumber");
+                                String UserName= (String) document.get("UserName");
+
+
+                                TextView t=findViewById(R.id.headerTextView);
+                                String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";
+                                t.setText(data);
+                                Log.i("Alhamdulliah",data);
+
+
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
+    }
 
 
 }
