@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -41,6 +43,17 @@ public class MainActivity extends AppCompatActivity {
                 (this,drawerLayout,toolbar,R.string.OpenDrawer,R.string.CloseDrawer);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        FirebaseAuth mAuth=FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user!=null)
+        {
+            Intent intent=new Intent(MainActivity.this,Activity_ReadUserProfile.class);
+            startActivity(intent);
+
+        }
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

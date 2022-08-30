@@ -15,6 +15,7 @@ import android.widget.EditText;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Activity_Login extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class Activity_Login extends AppCompatActivity {
             String email=Email.getText().toString().trim();
             String password=PassWord.getText().toString().trim();
             Login(email,password);
+
 
         });
 

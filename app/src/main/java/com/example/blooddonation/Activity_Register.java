@@ -152,7 +152,6 @@ public class Activity_Register extends AppCompatActivity {
                     else
                     {
                         Log.i("Registered","Alhadulliah");
-                        FirebaseUser user = mAuth.getCurrentUser();
 
                         Intent intent=new Intent(this,Activity_Login.class);
                         startActivity(intent);
