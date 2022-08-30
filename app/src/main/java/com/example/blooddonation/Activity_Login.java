@@ -106,7 +106,6 @@ public class Activity_Login extends AppCompatActivity {
         FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
         FirebaseUser  user = mAuth.getCurrentUser();
 
-        Log.i("UserEmail",user.getEmail());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("UserInfo")
                 .document(user.getEmail())

@@ -13,11 +13,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Activity_Become_Donar extends AppCompatActivity {
+
+    private HashMap<String, Object> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,13 @@ public class Activity_Become_Donar extends AppCompatActivity {
 
             setGender();
             setBloodGroup();
+        Button submit=findViewById(R.id.Activity_BecomeDonar_Button_Submit);
+        submit.setOnClickListener(view -> {
+            HashMap<String,Object>Data=new HashMap<>();
+            Data.put("BloodGroup","A+");
+            addANewField(Data);
+
+        });
 
 
 
@@ -95,6 +112,32 @@ public class Activity_Become_Donar extends AppCompatActivity {
 
             }
         });
+    }
+    private void addANewField(HashMap<String,Object>Data)
+    {
+        FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String email=user.getEmail();
+//        Data.put("SubDistrict","null");
+//        Data.put("BloodGroup","null");
+//        Data.put("Age","null");
+//        Data.put("Gender","null");
+
+        FirebaseFirestore db= FirebaseFirestore.getInstance();
+        db.collection("UserInfo")
+                .document(email)
+                .set(Data, SetOptions.merge())
+                .addOnCompleteListener((Task<Void> task)->{
+                    if(!task.isSuccessful())
+                    {
+                        Log.i("Failed to Added to database","Next,Inshallah");
+                    }
+                    else
+                    {
+                        Log.i("Added to Database","Alhadulliah");
+                    }
+                });
+
     }
 
 }
