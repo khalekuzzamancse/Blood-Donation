@@ -32,6 +32,7 @@ public class Activity_Register extends AppCompatActivity {
 
         Button submit=findViewById(R.id.Activity_Register_Button_Submit);
         submit.setOnClickListener(view -> {
+            Log.i("Clicked","ok");
           SetUserInfo();
         });
 
@@ -76,19 +77,67 @@ public class Activity_Register extends AppCompatActivity {
         String name=Name.getText().toString().trim();
         if(name.isEmpty())
         {
-            Name.setError("Name can be empty!");
+            Name.setError("Name can not be empty!");
+            return;
         }
         EditText Email=findViewById(R.id.Activity_Register_TextInputLayout_EditText_Email);
         String email=Email.getText().toString().trim();
+        if(email.isEmpty())
+        {
+            Email.setError("Email can not be empty!");
+            return;
+        }
+       else if(!email.contains("@"))
+        {
+            Email.setError("Invalid Email!");
+            return;
+        }
         EditText PhoneNumber=findViewById(R.id.Activity_Register_TextInputLayout_EditText_PhoneNumber);
         String phoneNumber=PhoneNumber.getText().toString().trim();
+        if(phoneNumber.isEmpty())
+        {
+            PhoneNumber.setError("Phone Number can not be empty!");
+            return;
+        }
+        else if(phoneNumber.length()!=11)
+        {
+            PhoneNumber.setError("Total Digit Must be 11");
+            return;
+        }
+
         EditText UserName=findViewById(R.id.Activity_Register_TextInputLayout_EditText_UserName);
         String userName=UserName.getText().toString().trim();
+        if(userName.isEmpty())
+        {
+            UserName.setError("Username can not be empty!");
+            return;
+        }
         EditText PassWord=findViewById(R.id.Activity_Register_TextInputLayout_EditText_Password);
         String password=PassWord.getText().toString().trim();
+        if(password.isEmpty())
+        {
+            PassWord.setError("Password can not be empty!");
+            return;
+        }
+        else if(password.length()<6)
+        {
+            PassWord.setError("Password length is less than 6!");
+            return;
+        }
+
         EditText ConfirmPassWord=findViewById(R.id.Activity_Register_TextInputLayout_EditText_ConfirmPassword);
         String confirmPassword=ConfirmPassWord.getText().toString().trim();
-        Log.i("Alhamdulillah\n",name+"\n"+email+"\n"+phoneNumber+"\n"+userName+"\n"+password+"\n"+confirmPassword);
+      if(confirmPassword.isEmpty())
+        {
+            ConfirmPassWord.setError("Re-Enter the password again!");
+            return;
+        }
+        if(!password.equals(confirmPassword))
+        {
+            ConfirmPassWord.setError("Password does not match");
+            return;
+        }
+        Log.i("Alhamdulillah",name+"\n"+email+"\n"+phoneNumber+"\n"+userName+"\n"+password+"\n"+confirmPassword);
 
     }
 
