@@ -47,7 +47,7 @@ public class Activity_Become_Donar extends AppCompatActivity {
             addANewField(Data);
 
         });
-
+//this is comment
 
 
 
