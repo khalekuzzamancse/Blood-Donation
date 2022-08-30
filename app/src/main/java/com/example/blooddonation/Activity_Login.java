@@ -43,6 +43,15 @@ public class Activity_Login extends AppCompatActivity {
             String email=Email.getText().toString().trim();
             String password=PassWord.getText().toString().trim();
             Login(email,password);
+            FirebaseAuth mAuth=FirebaseAuth.getInstance();
+            FirebaseUser user = mAuth.getCurrentUser();
+            if (user!=null)
+            {
+                Intent intent=new Intent(this,Activity_ReadUserProfile.class);
+                startActivity(intent);
+
+            }
+
 
 
         });
@@ -80,8 +89,7 @@ public class Activity_Login extends AppCompatActivity {
                     else
                     {
                         Log.i("Logined","Alhadulliah");
-                        Intent intent=new Intent(this,MainActivity.class);
-                        startActivity(intent);
+
                     }
                 });
     }

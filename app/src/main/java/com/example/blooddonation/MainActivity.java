@@ -46,12 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth=FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user!=null)
-        {
-            Intent intent=new Intent(MainActivity.this,Activity_ReadUserProfile.class);
-            startActivity(intent);
-
-        }
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
