@@ -74,6 +74,10 @@ public class Activity_Register extends AppCompatActivity {
     {
         EditText Name=findViewById(R.id.Activity_Register_TextInputLayout_EditText_Name);
         String name=Name.getText().toString().trim();
+        if(name.isEmpty())
+        {
+            Name.setError("Name can be empty!");
+        }
         EditText Email=findViewById(R.id.Activity_Register_TextInputLayout_EditText_Email);
         String email=Email.getText().toString().trim();
         EditText PhoneNumber=findViewById(R.id.Activity_Register_TextInputLayout_EditText_PhoneNumber);
