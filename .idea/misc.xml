@@ -28,9 +28,14 @@
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_header.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_toolbar_for_non_home_activity.xml" value="0.25" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_toolbar_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/menu_nav_drawer_when_user_not_signed_in.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/recyclerview_item_layout_search_on_login.xml" value="0.6363636363636364" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/menu/menu_activity_main_nav_drawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/menu/menu_item_for_non_home_activity_toolbar.xml" value="0.5" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/menu/menu_nav_drawer_when_user_donor.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/menu/menu_nav_drawer_when_user_not_donar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/menu/menu_nav_drawer_when_user_not_signed_in.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/menu/menu_nav_drawer_when_user_signed_in.xml" value="0.18" />
       </map>
     </option>
   </component>
