@@ -39,6 +39,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         DrawerLayout drawerLayout=findViewById(R.id.MainActivity_DrawerLayout);
         NavigationView navigationView=findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
+
+        //setting the menu based on condition
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        FirebaseUser currentUser=auth.getCurrentUser();
+        if(currentUser==null)
+        {
+            //if the user not singed in
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
+        }
+        else if(currentUser!=null)
+        {
+            //if the user singed in
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_signed_in);
+
+        }
+
         Toolbar toolbar=findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle
