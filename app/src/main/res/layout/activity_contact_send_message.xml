@@ -13,6 +13,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            app:startIconDrawable="@drawable/icon_person"
             android:hint="Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:hint="Email"
+            app:startIconDrawable="@drawable/icon_email"
             app:layout_constraintEnd_toEndOf="@id/Activity_ContactSendMessage_TextInputLayout_Name"
             app:layout_constraintStart_toStartOf="@id/Activity_ContactSendMessage_TextInputLayout_Name"
             app:layout_constraintTop_toBottomOf="@id/Activity_ContactSendMessage_TextInputLayout_Name">
@@ -60,6 +62,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:hint="Phone Number"
+            app:startIconDrawable="@drawable/icon_phone_number"
             app:layout_constraintEnd_toEndOf="@id/Activity_ContactSendMessage_TextInputLayout_Email"
             app:layout_constraintStart_toStartOf="@id/Activity_ContactSendMessage_TextInputLayout_Email"
             app:layout_constraintTop_toBottomOf="@id/Activity_ContactSendMessage_TextInputLayout_Email">
@@ -99,6 +102,7 @@
 
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/Activity_ContactSendMessage_Button_Submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,6 +114,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Activity_ContactSendMessage_TextInputLayout_Message" />
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/Activity_ContactSendMessage_Button_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
