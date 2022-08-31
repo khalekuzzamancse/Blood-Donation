@@ -16,6 +16,10 @@
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:drawableLeft="@drawable/icon_person"
                    android:layout_marginStart="10dp"
                     android:padding="4dp"
@@ -28,18 +32,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
+                    android:textSize="15sp"
+                    android:textColor="#FC0E26FF"
                     android:drawableLeft="@drawable/icon_phone_number"
+                    android:gravity="center_vertical"
                     android:text="Available"
-                    app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
+                    app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Location"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email" />
 
                 <TextView
+                    android:textSize="15sp"
+                    android:textColor="#FC0E26FF"
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
                     android:layout_width="wrap_content"
                     android:padding="4dp"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:drawableLeft="@drawable/icon_email"
                     android:text="Available"
                     app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
@@ -48,10 +58,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name" />
 
                 <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
+                    android:gravity="center_vertical"
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/icon_locaion"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +73,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber" />
 
                 <Button
+                    android:gravity="end|bottom"
                     android:id="@+id/CardViewButton_VisitProfile"
                     android:textAllCaps="false"
                     style="@style/Widget.MaterialComponents.Button.TextButton"

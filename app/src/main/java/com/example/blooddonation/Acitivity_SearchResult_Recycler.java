@@ -4,16 +4,23 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,13 +38,36 @@ public class Acitivity_SearchResult_Recycler extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acitivity_search_result_recycler);
+
+        Toolbar toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Result");
+
         AllUserInfoList();
+        Button visitProfile=findViewById(R.id.CardViewButton_VisitProfile);
 
 
 
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_item_for_non_home_activity_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.NonHomeActivity_MenuItem_SearchBlood)
+        {
+            Intent intent=new Intent(this,Activity_SearchBlood.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void AllUserInfoList()
     {
@@ -122,6 +152,17 @@ public class Acitivity_SearchResult_Recycler extends AppCompatActivity {
                             obj.BloodGroup=(String) map.get("BloodGroup");
                             obj.District=(String) map.get("District");
                             obj.SubDistrict=(String) map.get("SubDistrict");
+                        FirebaseAuth  mAuth=FirebaseAuth.getInstance();
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        if(user==null)
+                        {
+                            //if the user not logged in then hide the email and phone number
+                            obj.Email="Available";
+                            obj.PhoneNumber="Available";
+
+                        }
+
                             list.add(obj);
 
 

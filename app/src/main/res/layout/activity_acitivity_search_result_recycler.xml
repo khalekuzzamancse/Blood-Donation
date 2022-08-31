@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Acitivity_SearchResult_Recycler">
+    tools:context=".Acitivity_SearchResult_Recycler"
+    >
+    <include layout="@layout/layout_toolbar_for_non_home_activity"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Activity_SearchResult_Recycler"
