@@ -37,8 +37,10 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
     List<String> subDistrictList=new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_blood);
         Toolbar toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
@@ -49,8 +51,20 @@ public class Activity_SearchBlood extends AppCompatActivity {
         DistrictList();
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
         search.setOnClickListener(view -> {
+            EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
+          String blood=bloodGroup.getText().toString().trim();
+            EditText Dis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);
+            String dis=Dis.getText().toString().trim();
+            EditText SubDis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict);
+            String subDis=SubDis.getText().toString().trim();
+            Intent intent=new Intent(this,Acitivity_SearchResult_Recycler.class);
+            intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_bloodGroup,blood);
+            intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_District,dis);
+            intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_SubDistrict,subDis);
+            startActivity(intent);
 
-            AllUserInfoList();
+
+           // AllUserInfoList();
 
         });
 
