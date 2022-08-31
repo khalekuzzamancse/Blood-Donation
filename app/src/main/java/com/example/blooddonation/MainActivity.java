@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +49,30 @@ public class MainActivity extends AppCompatActivity {
             //if the user not singed in
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
+            CurrentUserInfo.name="Null";
+
         }
         else if(currentUser!=null)
         {
+            showProfile();
             //if the user singed in
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_signed_in);
+            if(CurrentUserInfo.isDonor.equals("true"))
+            {
+                navigationView.getMenu().clear();
+                navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_donor);
+            }
+            else
+            {
+                navigationView.getMenu().clear();
+                navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
+            }
+
+
 
         }
+        Log.i("Current User,at Main",CurrentUserInfo.name);
+        Log.i("Current User isDonor,at Main",CurrentUserInfo.name);
+
 
         Toolbar toolbar=findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
@@ -113,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     TextView t=findViewById(R.id.headerTextView);
                     t.setText("something");
+                    CurrentUserInfo.name="Null";
                    //restarting the main activity so the navbar and menu get updated.
                     Intent intent = getIntent();
                     finish();
@@ -122,8 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-//        Read();
-//        Write();
 
 
     }
@@ -191,7 +207,10 @@ public class MainActivity extends AppCompatActivity {
                                 String email= (String) document.get("Email");
                                 String phone= (String) document.get("PhoneNumber");
                                 String UserName= (String) document.get("UserName");
-
+                                String isDonor= (String) document.get("isDonor");
+                                CurrentUserInfo.name=name;
+                                if(isDonor!=null)
+                                CurrentUserInfo.isDonor=isDonor;
 
                                 TextView t=findViewById(R.id.headerTextView);
                                 String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";

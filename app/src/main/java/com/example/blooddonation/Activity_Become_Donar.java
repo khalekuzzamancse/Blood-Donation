@@ -54,7 +54,7 @@ public class Activity_Become_Donar extends AppCompatActivity {
         });
 //this is comment
 
-
+        Log.i("Current User,at Become Donor",CurrentUserInfo.name);
 
     }
     @Override
@@ -230,6 +230,10 @@ public class Activity_Become_Donar extends AppCompatActivity {
         HashMap<String,Object>setSubDis=new HashMap<>();
         setSubDis.put("SubDistrict",subDis);
         addANewField(setSubDis);
+        HashMap<String,Object>isDonor=new HashMap<>();
+        isDonor.put("isDonor","true");
+        addANewField(isDonor);
+
         Log.i("Alhadlliah",Age+" "+Gender+" "+blood+" "+dis+" "+subDis);
     }
 

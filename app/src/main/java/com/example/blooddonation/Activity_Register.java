@@ -37,6 +37,8 @@ public class Activity_Register extends AppCompatActivity {
         submit.setOnClickListener(view -> {
             Log.i("Clicked","ok");
           SetUserInfo();
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
         });
 
     }
@@ -132,6 +134,7 @@ public class Activity_Register extends AppCompatActivity {
         Data.put("UserName",userName);
         Data.put("Password",password);
         Data.put("PhoneNumber",phoneNumber);
+        Data.put("isDonor","false");
 
         setDataToDatabase(Data);
 

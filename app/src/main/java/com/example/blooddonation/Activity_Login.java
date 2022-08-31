@@ -58,7 +58,7 @@ public class Activity_Login extends AppCompatActivity {
                 startActivity(intent);
 
             }
-
+            Log.i("Current User,at Login",CurrentUserInfo.name);
 
 
         });
