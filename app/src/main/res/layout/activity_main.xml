@@ -22,7 +22,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/layout_header"
-        app:menu="@menu/menu_activity_main_nav_drawer"
+        app:menu="@menu/menu_nav_drawer_when_user_not_signed_in"
 
 
         />
