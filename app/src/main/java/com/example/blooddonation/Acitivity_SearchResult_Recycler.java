@@ -32,22 +32,6 @@ public class Acitivity_SearchResult_Recycler extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acitivity_search_result_recycler);
         AllUserInfoList();
-//        List<DataTypeForRecyclerView_ActivitySearchResult> list=new ArrayList<>();
-//
-//        DataTypeForRecyclerView_ActivitySearchResult obj=new DataTypeForRecyclerView_ActivitySearchResult();
-//        obj.Name="NameA";
-//        obj.Email="EmailB";
-//        obj.PhoneNumber="089851";
-//        obj.BloodGroup="A+";
-//        obj.District="Rangpur";
-//        obj.SubDistrict="Ganagachara";
-//        list.add(obj);
-//
-//
-//        AdapterForRecyclerViewLoggedIn adapter=new AdapterForRecyclerViewLoggedIn(this,list);
-//        RecyclerView r=findViewById(R.id.Activity_SearchResult_Recycler);
-//        r.setLayoutManager(new LinearLayoutManager(this));
-//        r.setAdapter(adapter);
 
 
 

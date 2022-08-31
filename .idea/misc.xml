@@ -19,6 +19,8 @@
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_register_scrolable.xml" value="0.25" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_search_blood.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_why_donate_blood.xml" value="0.1" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/card_search_result.xml" value="0.33" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/cardview_layout_search_result.xml" value="0.33" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/header_layout_activity_main_nav.xml" value="0.1" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_drop_down_menu_single_item.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_header.xml" value="0.20416666666666666" />
@@ -35,5 +37,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

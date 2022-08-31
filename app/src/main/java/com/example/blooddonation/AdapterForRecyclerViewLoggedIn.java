@@ -26,7 +26,7 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
     @Override
     public ViewHolderForRecyclerViewLoggedIn onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View viewOfRecyclerLayout= LayoutInflater.from(context).
-                inflate(R.layout.recyclerview_item_layout_search_on_login,parent,false);
+                inflate(R.layout.card_search_result,parent,false);
 
         ViewHolderForRecyclerViewLoggedIn viewHolder=
                 new ViewHolderForRecyclerViewLoggedIn(viewOfRecyclerLayout);
