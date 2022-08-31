@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_contact_phone.xml" value="0.105" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_email.xml" value="0.1265" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_locaion.xml" value="0.1265" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_logout.xml" value="0.2115" />
@@ -25,7 +26,7 @@
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/cardview_layout_search_result.xml" value="0.33" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/header_layout_activity_main_nav.xml" value="0.1" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_drop_down_menu_single_item.xml" value="0.18931159420289856" />
-        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_header.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_header.xml" value="0.1" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_toolbar_for_non_home_activity.xml" value="0.25" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_toolbar_menu.xml" value="0.1" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/menu_nav_drawer_when_user_not_signed_in.xml" value="0.20416666666666666" />
@@ -44,5 +45,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

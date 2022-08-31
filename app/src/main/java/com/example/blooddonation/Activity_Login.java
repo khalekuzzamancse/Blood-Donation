@@ -112,12 +112,12 @@ public class Activity_Login extends AppCompatActivity {
                                 String UserName= (String) document.get("UserName");
 
                                 String isDonor= (String) document.get("isDonor");
-
-                                TextView t=findViewById(R.id.headerTextView);
-                                String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";
-                                if(t!=null)
-                                t.setText(data);
-                                Log.i("Alhamdulliah",data);
+//
+//                                TextView t=findViewById(R.id.headerTextView);
+//                                String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";
+//                                if(t!=null)
+//                                t.setText(data);
+//                                Log.i("Alhamdulliah",data);
 
 
                             } else {

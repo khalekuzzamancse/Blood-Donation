@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(id==R.id.ActivityMain_NavDrawerMenu_LogOut)
                 {
-                    FirebaseAuth.getInstance().signOut();
-                    TextView t=findViewById(R.id.headerTextView);
-                    t.setText("something");
+              FirebaseAuth.getInstance().signOut();
+//                    TextView t=findViewById(R.id.headerTextView);
+//                    t.setText("something");
                     Intent intent = getIntent();
                     finish();
                     startActivity(intent);
@@ -145,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
                                 String email= (String) document.get("Email");
                                 String phone= (String) document.get("PhoneNumber");
                                 String UserName= (String) document.get("UserName");
+                                String dis= (String) document.get("District");
+                                String subDis= (String) document.get("SubDistrict");
                                String isDonor=(String) document.get("isDonor");
                                 if(isDonor.equals("true"))
                                 {
@@ -157,11 +159,12 @@ public class MainActivity extends AppCompatActivity {
                                     navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
                                 }
 
-                                TextView t=findViewById(R.id.headerTextView);
-                                String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";
-                                t.setText(data);
-                                Log.i("Alhamdulliah",data);
-
+                                TextView navbarName=findViewById(R.id.NavbarHeader_Name);
+                                if(navbarName!=null)
+                                navbarName.setText(name);
+                                TextView navbarLocation=findViewById(R.id.NavbarHeader_Location);
+                                if (navbarLocation!=null)
+                                    navbarLocation.setText(dis+","+subDis);
 
                             } else {
                                 Log.d(TAG, "No such document");
