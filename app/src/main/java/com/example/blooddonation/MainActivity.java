@@ -113,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     TextView t=findViewById(R.id.headerTextView);
                     t.setText("something");
+                   //restarting the main activity so the navbar and menu get updated.
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
 
                 }
                 return true;
