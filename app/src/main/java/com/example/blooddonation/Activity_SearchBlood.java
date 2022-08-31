@@ -251,8 +251,19 @@ public class Activity_SearchBlood extends AppCompatActivity {
                         }
                         Log.i("Founded Size", String.valueOf(subDistrictWiseUserInfoList.size()));
 
+                        for (HashMap<String, Object> map : subDistrictWiseUserInfoList) {
+//                            for (String key : map.keySet()) {
+//                                Log.i("Displayed",key+":"+(String) map.get(key));
+//
+//                            }
+                            Log.i("Displayed", (String) map.get("Name")+":"+(String) map.get("BloodGroup")+":"+(String) map.get("District")+":"+(String) map.get("SubDistrict"));
+
+                        }
+
                     }
                 });
+
+
 
     }
 }
