@@ -9,148 +9,51 @@
     android:layout_height="wrap_content"
     android:layout_margin="40dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Name : "
+                    app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Button 1 "-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
-        <TextView
-            android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Name : "
-            app:layout_constraintEnd_toStartOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_Name"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number : "
+                    app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
+                    app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email" />
 
-        <TextView
-            android:id="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name here"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
-            app:layout_constraintTop_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name" />
-        <TextView
-            android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            android:text="Phone Number : "
-            app:layout_constraintEnd_toStartOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
-            app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name" />
+                <TextView
+                    android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email : "
+                    app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
+                    app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name" />
 
-        <TextView
-            android:id="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone Number here"
-            app:layout_constraintEnd_toEndOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_Name"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
-            app:layout_constraintTop_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber" />
+                <TextView
+                    android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="District : "
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber" />
 
-        <TextView
-            android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            android:text="Email : "
-            app:layout_constraintEnd_toStartOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_Email"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
-            app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber" />
 
-        <TextView
-            android:id="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_Email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email here"
-            app:layout_constraintEnd_toEndOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
-            app:layout_constraintTop_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email" />
-
-        <TextView
-            android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            android:text="Blood Group : "
-            app:layout_constraintEnd_toStartOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
-            app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email" />
-
-        <TextView
-            android:id="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Blood Group here"
-            app:layout_constraintEnd_toEndOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_Email"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup"
-            app:layout_constraintTop_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup" />
-
-        <TextView
-            android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="District : "
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintEnd_toStartOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_District"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup"
-            app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup" />
-
-        <TextView
-            android:id="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_District"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="District here"
-            app:layout_constraintEnd_toEndOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_BloodGroup"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
-            app:layout_constraintTop_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District" />
-
-        <TextView
-            android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_SubDistrict"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            android:text="Sub District : "
-            app:layout_constraintEnd_toStartOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_SubDistrict"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
-            app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District" />
-
-        <TextView
-            android:id="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_SubDistrict"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sub District here"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintEnd_toEndOf="@+id/Text_RecyclerViewLayout_SearchOnLoggedIn_District"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_SubDistrict"
-            app:layout_constraintTop_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_SubDistrict" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

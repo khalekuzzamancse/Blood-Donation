@@ -44,14 +44,9 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
         String email=list.get(position).Email;
         holder.TextView_ViewHolder_Email.setText(email);
         //
-        String bloodGroup=list.get(position).BloodGroup;
-        holder.TextView_ViewHolder_BloodGroup.setText(bloodGroup);
-        //
         String dis=list.get(position).District;
         holder.TextView_ViewHolder_District.setText(dis);
-        //
-        String subDis=list.get(position).SubDistrict;
-        holder.TextView_ViewHolder_SubDistrict.setText(subDis);
+
 
 
 
