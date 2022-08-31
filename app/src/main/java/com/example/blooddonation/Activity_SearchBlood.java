@@ -16,15 +16,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Activity_SearchBlood extends AppCompatActivity {
@@ -41,6 +47,12 @@ public class Activity_SearchBlood extends AppCompatActivity {
         getSupportActionBar().setTitle("Search Blood");
         setBloodGroup();
         DistrictList();
+        Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
+        search.setOnClickListener(view -> {
+
+            AllUserInfoList();
+
+        });
 
     }
     @Override
@@ -176,4 +188,73 @@ public class Activity_SearchBlood extends AppCompatActivity {
         });
     }
 
+
+
+    private void AllUserInfoList()
+    {
+        List<HashMap<String,Object>> AllUserInfoList=new ArrayList<>();
+        List<HashMap<String,Object>> DistrictWiseUserInfoList=new ArrayList<>();
+        List<HashMap<String,Object>> subDistrictWiseUserInfoList=new ArrayList<>();
+        EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
+        String blood=bloodGroup.getText().toString().trim();
+        EditText Dis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);
+        String dis=Dis.getText().toString().trim();
+        EditText SubDis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict);
+        String subDis=SubDis.getText().toString().trim();
+        Log.d("GettedAgain",blood+"->"+dis+"->"+subDis);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("UserInfo")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+
+                                String name=(String)document.get("Name");
+                              //  String Username=(String)document.get("UserName");
+                                String phoneNumber=(String)document.get("PhoneNumber");
+                                String email=(String)document.get("Email");
+                                String bloodGroup=(String)document.get("BloodGroup");
+                                String gender=(String)document.get("Gender");
+                                String district=(String)document.get("District");
+                                String subDistrict=(String)document.get("SubDistrict");
+                                String age=(String)document.get("Age");
+                                Log.i("User:",name+"->"+phoneNumber+"->"+email+"->"+bloodGroup+"->"+gender+"->"+district+"->"+subDistrict+"->"+age);
+                                if(blood.equals(bloodGroup)&&dis.equals(district)&&subDis.equals(subDistrict))
+                                {
+                                    Log.i("Alhamdulliah,Founded:",name+"->"+phoneNumber+"->"+email+"->"+bloodGroup+"->"+gender+"->"+district+"->"+subDistrict+"->"+age);
+                                    HashMap<String,Object>dataSubDistrict=new HashMap<>();
+                                    dataSubDistrict.put("Name",name);
+                                    dataSubDistrict.put("PhoneNumber",phoneNumber);
+                                    dataSubDistrict.put("Email",email);
+                                    dataSubDistrict.put("BloodGroup",bloodGroup);
+                                    dataSubDistrict.put("Gender",gender);
+                                    dataSubDistrict.put("District",district);
+                                    dataSubDistrict.put("SubDistrict",subDistrict);
+                                    dataSubDistrict.put("Age",age);
+                                   subDistrictWiseUserInfoList.add(dataSubDistrict);
+                                }
+                                else
+                                {
+                                    Log.i("Sorry","Not Found");
+                                }
+
+
+                                //String name=(String)document.getId();
+//                                Log.i("User:",name);
+//                                userInfoList.add()
+                            }
+
+                        }
+
+
+                        else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
 }
