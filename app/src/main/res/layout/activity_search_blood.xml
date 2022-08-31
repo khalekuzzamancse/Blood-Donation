@@ -14,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
+        app:startIconDrawable="@drawable/icon_blood_group"
         android:hint="Blood Group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
+        app:startIconDrawable="@drawable/icon_locaion"
         android:hint="District"
         app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
         app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
@@ -60,6 +62,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
+        app:startIconDrawable="@drawable/icon_locaion"
         android:hint="Sub District"
         app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_District"
         app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_District"
@@ -77,6 +80,7 @@
 
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/Activity_SearchBlood_Button_Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,6 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/Activity_SearchBlood_Button_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
