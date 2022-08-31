@@ -45,7 +45,8 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
         holder.TextView_ViewHolder_Email.setText(email);
         //
         String dis=list.get(position).District;
-        holder.TextView_ViewHolder_District.setText(dis);
+        String subDis=list.get(position).SubDistrict;
+        holder.TextView_ViewHolder_District.setText(dis+","+subDis);
 
 
 

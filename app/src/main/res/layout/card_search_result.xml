@@ -16,8 +16,9 @@
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Name : "
+                    android:drawableLeft="@drawable/icon_person"
+                   android:layout_marginStart="10dp"
+                    android:padding="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +27,9 @@
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone Number : "
+                    android:padding="4dp"
+                    android:drawableLeft="@drawable/icon_phone_number"
+                    android:text="Available"
                     app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
@@ -35,23 +38,36 @@
                 <TextView
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
                     android:layout_width="wrap_content"
+                    android:padding="4dp"
                     android:layout_height="wrap_content"
-                    android:text="Email : "
+                    android:drawableLeft="@drawable/icon_email"
+                    android:text="Available"
                     app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name"
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Name" />
 
                 <TextView
-                    android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_District"
+                    android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="4dp"
                     android:layout_marginBottom="10dp"
-                    android:text="District : "
+                    android:drawableLeft="@drawable/icon_locaion"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber" />
+
+                <Button
+                    android:id="@+id/CardViewButton_VisitProfile"
+                    android:textAllCaps="false"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Visit Profile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

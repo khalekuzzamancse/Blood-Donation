@@ -20,7 +20,7 @@ public class ViewHolderForRecyclerViewLoggedIn extends RecyclerView.ViewHolder {
             TextView_ViewHolder_Name=itemView.findViewById(R.id.Label_RecyclerViewLayout_SearchOnLoggedIn_Name);
             TextView_ViewHolder_PhoneNumber=itemView.findViewById(R.id.Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber);
             TextView_ViewHolder_Email=itemView.findViewById(R.id.Label_RecyclerViewLayout_SearchOnLoggedIn_Email);
-            TextView_ViewHolder_District=itemView.findViewById(R.id.Label_RecyclerViewLayout_SearchOnLoggedIn_District);
+            TextView_ViewHolder_District=itemView.findViewById(R.id.Label_RecyclerViewLayout_SearchOnLoggedIn_Location);
 
         }
 
