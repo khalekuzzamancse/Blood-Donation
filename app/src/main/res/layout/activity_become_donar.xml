@@ -7,74 +7,74 @@
     tools:context=".Activity_Become_Donar">
 <!--    <include layout="@layout/layout_toolbar_for_non_home_activity"/>-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Name"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:hint="Name"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Name"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:maxLines="1"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Email"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Name"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Name"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Name">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Email"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:hint="Email"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Name"-->
+<!--        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Name"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Name">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Email"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:maxLines="1"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Phone Number"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Email"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Email"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Email">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:hint="Phone Number"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Email"-->
+<!--        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Email"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Email">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_PhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_PhoneNumber"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="number"-->
+<!--            android:maxLines="1"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Activity_BecomeDonar_TextInputLayout_Age"
@@ -85,9 +85,10 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Age"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_PhoneNumber"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_PhoneNumber">
+     app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Age"
@@ -145,29 +146,73 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Address"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_District"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
-        android:hint="Address"
+        android:hint="District"
         app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
         app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
         app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Address"
+        <AutoCompleteTextView
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_District"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
+            android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Sub District"
+        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_District"
+        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_District"
+        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_District">
+
+        <AutoCompleteTextView
+            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_SubDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Address"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:hint="Address"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"-->
+<!--        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Address"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPostalAddress"-->
+<!--            android:maxLines="1"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/Activity_BecomeDonar_Button_Submit"
@@ -177,15 +222,15 @@
         android:text="Submit"
         app:layout_constraintEnd_toStartOf="@+id/Activity_BecomeDonar_Button_Cancel"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/Activity_BecomeDonar_TextInputLayout_Address"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_BecomeDonar_TextInputLayout_Address" />
+        app:layout_constraintStart_toStartOf="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict" />
 
     <Button
         android:id="@+id/Activity_BecomeDonar_Button_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="@+id/Activity_BecomeDonar_TextInputLayout_Address"
+        app:layout_constraintEnd_toEndOf="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Activity_BecomeDonar_Button_Submit"
         app:layout_constraintTop_toTopOf="@+id/Activity_BecomeDonar_Button_Submit" />
