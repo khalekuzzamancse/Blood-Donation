@@ -59,6 +59,7 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
+
     }
 }
