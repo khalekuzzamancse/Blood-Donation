@@ -50,17 +50,6 @@ public class Activity_Login extends AppCompatActivity {
             String email=Email.getText().toString().trim();
             String password=PassWord.getText().toString().trim();
             Login(email,password);
-            FirebaseAuth mAuth=FirebaseAuth.getInstance();
-            FirebaseUser user = mAuth.getCurrentUser();
-            if (user!=null)
-            {
-                Intent intent=new Intent(this,MainActivity.class);
-                startActivity(intent);
-
-            }
-            Log.i("Current User,at Login",CurrentUserInfo.name);
-
-
         });
 
     }
@@ -91,21 +80,22 @@ public class Activity_Login extends AppCompatActivity {
                 .addOnCompleteListener((Task<AuthResult> task)->{
                     if(!task.isSuccessful())
                     {
-                        Log.i("Logined","Next,Inshallah");
+                        Log.i("Curr Logined","Next,Inshallah");
                     }
                     else
                     {
-                        Log.i("Logined","Alhadulliah");
-                        showProfile();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUser();
+                        Intent i= new Intent(this, MainActivity.class);
+                        startActivity(i);
 
                     }
                 });
     }
-    private void showProfile()
+    private void updateUser()
     {
         FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
         FirebaseUser  user = mAuth.getCurrentUser();
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("UserInfo")
                 .document(user.getEmail())
@@ -121,6 +111,8 @@ public class Activity_Login extends AppCompatActivity {
                                 String phone= (String) document.get("PhoneNumber");
                                 String UserName= (String) document.get("UserName");
 
+                                String isDonor= (String) document.get("isDonor");
+                                CurrentUserInfo.isDonor=isDonor;
 
                                 TextView t=findViewById(R.id.headerTextView);
                                 String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";

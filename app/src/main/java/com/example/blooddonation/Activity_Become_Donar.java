@@ -51,6 +51,13 @@ public class Activity_Become_Donar extends AppCompatActivity {
         Button submit=findViewById(R.id.Activity_BecomeDonar_Button_Submit);
         submit.setOnClickListener(view -> {
             AddDonorInfo();
+            CurrentUserInfo.isDonor="true";
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+            Intent i=new Intent(this,MainActivity.class);
+            startActivity(i);
+
         });
 //this is comment
 

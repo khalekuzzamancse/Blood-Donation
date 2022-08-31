@@ -44,16 +44,19 @@ public class MainActivity extends AppCompatActivity {
         //setting the menu based on condition
         FirebaseAuth auth=FirebaseAuth.getInstance();
         FirebaseUser currentUser=auth.getCurrentUser();
+
         if(currentUser==null)
         {
+            Log.i("Current User,at Main","Nulled");
             //if the user not singed in
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
             CurrentUserInfo.name="Null";
 
         }
-        else if(currentUser!=null)
+        else
         {
+            Log.i("Current User,at Main",currentUser.getEmail());
             showProfile();
             //if the user singed in
             if(CurrentUserInfo.isDonor.equals("true"))
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 navigationView.getMenu().clear();
                 navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_donor);
             }
-            else
+            else if(CurrentUserInfo.isDonor.equals("false"))
             {
                 navigationView.getMenu().clear();
                 navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
@@ -70,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        Log.i("Current User,at Main",CurrentUserInfo.name);
-        Log.i("Current User isDonor,at Main",CurrentUserInfo.name);
 
 
         Toolbar toolbar=findViewById(R.id.ActivityMain_ToolBar);
@@ -144,49 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void Read()
-    {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("a")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("Hello", document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-    }
-
-    private void Write()
-    {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
-
-// Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-    }
     private void showProfile()
     {
         FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
@@ -209,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                                 String UserName= (String) document.get("UserName");
                                 String isDonor= (String) document.get("isDonor");
                                 CurrentUserInfo.name=name;
-                                if(isDonor!=null)
+                              //  if(isDonor!=null)
                                 CurrentUserInfo.isDonor=isDonor;
 
                                 TextView t=findViewById(R.id.headerTextView);
