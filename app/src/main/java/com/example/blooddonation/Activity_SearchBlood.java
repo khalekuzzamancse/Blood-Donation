@@ -237,10 +237,6 @@ public class Activity_SearchBlood extends AppCompatActivity {
                                     dataSubDistrict.put("Age",age);
                                    subDistrictWiseUserInfoList.add(dataSubDistrict);
                                 }
-                                else
-                                {
-                                    Log.i("Sorry","Not Found");
-                                }
 
 
                                 //String name=(String)document.getId();
@@ -250,11 +246,13 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
                         }
 
-
                         else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
+                        Log.i("Founded Size", String.valueOf(subDistrictWiseUserInfoList.size()));
+
                     }
                 });
+
     }
 }
