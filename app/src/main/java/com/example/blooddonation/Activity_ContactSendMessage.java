@@ -21,7 +21,6 @@ public class Activity_ContactSendMessage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Contact Us");
 
-        Log.i("Current User,at Contact us",CurrentUserInfo.name);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

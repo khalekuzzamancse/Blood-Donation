@@ -112,7 +112,6 @@ public class Activity_Login extends AppCompatActivity {
                                 String UserName= (String) document.get("UserName");
 
                                 String isDonor= (String) document.get("isDonor");
-                                CurrentUserInfo.isDonor=isDonor;
 
                                 TextView t=findViewById(R.id.headerTextView);
                                 String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";

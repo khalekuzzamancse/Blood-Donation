@@ -22,8 +22,6 @@ public class Activity_WhyDonateBlood extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Why Donate Blood");
 
-        Log.i("Current User,at Why donate",CurrentUserInfo.name);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

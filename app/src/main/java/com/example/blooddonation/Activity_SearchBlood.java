@@ -49,7 +49,6 @@ public class Activity_SearchBlood extends AppCompatActivity {
         getSupportActionBar().setTitle("Search Blood");
         setBloodGroup();
         DistrictList();
-        Log.i("Current User,at Search",CurrentUserInfo.name);
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
         search.setOnClickListener(view -> {
             EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);

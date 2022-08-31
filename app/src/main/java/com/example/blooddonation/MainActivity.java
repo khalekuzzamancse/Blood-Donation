@@ -32,48 +32,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+    NavigationView navigationView;
+    DrawerLayout drawerLayout;
 
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DrawerLayout drawerLayout=findViewById(R.id.MainActivity_DrawerLayout);
-        NavigationView navigationView=findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
 
-        //setting the menu based on condition
-        FirebaseAuth auth=FirebaseAuth.getInstance();
-        FirebaseUser currentUser=auth.getCurrentUser();
-
-        if(currentUser==null)
-        {
-            Log.i("Current User,at Main","Nulled");
-            //if the user not singed in
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
-            CurrentUserInfo.name="Null";
-
-        }
-        else
-        {
-            Log.i("Current User,at Main",currentUser.getEmail());
-            showProfile();
-            //if the user singed in
-            if(CurrentUserInfo.isDonor.equals("true"))
-            {
-                navigationView.getMenu().clear();
-                navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_donor);
-            }
-            else if(CurrentUserInfo.isDonor.equals("false"))
-            {
-                navigationView.getMenu().clear();
-                navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
-            }
-
-
-
-        }
-
+         drawerLayout=findViewById(R.id.MainActivity_DrawerLayout);
+        navigationView=findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
 
         Toolbar toolbar=findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
@@ -82,13 +51,26 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        FirebaseAuth mAuth=FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user!=null)
+
+
+        //setting the menu based on condition
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        FirebaseUser currentUser=auth.getCurrentUser();
+        if(currentUser==null)
         {
-            showProfile();
+
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
 
         }
+        else
+        {
+
+            showProfile();
+
+
+        }
+
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -131,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     TextView t=findViewById(R.id.headerTextView);
                     t.setText("something");
-                    CurrentUserInfo.name="Null";
-                   //restarting the main activity so the navbar and menu get updated.
                     Intent intent = getIntent();
                     finish();
                     startActivity(intent);
@@ -149,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     {
         FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
       FirebaseUser  user = mAuth.getCurrentUser();
-
+    Log.i("Curr are in Showprofie ",user.getEmail());
         Log.i("UserEmail",user.getEmail());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("UserInfo")
@@ -165,10 +145,17 @@ public class MainActivity extends AppCompatActivity {
                                 String email= (String) document.get("Email");
                                 String phone= (String) document.get("PhoneNumber");
                                 String UserName= (String) document.get("UserName");
-                                String isDonor= (String) document.get("isDonor");
-                                CurrentUserInfo.name=name;
-                              //  if(isDonor!=null)
-                                CurrentUserInfo.isDonor=isDonor;
+                               String isDonor=(String) document.get("isDonor");
+                                if(isDonor.equals("true"))
+                                {
+                                    navigationView.getMenu().clear();
+                                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_donor);
+                                }
+                                else
+                                {
+                                    navigationView.getMenu().clear();
+                                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
+                                }
 
                                 TextView t=findViewById(R.id.headerTextView);
                                 String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";

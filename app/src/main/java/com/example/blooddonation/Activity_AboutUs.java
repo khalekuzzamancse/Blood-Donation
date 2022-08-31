@@ -26,7 +26,6 @@ public class Activity_AboutUs extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("About Us");
-        Log.i("Current User,at about us",CurrentUserInfo.name);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

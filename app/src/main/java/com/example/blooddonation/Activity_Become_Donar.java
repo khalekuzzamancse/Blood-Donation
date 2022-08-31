@@ -51,7 +51,7 @@ public class Activity_Become_Donar extends AppCompatActivity {
         Button submit=findViewById(R.id.Activity_BecomeDonar_Button_Submit);
         submit.setOnClickListener(view -> {
             AddDonorInfo();
-            CurrentUserInfo.isDonor="true";
+
             Intent intent = getIntent();
             finish();
             startActivity(intent);
@@ -61,7 +61,6 @@ public class Activity_Become_Donar extends AppCompatActivity {
         });
 //this is comment
 
-        Log.i("Current User,at Become Donor",CurrentUserInfo.name);
 
     }
     @Override
