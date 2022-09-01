@@ -84,6 +84,7 @@ public class Activity_Login extends AppCompatActivity {
                     }
                     else
                     {
+                        Log.i("Curr Logined","Alhaumdulliah");
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUser();
                         Intent i= new Intent(this, MainActivity.class);
