@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity_AboutUs">
-    <include layout="@layout/layout_toolbar_for_non_home_activity"/>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_toolbar_for_non_home_activity" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -17,4 +20,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dialer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="228dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="0145667"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include" />
 </androidx.constraintlayout.widget.ConstraintLayout>

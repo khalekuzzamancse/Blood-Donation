@@ -7,11 +7,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,6 +29,11 @@ public class Activity_AboutUs extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("About Us");
+
+        Call();
+
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,5 +51,21 @@ public class Activity_AboutUs extends AppCompatActivity {
         }
                 return super.onOptionsItemSelected(item);
         }
+    public  void Call()
+    {
 
+        EditText e = (EditText)findViewById(R.id.dialer);
+
+        Uri u = Uri.parse("tel:" + e.getText().toString());
+
+        Intent i = new Intent(Intent.ACTION_DIAL, u);
+
+        try
+        {
+            startActivity(i);
+        }
+        catch (SecurityException s)
+        {
+        }
+    }
 }

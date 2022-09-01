@@ -62,6 +62,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
             EditText SubDis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict);
             String subDis=SubDis.getText().toString().trim();
             Intent intent=new Intent(this,Acitivity_SearchResult_Recycler.class);
+
             intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_bloodGroup,blood);
             intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_District,dis);
             intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_SubDistrict,subDis);

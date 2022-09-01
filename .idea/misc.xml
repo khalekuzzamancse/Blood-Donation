@@ -9,7 +9,7 @@
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_locaion.xml" value="0.1265" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_logout.xml" value="0.2115" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/drawable/icon_search.xml" value="0.2115" />
-        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_about_us.xml" value="0.5" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_about_us.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_account_delete.xml" value="0.25" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_acitivity_search_result_recycler.xml" value="0.25" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_become_donar.xml" value="0.22" />
@@ -27,7 +27,7 @@
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_update_profile.xml" value="0.25" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_update_profile_scrollable.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/activity_why_donate_blood.xml" value="0.1" />
-        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/card_search_result.xml" value="0.5" />
+        <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/card_search_result.xml" value="0.1" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/cardview_layout_search_result.xml" value="0.33" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/header_layout_activity_main_nav.xml" value="0.1" />
         <entry key="..\:/Users/Khalekuzzaman/AndroidStudioProjects/BloodDonation/app/src/main/res/layout/layout_drop_down_menu_single_item.xml" value="0.18931159420289856" />
