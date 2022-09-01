@@ -52,13 +52,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        CardView cardView=findViewById(R.id.card_Header);
-        if (cardView!=null)
-        cardView.setOnClickListener(view -> {
-
-            Intent intent=new Intent(MainActivity.this,Activity_ReadUserProfile.class);
-            startActivity(intent);
-        });
 
         //setting the menu based on condition
         FirebaseAuth auth=FirebaseAuth.getInstance();
