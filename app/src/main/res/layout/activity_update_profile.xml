@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/medium_purple"
+    tools:context=".Activity_UpdateProfile">
+    <include
+        android:id="@+id/ActivityScrollable_IncludedToolbar"
+        layout="@layout/layout_toolbar_for_non_home_activity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_person"
+        android:gravity="start"
+        android:layout_marginTop="16dp"
+
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityScrollable_IncludedToolbar" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_email"
+        android:gravity="start"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Name"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Name" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_Phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_phone_number"
+        android:gravity="start"
+        android:text="Phone"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Email"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Email" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_BloodGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_blood_group"
+        android:gravity="start"
+        android:text="A+"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Phone"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Phone" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_gender"
+        android:gravity="start"
+        android:text="Gender"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_BloodGroup"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_BloodGroup" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_District"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_locaion"
+        android:gravity="start"
+        android:text="District"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Gender"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Gender" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_subDistrict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_locaion"
+        android:gravity="start"
+        android:text="Sub District"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_District"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_District" />
+
+    <EditText
+        android:id="@+id/Activity_showProfile_Age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_age"
+        android:gravity="center"
+        android:text="Age"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_subDistrict"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_subDistrict" />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Age" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

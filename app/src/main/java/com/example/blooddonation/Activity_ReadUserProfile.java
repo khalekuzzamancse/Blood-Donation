@@ -52,12 +52,12 @@ public class Activity_ReadUserProfile extends AppCompatActivity {
         }
 
 
-//        Button deleteAccount=findViewById(R.id.button2);
-//        deleteAccount.setOnClickListener(view -> {
-//            Intent in=new Intent(this,Activity_Account_Delete.class);
-//          startActivity(in);
-//
-//        });
+        Button update=findViewById(R.id.button);
+        update.setOnClickListener(view -> {
+            Intent in=new Intent(this,Activity_UpdateProfile.class);
+          startActivity(in);
+
+        });
 
     }
 
