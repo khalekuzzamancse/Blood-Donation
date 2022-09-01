@@ -30,7 +30,7 @@ public class Activity_AboutUs extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("About Us");
 
-        Call();
+       // Call();
 
 
 
@@ -51,21 +51,5 @@ public class Activity_AboutUs extends AppCompatActivity {
         }
                 return super.onOptionsItemSelected(item);
         }
-    public  void Call()
-    {
 
-        EditText e = (EditText)findViewById(R.id.dialer);
-
-        Uri u = Uri.parse("tel:" + e.getText().toString());
-
-        Intent i = new Intent(Intent.ACTION_DIAL, u);
-
-        try
-        {
-            startActivity(i);
-        }
-        catch (SecurityException s)
-        {
-        }
-    }
 }

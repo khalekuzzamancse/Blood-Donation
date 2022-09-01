@@ -50,6 +50,7 @@ public class Acitivity_SearchResult_Recycler extends AppCompatActivity {
 
 
 
+
     }
 
     @Override
