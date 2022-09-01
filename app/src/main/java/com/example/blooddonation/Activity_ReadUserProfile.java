@@ -31,47 +31,6 @@ public class Activity_ReadUserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_user_profile);
-        showProfile();
 
-    }
-    private void showProfile()
-    {
-        mAuth=FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
-
-        Log.i("UserEmail",user.getEmail());
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("UserInfo")
-                .document(user.getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                              String name= (String) document.get("Name");
-                              String email= (String) document.get("Email");
-                              String phone= (String) document.get("PhoneNumber");
-                              String UserName= (String) document.get("UserName");
-
-
-                                TextView t=findViewById(R.id.textView4);
-                                String data="Name: "+name+"\n"
-                                            +"User Name: "+UserName+"\n"
-                                            +"Email: "+email+"\n"
-                                              + "Phone Numeber: "+phone+"\n";
-                                t.setText(data);
-                              Log.i("Alhamdulliah",data);
-
-
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
     }
 }

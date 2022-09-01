@@ -4,17 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/medium_purple"
     tools:context=".Activity_ReadUserProfile">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User not Logged in"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/Activity_showProfile_Profile_Image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="32dp"
+        android:elevation="6dp"
+        android:src="@drawable/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Activity_showProfile_card"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:cardBackgroundColor="@color/light_purple"
+        app:cardCornerRadius="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <TextView
+                android:id="@+id/Activity_showProfile_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:drawableLeft="@drawable/icon_person"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="Name"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_Email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_email"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="Email"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_Phone"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Name"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Name" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_Phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_phone_number"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="Phone"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_BloodGroup"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Email"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Email" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_BloodGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_blood_group"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="A+"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_Gender"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Phone"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Phone" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_Gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_gender"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="Gender"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_District"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_BloodGroup"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_BloodGroup" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_District"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_locaion"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="District"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_subDistrict"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Gender"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Gender" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_subDistrict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_locaion"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="Sub District"
+                app:layout_constraintBottom_toTopOf="@+id/Activity_showProfile_Age"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_District"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_District" />
+
+            <TextView
+                android:id="@+id/Activity_showProfile_Age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_person"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="Age"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_subDistrict"
+                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_subDistrict" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
