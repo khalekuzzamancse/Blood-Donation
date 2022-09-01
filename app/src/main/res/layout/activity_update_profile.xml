@@ -5,132 +5,212 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/medium_purple"
     tools:context=".Activity_UpdateProfile">
-    <include
-        android:id="@+id/ActivityScrollable_IncludedToolbar"
-        layout="@layout/layout_toolbar_for_non_home_activity"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
 
-    <EditText
-        android:id="@+id/Activity_showProfile_Name"
-        android:layout_width="wrap_content"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_Name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_person"
-        android:gravity="start"
-        android:layout_marginTop="16dp"
-
-        android:text="Name"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        app:startIconDrawable="@drawable/icon_input"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ActivityScrollable_IncludedToolbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-    <EditText
-        android:id="@+id/Activity_showProfile_Email"
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_EditText_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_Email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/icon_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Email"
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_Name"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_Name"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_EditText_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_Phone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/icon_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Phone"
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_Email"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_Email"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_EditText_Phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_Age"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/icon_input"
+        android:layout_marginTop="10dp"
+        android:hint="Age"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_Phone"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_Phone"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_EditText_Age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_BloodGroup"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/icon_blood_group"
+        android:hint="Blood Group"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_Age"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_Age">
+
+        <AutoCompleteTextView
+            android:id="@+id/Activity_UpdateProfile__TextInputLayout_AutoCompleteTextView_BloodGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_Gender"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_email"
-        android:gravity="start"
-        android:text="Email"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Name"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Name" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:startIconDrawable="@drawable/icon_gender"
+        android:hint="Gender"
 
-    <EditText
-        android:id="@+id/Activity_showProfile_Phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_phone_number"
-        android:gravity="start"
-        android:text="Phone"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Email"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Email" />
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_BloodGroup"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_BloodGroup">
 
-    <EditText
-        android:id="@+id/Activity_showProfile_BloodGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_blood_group"
-        android:gravity="start"
-        android:text="A+"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Phone"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Phone" />
+        <AutoCompleteTextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_Gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/Activity_showProfile_Gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_gender"
-        android:gravity="start"
-        android:text="Gender"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_BloodGroup"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_BloodGroup" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/Activity_showProfile_District"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        app:startIconDrawable="@drawable/icon_locaion"
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_District"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="District"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_locaion"
-        android:gravity="start"
-        android:text="District"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Gender"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Gender" />
 
-    <EditText
-        android:id="@+id/Activity_showProfile_subDistrict"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_locaion"
-        android:gravity="start"
-        android:text="Sub District"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_District"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_District" />
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_Gender"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_Gender">
 
-    <EditText
-        android:id="@+id/Activity_showProfile_Age"
-        android:layout_width="wrap_content"
+        <AutoCompleteTextView
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_District"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        app:startIconDrawable="@drawable/icon_locaion"
+        android:id="@+id/Activity_UpdateProfile_TextInputLayout_SubDistrict"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/icon_age"
-        android:gravity="center"
-        android:text="Age"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_subDistrict"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_subDistrict" />
+        android:hint="Sub District"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="@id/Activity_UpdateProfile_TextInputLayout_District"
+        app:layout_constraintTop_toBottomOf="@id/Activity_UpdateProfile_TextInputLayout_District">
+
+        <AutoCompleteTextView
+            android:id="@+id/Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
-        android:textAllCaps="false"
-        android:id="@+id/button"
+        android:id="@+id/Activity_UpdateProfile_Button_Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="48dp"
         android:text="Save"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Age" />
+        app:layout_constraintTop_toBottomOf="@+id/Activity_UpdateProfile_TextInputLayout_SubDistrict" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
