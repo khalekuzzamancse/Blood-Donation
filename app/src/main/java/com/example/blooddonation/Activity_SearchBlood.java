@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +52,9 @@ public class Activity_SearchBlood extends AppCompatActivity {
         DistrictList();
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
         search.setOnClickListener(view -> {
+            ProgressBar p=findViewById(R.id.ActivitySearch_ProgressBar);
+            p.setVisibility(View.VISIBLE);
+
             EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
           String blood=bloodGroup.getText().toString().trim();
             EditText Dis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);

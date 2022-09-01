@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,6 +51,8 @@ public class Activity_Become_Donar extends AppCompatActivity {
             DistrictList();
         Button submit=findViewById(R.id.Activity_BecomeDonar_Button_Submit);
         submit.setOnClickListener(view -> {
+            ProgressBar p=findViewById(R.id.ActivityBecomeDonor_ProgressBar);
+            p.setVisibility(View.VISIBLE);
             AddDonorInfo();
 
             Intent intent = getIntent();

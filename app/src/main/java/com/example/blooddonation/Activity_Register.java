@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,6 +37,8 @@ public class Activity_Register extends AppCompatActivity {
 
         Button submit=findViewById(R.id.Activity_Register_Button_Submit);
         submit.setOnClickListener(view -> {
+            ProgressBar p=findViewById(R.id.ActivityRegister_ProgressBar);
+            p.setVisibility(View.VISIBLE);
             Log.i("Clicked","ok");
           SetUserInfo();
             Intent intent=new Intent(this,MainActivity.class);
