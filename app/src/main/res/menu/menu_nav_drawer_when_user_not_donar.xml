@@ -23,6 +23,11 @@
         android:icon="@drawable/why_donate"
 
         />
+    <item android:id="@+id/ActivityMain_NavDrawerMenu_showProfile"
+        android:icon="@drawable/icon_show_profile"
+        android:title="Profile"
+
+        />
     <item android:id="@+id/ActivityMain_NavDrawerMenu_LogOut"
         android:title="Logout"
         android:icon="@drawable/icon_logout"

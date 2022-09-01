@@ -14,7 +14,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -119,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     startActivity(intent);
 
+                }
+                else if(id==R.id.ActivityMain_NavDrawerMenu_showProfile)
+                {
+                    Intent intent=new Intent(MainActivity.this,Activity_ReadUserProfile.class);
+                    startActivity(intent);
                 }
                 return true;
             }
