@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
@@ -51,7 +52,13 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        CardView cardView=findViewById(R.id.card_Header);
+        if (cardView!=null)
+        cardView.setOnClickListener(view -> {
 
+            Intent intent=new Intent(MainActivity.this,Activity_ReadUserProfile.class);
+            startActivity(intent);
+        });
 
         //setting the menu based on condition
         FirebaseAuth auth=FirebaseAuth.getInstance();
