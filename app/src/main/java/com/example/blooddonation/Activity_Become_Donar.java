@@ -85,7 +85,6 @@ public class Activity_Become_Donar extends AppCompatActivity {
         genderList.add("Male");
         genderList.add("Female");
         genderList.add("Other");
-//
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.layout_drop_down_menu_single_item,genderList);
         AutoCompleteTextView gender=findViewById(R.id.Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_Gender);
         gender.setAdapter(adapter);

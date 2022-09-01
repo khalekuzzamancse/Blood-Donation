@@ -58,7 +58,12 @@ public class Activity_ReadUserProfile extends AppCompatActivity {
           startActivity(in);
 
         });
+        Button  button=findViewById(R.id.delete);
 
+       button.setOnClickListener(view -> {
+            Intent in=new Intent(this,Activity_Account_Delete.class);
+            startActivity(in);
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

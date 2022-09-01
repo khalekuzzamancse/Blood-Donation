@@ -33,7 +33,11 @@ public class Activity_Account_Delete extends AppCompatActivity {
             String pass=Pass.getText().toString().trim();
             FirebaseAuth auth=FirebaseAuth.getInstance();
             FirebaseUser currentUser=auth.getCurrentUser();
-            deleteAccount(email, pass);
+            if(pass.equals(get_PassWord)&&email.equals(currentUser.getEmail()))
+            {
+                deleteAccount(email, pass);
+            }
+
         });
 
 
