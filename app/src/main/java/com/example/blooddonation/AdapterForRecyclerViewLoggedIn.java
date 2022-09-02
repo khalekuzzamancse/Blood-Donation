@@ -1,6 +1,9 @@
 package com.example.blooddonation;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +50,28 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
         String dis=list.get(position).District;
         String subDis=list.get(position).SubDistrict;
         holder.TextView_ViewHolder_District.setText(dis+","+subDis);
+        holder.TextView_ViewHolder_PhoneNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number =holder.TextView_ViewHolder_PhoneNumber.getText().toString().trim();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + number));
+                context.startActivity(intent);
 
+
+            }
+        });
+holder.TextView_ViewHolder_Email.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        String email=holder.TextView_ViewHolder_Email.getText().toString().trim();
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", email, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
+        context.startActivity(Intent.createChooser(emailIntent, null));
+
+    }
+});
 
 
 
