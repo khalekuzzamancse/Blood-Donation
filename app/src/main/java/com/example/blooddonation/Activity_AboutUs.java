@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,9 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.blooddonation.ui.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Activity_AboutUs extends AppCompatActivity {
+    private  ViewModel_UserProfileInfo model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,6 @@ public class Activity_AboutUs extends AppCompatActivity {
         getSupportActionBar().setTitle("About Us");
 
        // Call();
-
 
 
     }
