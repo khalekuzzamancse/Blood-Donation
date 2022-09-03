@@ -39,7 +39,6 @@ public class Activity_Register extends AppCompatActivity {
         submit.setOnClickListener(view -> {
             ProgressBar p=findViewById(R.id.ActivityRegister_ProgressBar);
             p.setVisibility(View.VISIBLE);
-            Log.i("Clicked","ok");
           SetUserInfo();
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
