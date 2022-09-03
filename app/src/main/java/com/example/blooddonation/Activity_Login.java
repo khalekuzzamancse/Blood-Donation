@@ -28,7 +28,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Activity_Login extends AppCompatActivity {
-
+private   ProgressBar p;
 
 
 
@@ -51,7 +51,7 @@ public class Activity_Login extends AppCompatActivity {
         });
         Button login=findViewById(R.id.ActivityLogin_Button_Login);
         login.setOnClickListener(view -> {
-            ProgressBar p=findViewById(R.id.ActivityLogin_ProgessBar);
+            p=findViewById(R.id.ActivityLogin_ProgessBar);
           p.setVisibility(View.VISIBLE);
             EditText Email=findViewById(R.id.ActivityLogin_EditText_Email);
             EditText PassWord=findViewById(R.id.ActivityLogin_TextInputLayout_EditText_Password);
@@ -88,55 +88,20 @@ public class Activity_Login extends AppCompatActivity {
                 .addOnCompleteListener((Task<AuthResult> task)->{
                     if(!task.isSuccessful())
                     {
-                        Log.i("Curr Logined","Next,Inshallah");
+                        //Log.i("Curr Logined","Next,Inshallah");
+                        ;
                     }
                     else
                     {
-                        Log.i("Curr Logined","Alhaumdulliah");
+                       // Log.i("Curr Logined","Alhaumdulliah");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        updateUser();
+                       p.setVisibility(View.INVISIBLE);
                         Intent i= new Intent(this, MainActivity.class);
                         startActivity(i);
 
                     }
                 });
     }
-    private void updateUser()
-    {
-        FirebaseAuth mAuth; mAuth=FirebaseAuth.getInstance();
-        FirebaseUser  user = mAuth.getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("UserInfo")
-                .document(user.getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                String name= (String) document.get("Name");
-                                String email= (String) document.get("Email");
-                                String phone= (String) document.get("PhoneNumber");
-                                String UserName= (String) document.get("UserName");
 
-                                String isDonor= (String) document.get("isDonor");
-//
-//                                TextView t=findViewById(R.id.headerTextView);
-//                                String data= "User Name: "+UserName+"\n"+"Email: "+email+"\n";
-//                                if(t!=null)
-//                                t.setText(data);
-//                                Log.i("Alhamdulliah",data);
-
-
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
-    }
 
 }

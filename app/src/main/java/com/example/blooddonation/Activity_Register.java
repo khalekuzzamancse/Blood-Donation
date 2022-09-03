@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Activity_Register extends AppCompatActivity {
+    private  ProgressBar p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,9 @@ public class Activity_Register extends AppCompatActivity {
 
         Button submit=findViewById(R.id.Activity_Register_Button_Submit);
         submit.setOnClickListener(view -> {
-            ProgressBar p=findViewById(R.id.ActivityRegister_ProgressBar);
+             p=findViewById(R.id.ActivityRegister_ProgressBar);
             p.setVisibility(View.VISIBLE);
           SetUserInfo();
-            Intent intent=new Intent(this,MainActivity.class);
-            startActivity(intent);
         });
 
     }
@@ -158,7 +157,7 @@ public class Activity_Register extends AppCompatActivity {
                     else
                     {
                         Log.i("Registered","Alhadulliah");
-
+                        p.setVisibility(View.INVISIBLE);
                         Intent intent=new Intent(this,Activity_Login.class);
                         startActivity(intent);
                     }
