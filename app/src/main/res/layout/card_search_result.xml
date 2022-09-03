@@ -27,31 +27,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <TextView
                     android:textAllCaps="false"
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
                     android:layout_width="wrap_content"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
                     android:textSize="15sp"
-                    android:textColor="#FC0E26FF"
                     android:drawableLeft="@drawable/icon_contact_phone"
                     android:gravity="center_vertical"
                     android:text="Available"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toTopOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Location"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email" />
 
-                <Button
+                <TextView
                     android:textAllCaps="false"
                     android:textSize="15sp"
-                    android:textColor="#FC0E26FF"
                     android:id="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_Email"
                     android:layout_width="wrap_content"
                     android:padding="4dp"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:drawableLeft="@drawable/icon_contact_email"
@@ -76,18 +74,29 @@
                     app:layout_constraintStart_toStartOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber"
                     app:layout_constraintTop_toBottomOf="@+id/Label_RecyclerViewLayout_SearchOnLoggedIn_PhoneNumber" />
 
-                <Button
+                <ImageButton
                     android:gravity="end|bottom"
-                    android:id="@+id/CardViewButton_VisitProfile"
+                    android:id="@+id/CardViewButton_call"
+                    android:src="@drawable/icon_phone_number"
                     android:textAllCaps="false"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:clickable="true"
+                    android:layout_marginEnd="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Visit Profile"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
+                <ImageButton
+                    android:id="@+id/CardsendEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
 
+                    app:layout_constraintBottom_toTopOf="@+id/CardViewButton_call"
+                    app:layout_constraintEnd_toEndOf="@+id/CardViewButton_call"
+                    app:layout_constraintStart_toStartOf="@+id/CardViewButton_call"
+                    app:srcCompat="@drawable/icon_email" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

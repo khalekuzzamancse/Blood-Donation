@@ -2,11 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/NonHomeActivity_MenuItem_SearchBlood"
-        android:icon="@drawable/icon_search"
-        android:title="Search"
-        app:showAsAction="always" />
+
     <item
         android:id="@+id/NonHomeActivity_MenuItem_BecomeADonor"
         android:icon="@drawable/icon_logout"

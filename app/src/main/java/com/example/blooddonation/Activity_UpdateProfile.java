@@ -55,12 +55,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        if(id==R.id.NonHomeActivity_MenuItem_SearchBlood)
-        {
-            Intent intent=new Intent(this,Activity_SearchBlood.class);
-            startActivity(intent);
-        }
+
         return super.onOptionsItemSelected(item);
     }
 

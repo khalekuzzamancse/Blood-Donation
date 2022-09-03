@@ -50,7 +50,7 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
         String dis=list.get(position).District;
         String subDis=list.get(position).SubDistrict;
         holder.TextView_ViewHolder_District.setText(dis+","+subDis);
-        holder.TextView_ViewHolder_PhoneNumber.setOnClickListener(new View.OnClickListener() {
+        holder.sendCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String number =holder.TextView_ViewHolder_PhoneNumber.getText().toString().trim();
@@ -61,7 +61,7 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
 
             }
         });
-holder.TextView_ViewHolder_Email.setOnClickListener(new View.OnClickListener() {
+holder.sendEmail.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         String email=holder.TextView_ViewHolder_Email.getText().toString().trim();

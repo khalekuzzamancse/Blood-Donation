@@ -37,6 +37,7 @@ import java.util.List;
 public class Activity_SearchBlood extends AppCompatActivity {
 
     List<String> subDistrictList=new ArrayList<>();
+    ProgressBar p;
 
 
     @Override
@@ -52,7 +53,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         DistrictList();
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
         search.setOnClickListener(view -> {
-            ProgressBar p=findViewById(R.id.ActivitySearch_ProgressBar);
+         p=findViewById(R.id.ActivitySearch_ProgressBar);
             p.setVisibility(View.VISIBLE);
 
             EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
@@ -66,6 +67,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
             intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_bloodGroup,blood);
             intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_District,dis);
             intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_SubDistrict,subDis);
+           p.setVisibility(View.INVISIBLE);
             startActivity(intent);
 
 
@@ -84,11 +86,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
-        if(id==R.id.NonHomeActivity_MenuItem_SearchBlood)
-        {
-            Intent intent=new Intent(this,Activity_SearchBlood.class);
-            startActivity(intent);
-        }
+
         return super.onOptionsItemSelected(item);
     }
     private void setBloodGroup()
