@@ -29,6 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Activity_ReadUserProfile extends AppCompatActivity {
@@ -45,11 +46,13 @@ public class Activity_ReadUserProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Profile");
 
-        auth=FirebaseAuth.getInstance();
-       currentUser=auth.getCurrentUser();
-        if(currentUser!=null) {
-            showProfile();
-        }
+
+//        auth=FirebaseAuth.getInstance();
+//       currentUser=auth.getCurrentUser();
+//        if(currentUser!=null) {
+    //}
+            setProfile();
+
 
 
         Button update=findViewById(R.id.button);
@@ -84,70 +87,48 @@ public class Activity_ReadUserProfile extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+private void setProfile()
+{
+    HashMap<String,String> data=MainActivity.model.getSignUserInfo().getValue();
 
-    private void showProfile() {
-        FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        Log.i("Curr are in Showprofie ", user.getEmail());
-        Log.i("UserEmail", user.getEmail());
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("UserInfo")
-                .document(user.getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                String name = (String) document.get("Name");
-                                String email = (String) document.get("Email");
-                                String phone = (String) document.get("PhoneNumber");
-                                String dis = (String) document.get("District");
-                                String subDis = (String) document.get("SubDistrict");
-                                String age = (String) document.get("Age");
-                                String gender = (String) document.get("Gender");
-                                String bloodGroup = (String) document.get("BloodGroup");
-                                String password=(String) document.get("Password");
-                                Activity_Account_Delete.get_PassWord=password;
-                                Log.i("Password set for delete", Activity_Account_Delete.get_PassWord);
-                                TextView tName=findViewById(R.id.Activity_showProfile_Name);
-                                if(tName!=null)
-                                    tName.setText(name);
-                                TextView tEmail=findViewById(R.id.Activity_showProfile_Email);
-                                if(tEmail!=null)
-                                    tEmail.setText(email);
-                                TextView tPhone=findViewById(R.id.Activity_showProfile_Phone);
-                                if(tPhone!=null)
-                                    tPhone.setText(phone);
-                                TextView tBlood=findViewById(R.id.Activity_showProfile_BloodGroup);
-                                if(tBlood!=null&&bloodGroup!=null)
-                                    tBlood.setText(bloodGroup);
-                                TextView tGender=findViewById(R.id.Activity_showProfile_Gender);
-                                if(tGender!=null&gender!=null)
-                                    tGender.setText(gender);
-                                TextView tDistrict=findViewById(R.id.Activity_showProfile_District);
-                                if(tDistrict!=null&&dis!=null)
-                                    tDistrict.setText(dis);
-                                TextView tSubDis=findViewById(R.id.Activity_showProfile_subDistrict);
-                                if(tSubDis!=null&&subDis!=null)
-                                    tSubDis.setText(subDis);
-                                TextView tAge=findViewById(R.id.Activity_showProfile_Age);
-                                if(tAge!=null&&age!=null)
-                                    tAge.setText(age);
+    String name = data.get("Name");
+    String email = data.get("Email");
+    String phone =  data.get("PhoneNumber");
+    String dis =  data.get("District");
+    String subDis = data.get("SubDistrict");
+    String age =  data.get("Age");
+    String gender =data.get("Gender");
+    String bloodGroup = data.get("BloodGroup");
+    String password=data.get("Password");
+//    Activity_Account_Delete.get_PassWord=password;
+//    Log.i("Password set for delete", Activity_Account_Delete.get_PassWord);
+    TextView tName=findViewById(R.id.Activity_showProfile_Name);
+    if(tName!=null)
+        tName.setText(name);
+    TextView tEmail=findViewById(R.id.Activity_showProfile_Email);
+    if(tEmail!=null)
+        tEmail.setText(email);
+    TextView tPhone=findViewById(R.id.Activity_showProfile_Phone);
+    if(tPhone!=null)
+        tPhone.setText(phone);
+    TextView tBlood=findViewById(R.id.Activity_showProfile_BloodGroup);
+    if(tBlood!=null&&bloodGroup!=null)
+        tBlood.setText(bloodGroup);
+    TextView tGender=findViewById(R.id.Activity_showProfile_Gender);
+    if(tGender!=null&gender!=null)
+        tGender.setText(gender);
+    TextView tDistrict=findViewById(R.id.Activity_showProfile_District);
+    if(tDistrict!=null&&dis!=null)
+        tDistrict.setText(dis);
+    TextView tSubDis=findViewById(R.id.Activity_showProfile_subDistrict);
+    if(tSubDis!=null&&subDis!=null)
+        tSubDis.setText(subDis);
+    TextView tAge=findViewById(R.id.Activity_showProfile_Age);
+    if(tAge!=null&&age!=null)
+        tAge.setText(age);
+    Log.i("Curre,Read Profile,Set", String.valueOf(data));
 
+}
 
-
-
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
-    }
 
 }

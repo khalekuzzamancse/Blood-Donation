@@ -32,7 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
-    private ViewModel_UserProfileInfo model;
+    public static ViewModel_UserProfileInfo model;
 
 
     @Override
@@ -140,54 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void showProfile() {
-        FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-//    Log.i("Curr are in Showprofie ",user.getEmail());
-//        Log.i("UserEmail",user.getEmail());
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("UserInfo")
-                .document(user.getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                String name = (String) document.get("Name");
-                                String email = (String) document.get("Email");
-                                String phone = (String) document.get("PhoneNumber");
-                                String UserName = (String) document.get("UserName");
-                                String dis = (String) document.get("District");
-                                String subDis = (String) document.get("SubDistrict");
-                                String isDonor = (String) document.get("isDonor");
-                                if (isDonor.equals("true")) {
-                                    navigationView.getMenu().clear();
-                                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_donor);
-                                } else {
-                                    navigationView.getMenu().clear();
-                                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
-                                }
-
-                                TextView navbarName = findViewById(R.id.NavbarHeader_Name);
-                                if (navbarName != null)
-                                    navbarName.setText(name);
-                                TextView navbarLocation = findViewById(R.id.NavbarHeader_Location);
-                                if (navbarLocation != null)
-                                    navbarLocation.setText(dis + "," + subDis);
-
-
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
     }
 
 
-}
+
