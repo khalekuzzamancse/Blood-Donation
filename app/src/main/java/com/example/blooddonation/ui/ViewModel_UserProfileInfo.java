@@ -24,7 +24,7 @@ public class ViewModel_UserProfileInfo extends ViewModel {
     private  FirebaseAuth auth;
     FirebaseUser currentUser;
     private MutableLiveData<HashMap<String,String>>SignUserInfo;
-
+//
     public ViewModel_UserProfileInfo() {
 
         HashMap<String,String> tmp=new HashMap<>();
