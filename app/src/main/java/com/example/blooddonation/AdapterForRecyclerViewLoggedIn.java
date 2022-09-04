@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.HashMap;
 import java.util.List;
 
 public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHolderForRecyclerViewLoggedIn> {
@@ -53,10 +57,19 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
         holder.sendCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String number =holder.TextView_ViewHolder_PhoneNumber.getText().toString().trim();
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + number));
-                context.startActivity(intent);
+                String email=MainActivity.model.getSignUserInfo().getValue().get("Email");
+                if(email.equals("null"))
+                {
+
+                    Snackbar.make(holder.sendCall,"Login,Please",Snackbar.LENGTH_SHORT).show();
+                }
+                else {
+                    String number =holder.TextView_ViewHolder_PhoneNumber.getText().toString().trim();
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + number));
+                    context.startActivity(intent);
+                }
+
 
 
             }
@@ -64,11 +77,21 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
 holder.sendEmail.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        String email=holder.TextView_ViewHolder_Email.getText().toString().trim();
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto", email, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
-        context.startActivity(Intent.createChooser(emailIntent, null));
+        String email=MainActivity.model.getSignUserInfo().getValue().get("Email");
+        if(email.equals("null"))
+        {
+
+            Snackbar.make(holder.sendCall,"Login,Please",Snackbar.LENGTH_SHORT).show();
+        }
+        else
+        {
+            String Email=holder.TextView_ViewHolder_Email.getText().toString().trim();
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto", email, null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
+            context.startActivity(Intent.createChooser(emailIntent, null));
+        }
+
 
     }
 });

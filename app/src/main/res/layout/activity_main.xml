@@ -24,7 +24,8 @@
         app:headerLayout="@layout/layout_header"
         app:menu="@menu/menu_nav_drawer_when_user_not_signed_in"
 
+        >
 
-        />
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

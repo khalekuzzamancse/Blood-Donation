@@ -155,6 +155,7 @@ public class Activity_Register extends AppCompatActivity {
                         Log.i("Registered","Alhadulliah");
                         p.setVisibility(View.INVISIBLE);
                         Intent intent=new Intent(this,Activity_Login.class);
+                        intent.putExtra(Activity_Login.Extra_Login,"FromRegister");
                         startActivity(intent);
                     }
                 });

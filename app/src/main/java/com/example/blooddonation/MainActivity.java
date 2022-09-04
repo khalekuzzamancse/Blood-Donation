@@ -21,6 +21,7 @@ import com.example.blooddonation.ui.ViewModel_UserProfileInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     public static ViewModel_UserProfileInfo model;
-
+    public static String Extra_Login="null";
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
 
 
-        Toolbar toolbar = findViewById(R.id.ActivityMain_ToolBar);
+     toolbar = findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
                 (this, drawerLayout, toolbar, R.string.OpenDrawer, R.string.CloseDrawer);
@@ -134,6 +136,12 @@ public class MainActivity extends AppCompatActivity {
             navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
 
         }
+        Intent i=getIntent();
+       String s= i.getStringExtra(MainActivity.Extra_Login);
+       if(s!=null&&s.equals("FromLogin"))
+       {
+           Snackbar.make(toolbar,"Login Successful",Snackbar.LENGTH_SHORT).show();
+       }
         super.onResume();
 
 

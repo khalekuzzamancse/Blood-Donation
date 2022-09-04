@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,8 +30,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Activity_Login extends AppCompatActivity {
 private   ProgressBar p;
-
-
+    Button register;
+    Toolbar toolbar;
+public static String Extra_Login="null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +40,20 @@ private   ProgressBar p;
         setContentView(R.layout.activity_login_scrolable);
 
 
-        Toolbar toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
+       toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Login");
 
 
-        Button register=findViewById(R.id.ActivityLogin_Button_Register);
+        register=findViewById(R.id.ActivityLogin_Button_Register);
         register.setOnClickListener((view)->{
             Intent intent=new Intent(this,Activity_Register.class);
             startActivity(intent);
         });
         Button login=findViewById(R.id.ActivityLogin_Button_Login);
         login.setOnClickListener(view -> {
+
             p=findViewById(R.id.ActivityLogin_ProgessBar);
           p.setVisibility(View.VISIBLE);
             EditText Email=findViewById(R.id.ActivityLogin_EditText_Email);
@@ -89,15 +92,28 @@ private   ProgressBar p;
                     }
                     else
                     {
+
                        // Log.i("Curr Logined","Alhaumdulliah");
                         FirebaseUser user = mAuth.getCurrentUser();
                        p.setVisibility(View.INVISIBLE);
                         Intent i= new Intent(this, MainActivity.class);
+                        i.putExtra(MainActivity.Extra_Login,"FromLogin");
                         startActivity(i);
+
 
                     }
                 });
     }
 
-
+    @Override
+    protected void onResume() {
+        Intent intent=getIntent();
+        Intent i=getIntent();
+        String s= i.getStringExtra(MainActivity.Extra_Login);
+        if(s!=null&&s.equals("FromRegister"))
+        {
+            Snackbar.make(toolbar,"Registered Successfully",Snackbar.LENGTH_SHORT).show();
+        }
+        super.onResume();
+    }
 }
