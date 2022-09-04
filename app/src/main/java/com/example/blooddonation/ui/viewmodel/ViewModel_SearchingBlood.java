@@ -79,12 +79,19 @@ public class ViewModel_SearchingBlood extends ViewModel {
                                 tmp = UserInfoListByEmail.getValue();
                                 tmp.put(email, data);
                                 UserInfoListByEmail.postValue(tmp);
+                                ///
                                 List<String>tmpEmail=new ArrayList<>();
                                 tmpEmail.add(email);
                             HashMap<String, List<String>>tmpHm=new HashMap<>();
                             tmpHm=UserInfoListByBloodGroup.getValue();
-                            tmpHm.put(bloodGroup,l);
+                            List<String>tmpEmail2=tmpHm.get(bloodGroup);
+                            if(tmpEmail2==null)
+                                tmpEmail2=new ArrayList<>();
+                            tmpEmail2.addAll(tmpEmail);
+                            tmpHm.put(bloodGroup,tmpEmail2);
                             UserInfoListByBloodGroup.postValue(tmpHm);
+                            //adding district wise
+
 
                         }
                     }
