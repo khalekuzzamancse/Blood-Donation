@@ -62,7 +62,7 @@ public static String Extra_Login="null";
             String password=PassWord.getText().toString().trim();
             Login(email,password);
         });
-//
+//Insha-allah
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
