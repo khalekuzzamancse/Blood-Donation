@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ViewModel_SearchingBlood obj = new ViewModel_SearchingBlood();
-        obj.AllUserInfoList();
+//        ViewModel_SearchingBlood obj = new ViewModel_SearchingBlood();
+//        obj.AllUserInfoList();
     }
 
     @Override
