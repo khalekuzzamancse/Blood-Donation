@@ -22,10 +22,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+    public static ViewModel_UserProfileInfo model;
+    public static String Extra_Login = "null";
     NavigationView navigationView;
     DrawerLayout drawerLayout;
-    public static ViewModel_UserProfileInfo model;
-    public static String Extra_Login="null";
     Toolbar toolbar;
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
 
 
-     toolbar = findViewById(R.id.ActivityMain_ToolBar);
+        toolbar = findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
                 (this, drawerLayout, toolbar, R.string.OpenDrawer, R.string.CloseDrawer);
@@ -50,9 +50,8 @@ public class MainActivity extends AppCompatActivity {
         model.getSignUserInfo().observe(MainActivity.this, new Observer<HashMap<String, String>>() {
             @Override
             public void onChanged(HashMap<String, String> userInfo) {
-                String email=userInfo.get("Email");
-                if(email.equals("null"))
-                {
+                String email = userInfo.get("Email");
+                if (email.equals("null")) {
                     navigationView.getMenu().clear();
                     navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
 
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -83,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Activity_Become_Donar.class);
                     startActivity(intent);
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_AboutUs) {
-                    Intent intent = new Intent(MainActivity.this, Activity_AboutUs.class);
+//                    Intent intent = new Intent(MainActivity.this, Activity_AboutUs.class);
+//                    startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, Activity_AllUserInfoList.class);
                     startActivity(intent);
+
 
 
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_SearchBlood) {
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_LogOut) {
                     FirebaseAuth.getInstance().signOut();
-                    Log.i("Curr","signout");
+                    Log.i("Curr", "signout");
 //                    TextView t=findViewById(R.id.headerTextView);
 //                    t.setText("something");
                     Intent intent = getIntent();
@@ -115,33 +116,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ViewModel_SearchingBlood obj=new ViewModel_SearchingBlood();
+        ViewModel_SearchingBlood obj = new ViewModel_SearchingBlood();
         obj.AllUserInfoList();
     }
 
     @Override
     protected void onResume() {
-        HashMap<String,String>data=model.getSignUserInfo().getValue();
-        String email=data.get("Email");
-        if(email.equals("null"))
-        {
+        HashMap<String, String> data = model.getSignUserInfo().getValue();
+        String email = data.get("Email");
+        if (email.equals("null")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
 
         }
-        Intent i=getIntent();
-       String s= i.getStringExtra(MainActivity.Extra_Login);
-       if(s!=null&&s.equals("FromLogin"))
-       {
-           Snackbar.make(toolbar,"Login Successful",Snackbar.LENGTH_SHORT).show();
-       }
+        Intent i = getIntent();
+        String s = i.getStringExtra(MainActivity.Extra_Login);
+        if (s != null && s.equals("FromLogin")) {
+            Snackbar.make(toolbar, "Login Successful", Snackbar.LENGTH_SHORT).show();
+        }
         super.onResume();
 
 
     }
 
 
-    }
+}
 
 
 
