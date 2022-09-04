@@ -1,4 +1,4 @@
-package com.example.blooddonation.ui;
+package com.example.blooddonation.ui.viewmodel;
 
 import static android.content.ContentValues.TAG;
 

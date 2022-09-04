@@ -95,7 +95,7 @@
             app:layout_constraintTop_toBottomOf="@+id/RecyclerLayout_AllUserInfoList_BloodGroup" />
 
         <ImageButton
-            android:id="@+id/CardViewButton_call"
+            android:id="@+id/RecyclerLayout_AllUserInfoList_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -108,15 +108,15 @@
 
 
         <ImageButton
-            android:id="@+id/CardsendEmail"
+            android:id="@+id/RecyclerLayout_AllUserInfoList_sendEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:clickable="true"
 
-            app:layout_constraintBottom_toTopOf="@+id/CardViewButton_call"
-            app:layout_constraintEnd_toEndOf="@+id/CardViewButton_call"
-            app:layout_constraintStart_toStartOf="@+id/CardViewButton_call"
+            app:layout_constraintBottom_toTopOf="@+id/RecyclerLayout_AllUserInfoList_call"
+            app:layout_constraintEnd_toEndOf="@+id/RecyclerLayout_AllUserInfoList_call"
+            app:layout_constraintStart_toStartOf="@+id/RecyclerLayout_AllUserInfoList_call"
             app:srcCompat="@drawable/icon_email" />
 
 

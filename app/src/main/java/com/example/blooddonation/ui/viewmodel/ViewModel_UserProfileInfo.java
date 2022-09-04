@@ -1,4 +1,4 @@
-package com.example.blooddonation.ui;
+package com.example.blooddonation.ui.viewmodel;
 
 import android.util.Log;
 
