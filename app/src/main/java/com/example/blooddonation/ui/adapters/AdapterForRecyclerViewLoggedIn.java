@@ -89,7 +89,7 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
             }
         });
 
-
+//insha-allah
     }
 
     @Override
