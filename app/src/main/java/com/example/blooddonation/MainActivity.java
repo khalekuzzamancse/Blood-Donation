@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.blooddonation.ui.ViewModel_SearchingBlood;
 import com.example.blooddonation.ui.ViewModel_UserProfileInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -124,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        ViewModel_SearchingBlood obj=new ViewModel_SearchingBlood();
+        obj.AllUserInfoList();
     }
 
     @Override
