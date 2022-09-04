@@ -48,8 +48,14 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         model.getUserInfoListByEmail().observe(this, new Observer<HashMap<String, HashMap<String, String>>>() {
             @Override
             public void onChanged(HashMap<String, HashMap<String, String>> stringHashMapHashMap) {
-                Log.i("Alhamdulliah", String.valueOf(stringHashMapHashMap));
+                Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
 
+            }
+        });
+        model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
+            @Override
+            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
             }
         });
 

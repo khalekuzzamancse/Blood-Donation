@@ -45,6 +45,7 @@ public class ViewModel_UserProfileInfo extends ViewModel {
                             if (e != null) {
                                 //
                             } else {
+
                                 Log.i("Curr<Vie","Get");
                                 HashMap<String,String> tmp=new HashMap<>();
                                 DocumentSnapshot document =q;
