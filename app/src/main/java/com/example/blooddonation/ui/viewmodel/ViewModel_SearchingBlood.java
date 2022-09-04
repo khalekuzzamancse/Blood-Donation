@@ -20,9 +20,9 @@ import java.util.Map;
 public class ViewModel_SearchingBlood {
 
    public static HashMap<String, HashMap<String, String>> UserInfoListByEmail = new HashMap<>();
-    HashMap<String, List<String>> UserInfoListByDistrict = new HashMap<>();
-    HashMap<String, List<String>> UserInfoListBySubDistrict = new HashMap<>();
-    HashMap<String, List<String>> UserInfoListByBloodGroup = new HashMap<>();
+    public static HashMap<String, List<String>> UserInfoListByDistrict = new HashMap<>();
+    public static HashMap<String, List<String>> UserInfoListBySubDistrict = new HashMap<>();
+    public static HashMap<String, List<String>> UserInfoListByBloodGroup = new HashMap<>();
 
 
     public void AllUserInfoList() {
