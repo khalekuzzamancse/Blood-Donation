@@ -41,7 +41,7 @@ public class Activity_Account_Delete extends AppCompatActivity {
                 p.setVisibility(View.VISIBLE);
                 deleteAccount(email, pass);
             }
-
+//insha-allah
         });
 
 
