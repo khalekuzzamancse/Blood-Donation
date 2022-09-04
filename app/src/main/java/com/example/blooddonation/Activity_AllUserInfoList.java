@@ -30,11 +30,10 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         Toolbar toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("2 Us");
+        getSupportActionBar().setTitle("All User List");
 
         list=new ArrayList<>();
         getUserList();
-        Log.i("OKAY","Alhamdulliah,Done");
 
         AllUserInfoListActivity_Adapter adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this,list);
         RecyclerView r=findViewById(R.id.RecyclerView_ActivityAllUserList);
