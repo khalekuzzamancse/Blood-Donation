@@ -19,6 +19,6 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         AllUserList= ViewModel_SearchingBlood.UserInfoListByEmail;
         Log.i("ALLUser", String.valueOf(AllUserList));
 
-
+//
     }
 }
