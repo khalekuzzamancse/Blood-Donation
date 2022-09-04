@@ -1,20 +1,21 @@
-package com.example.blooddonation;
+package com.example.blooddonation.ui.adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.blooddonation.ui.datatypes.DataTypeForRecyclerView_ActivitySearchResult;
+import com.example.blooddonation.MainActivity;
+import com.example.blooddonation.R;
+import com.example.blooddonation.ui.viewholders.ViewHolderForRecyclerViewLoggedIn;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHolderForRecyclerViewLoggedIn> {
@@ -57,7 +58,7 @@ public class AdapterForRecyclerViewLoggedIn extends RecyclerView.Adapter<ViewHol
         holder.sendCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email=MainActivity.model.getSignUserInfo().getValue().get("Email");
+                String email= MainActivity.model.getSignUserInfo().getValue().get("Email");
                 if(email.equals("null"))
                 {
 

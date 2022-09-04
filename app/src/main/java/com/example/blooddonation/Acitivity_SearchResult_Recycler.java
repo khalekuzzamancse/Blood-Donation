@@ -14,9 +14,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 
+import com.example.blooddonation.ui.adapters.AdapterForRecyclerViewLoggedIn;
+import com.example.blooddonation.ui.datatypes.DataTypeForRecyclerView_ActivitySearchResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

@@ -1,4 +1,4 @@
-package com.example.blooddonation;
+package com.example.blooddonation.ui.datatypes;
 
 public class DataTypeForRecyclerView_ActivitySearchResult {
     public String Name;
