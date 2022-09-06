@@ -66,6 +66,9 @@ public class ViewModel_UserProfileInfo extends ViewModel {
                                 tmp.put("Gender",gender);
                                 String age=(String) document.get("Age");
                                 tmp.put("Age",age);
+                                String bloodGroup= (String) document.get("BloodGroup");
+                                tmp.put("BloodGroup",bloodGroup);
+
                                 SignUserInfo.postValue(tmp);
 
                             }

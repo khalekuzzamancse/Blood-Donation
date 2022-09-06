@@ -41,7 +41,6 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Update Profile");
-      //  showProfile();
         getProfile();
         setGender();
         setBloodGroup();
@@ -60,67 +59,6 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showProfile() {
-        FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        Log.i("Curr are in Showprofie ", user.getEmail());
-        Log.i("UserEmail", user.getEmail());
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("UserInfo")
-                .document(user.getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                String name = (String) document.get("Name");
-                                String email = (String) document.get("Email");
-                                String phone = (String) document.get("PhoneNumber");
-                                String dis = (String) document.get("District");
-                                String subDis = (String) document.get("SubDistrict");
-                                String age = (String) document.get("Age");
-                                String gender = (String) document.get("Gender");
-                                String bloodGroup = (String) document.get("BloodGroup");
-                                String password=(String) document.get("Password");
-                                Activity_Account_Delete.get_PassWord=password;
-
-                              EditText tName=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Name);
-                                if(tName!=null)
-                                    tName.setText(name);
-                                EditText  tEmail=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Email);
-                                if(tEmail!=null)
-                                    tEmail.setText(email);
-                               EditText tPhone=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Phone);
-                                if(tPhone!=null)
-                                    tPhone.setText(phone);
-//                                AutoCompleteTextView tBlood=findViewById(R.id.Activity_UpdateProfile__TextInputLayout_AutoCompleteTextView_BloodGroup);
-//                                if(tBlood!=null&&bloodGroup!=null)
-//                                    tBlood.setText(bloodGroup);
-//
-//                                AutoCompleteTextView tDistrict=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_District);
-//                                if(tDistrict!=null&&dis!=null)
-//                                    tDistrict.setText(dis);
-//                                AutoCompleteTextView tSubDis=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict);
-//                                if(tSubDis!=null&&subDis!=null)
-//                                    tSubDis.setText(subDis);
-                                EditText tAge=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Age);
-                                if(tAge!=null&&age!=null)
-                                    tAge.setText(age);
-
-
-
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
-    }
     private void setGender()
     {
         List<String> genderList=new ArrayList<>();
@@ -199,8 +137,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
                                     Log.d("Upozilla", it);
                                 }
                                 ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_UpdateProfile.this,R.layout.layout_drop_down_menu_single_item,subDistrictList);
-                                AutoCompleteTextView d=
-                                        findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict);
+                                AutoCompleteTextView d=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict);
                                 d.setAdapter(adapter);
                                 d.setText(MainActivity.model.getSignUserInfo().getValue().get("SubDistrict"),false);
                                 d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -240,7 +177,9 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.layout_drop_down_menu_single_item,BloodGroupList);
         AutoCompleteTextView bloodGroup=findViewById(R.id.Activity_UpdateProfile__TextInputLayout_AutoCompleteTextView_BloodGroup);
         bloodGroup.setAdapter(adapter);
-     bloodGroup.setText(MainActivity.model.getSignUserInfo().getValue().get("BloodGroup"),false);
+        //bloodGroup.setText("heloo",false);
+        bloodGroup.setText(MainActivity.model.getSignUserInfo().getValue().get("BloodGroup"),false);
+
         bloodGroup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
