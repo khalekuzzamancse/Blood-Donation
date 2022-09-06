@@ -58,6 +58,13 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
             }
         });
+        model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
+            @Override
+            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                Log.i("Alhamdulliah,SubDistrict", String.valueOf(stringListHashMap));
+                ;
+            }
+        });
 
 
 //

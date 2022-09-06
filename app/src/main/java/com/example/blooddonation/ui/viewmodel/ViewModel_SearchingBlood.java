@@ -24,9 +24,9 @@ public class ViewModel_SearchingBlood extends ViewModel {
 
     private MutableLiveData<HashMap<String, HashMap<String, String>>> UserInfoListByEmail;
 //    public  HashMap<String, List<String>> UserInfoListByDistrict = new HashMap<>();
-//    public  HashMap<String, List<String>> UserInfoListBySubDistrict = new HashMap<>();
+//
     private MutableLiveData<HashMap<String, List<String>>>UserInfoListByBloodGroup;
-
+    public   MutableLiveData<HashMap<String, List<String>>> UserInfoListBySubDistrict;
 
 
 
@@ -43,6 +43,10 @@ public class ViewModel_SearchingBlood extends ViewModel {
         HashMap<String, List<String>>hm=new HashMap<>();
         hm.put("null",l);
         UserInfoListByBloodGroup=new MutableLiveData<>(hm);
+        //initializing UserInfoListBySubDistrict to avoid null pointer exception
+        UserInfoListBySubDistrict=new MutableLiveData<>(hm);
+
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -79,19 +83,37 @@ public class ViewModel_SearchingBlood extends ViewModel {
                                 tmp = UserInfoListByEmail.getValue();
                                 tmp.put(email, data);
                                 UserInfoListByEmail.postValue(tmp);
-                                ///
+                                //getting the email and concert it to list
                                 List<String>tmpEmail=new ArrayList<>();
                                 tmpEmail.add(email);
+                                //creating a temparary hashmap
                             HashMap<String, List<String>>tmpHm=new HashMap<>();
-                            tmpHm=UserInfoListByBloodGroup.getValue();
-                            List<String>tmpEmail2=tmpHm.get(bloodGroup);
-                            if(tmpEmail2==null)
-                                tmpEmail2=new ArrayList<>();
-                            tmpEmail2.addAll(tmpEmail);
-                            tmpHm.put(bloodGroup,tmpEmail2);
-                            UserInfoListByBloodGroup.postValue(tmpHm);
-                            //adding district wise
 
+//                            //broupgroup
+//                            tmpHm=UserInfoListByBloodGroup.getValue();
+//                            List<String>tmpEmail2=tmpHm.get(bloodGroup);
+//                            if(tmpEmail2==null)
+//                                tmpEmail2=new ArrayList<>();
+//                            tmpEmail2.addAll(tmpEmail);
+//                            tmpHm.put(bloodGroup,tmpEmail2);
+//                            UserInfoListByBloodGroup.postValue(tmpHm);
+
+                            //adding district wise
+                            HashMap<String,List<String>>exitingHashMap=new HashMap<>();
+                            //pulling out the hashmap form Livedata
+                            exitingHashMap=UserInfoListBySubDistrict.getValue();
+                            List<String>existingList=new ArrayList<>();
+                            //pulling out the existing List form the hashmap for the currently find subDistrict
+                            existingList=exitingHashMap.get(subDistrict);
+                            if(existingList==null)
+                                existingList=new ArrayList<>();
+                            existingList.add(email);
+                            Log.i("Alhamdulliah,Exis", subDistrict+"->"+String.valueOf(existingList));
+                            //adding  the new list to the hashmap
+                            exitingHashMap.put(subDistrict,existingList);
+                            //posting the recetly modified hashmap to Livedata
+                            Log.i("Alhamdulliah,ExisHashmap", String.valueOf(exitingHashMap));
+                            UserInfoListBySubDistrict.postValue(exitingHashMap);
 
                         }
                     }
@@ -179,5 +201,9 @@ public class ViewModel_SearchingBlood extends ViewModel {
     }
     public MutableLiveData<HashMap<String, List<String>>> getUserInfoListByBloodGroup() {
         return UserInfoListByBloodGroup;
+    }
+
+    public MutableLiveData<HashMap<String, List<String>>> getUserInfoListBySubDistrict() {
+        return UserInfoListBySubDistrict;
     }
 }
