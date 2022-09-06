@@ -2,6 +2,7 @@ package com.example.blooddonation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.GeneratedAdapter;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +30,12 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     public static final String EXTRA_SubDistrict = "SubDistrict";
     private ViewModel_SearchingBlood model;
 
+    private HashMap<String, List<String>> DistrictWiseHashMap;
+    private HashMap<String, List<String>> subDistrictWiseHashMap;
+    private HashMap<String, List<String>> BloodGroupWiseHashMap;
+    private HashMap<String,HashMap<String,String>> AllUserHashMap;
+
+
     private List<AllUserInfoListActivity_DataType> list;
     private List<AllUserInfoListActivity_DataType> DistrictWiseList;
     private List<AllUserInfoListActivity_DataType> SubDistrictWiseList;
@@ -44,52 +51,83 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("All User List");
+
+
+        DistrictWiseHashMap=new HashMap<>();
+        AllUserHashMap=new HashMap<>();
+        subDistrictWiseHashMap=new HashMap<>();
+        BloodGroupWiseHashMap=new HashMap<>();
+
+
+        list=new ArrayList<>();
+        DistrictWiseList=new ArrayList<>();
+        SubDistrictWiseList=new ArrayList<>();
+        BloodGroupWiseList=new ArrayList<>();
+        Intent intent=getIntent();
+        String Blood=intent.getStringExtra(EXTRA_bloodGroup);
+        String Dis=intent.getStringExtra(EXTRA_District);
+        String SubDis=intent.getStringExtra(EXTRA_SubDistrict);
+
+
         model = new ViewModelProvider(this).get(ViewModel_SearchingBlood.class);
         model.getUserInfoListByEmail().observe(this, new Observer<HashMap<String, HashMap<String, String>>>() {
             @Override
             public void onChanged(HashMap<String, HashMap<String, String>> stringHashMapHashMap) {
-            //    Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
+            //   Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
+                AllUserHashMap=stringHashMapHashMap;
+                getUserList();
+//                Log.i("USEALL", String.valueOf(stringHashMapHashMap));
+//                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, list);
+//                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+//                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+//                r.setAdapter(adapter);
 
             }
         });
         model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
             @Override
             public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-                Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
+               // Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
+                BloodGroupWiseHashMap=stringListHashMap;
+             getBloodGroupWiseList(Blood);
+//                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
+//                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+//                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+//                r.setAdapter(adapter);
             }
         });
         model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
             @Override
             public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-                Log.i("Alhamdulliah,SubDistrict", String.valueOf(stringListHashMap));
+             //   Log.i("Alhamdulliah,SubDistrict", String.valueOf(stringListHashMap));
                 ;
+                subDistrictWiseHashMap=stringListHashMap;
+                getSubDistrictWiseList(SubDis);
+//                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, SubDistrictWiseList);
+//                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+//                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+//                r.setAdapter(adapter);
+
             }
         });
         model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
             @Override
             public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-                Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
+              //  Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
+             DistrictWiseHashMap=stringListHashMap;
+            getDistrictWiseList(Dis);
+                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this,DistrictWiseList);
+                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                r.setAdapter(adapter);
 
             }
         });
 
 
-//
-////hello
-//        list = new ArrayList<>();
-//        DistrictWiseList = new ArrayList<>();
-//        SubDistrictWiseList = new ArrayList<>();
-//        BloodGroupWiseList = new ArrayList<>();
 
+        getUserList();
 
-
-//       //  getUserList();
-////        getDistrictWiseList("Dhaka");
-////        getSubDistrictWiseList("Uttara");
-//        AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
-//        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-//        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-//        r.setAdapter(adapter);
 
 
     }
@@ -108,142 +146,109 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    private void getUserList() {
+    private void getUserList() {
+
+        for (String key1 : AllUserHashMap.keySet()) {
+                if (!key1.equals(""))
+                {
+
+                    AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
+                    HashMap<String, String> innerMap = AllUserHashMap.get(key1);
+                    //   Log.i("OKAy",innerMap.get("Name")+"_>"+innerMap.get("Email"));
+                    AddData(innerMap, "All");
+                }
+
+
+        }
+
+
+    }
+
+    private void getDistrictWiseList(String s) {
+        List<String>ListDis = DistrictWiseHashMap.get(s);
+        if (ListDis==null)
+            ListDis=new ArrayList<>();
+
+            for (int i = 0; i < ListDis.size(); i++) {
+                {
+                    String UserEmail = ListDis.get(i);
+                    HashMap<String, String> innerMap =AllUserHashMap.get(UserEmail);
+                    AddData(innerMap, "Dis");
+
+                }
+
+
+            }
+    }
+
+    private void getSubDistrictWiseList(String s) {
+        List<String>ListSubDis = subDistrictWiseHashMap.get(s);
+        if (ListSubDis== null)
+            ListSubDis=new ArrayList<>();
+        for (int i = 0; i < ListSubDis.size(); i++) {
+            {
+                String UserEmail = ListSubDis.get(i);
+                HashMap<String, String> innerMap =AllUserHashMap.get(UserEmail);
+                AddData(innerMap, "Sub");
+
+            }
+
+
+        }
+    }
 //
-//        for (String key1 : obj.UserInfoListByEmail.keySet()) {
-//            AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
-//            HashMap<String, String> innerMap = obj.UserInfoListByEmail.get(key1);
-//            //   Log.i("OKAy",innerMap.get("Name")+"_>"+innerMap.get("Email"));
-//            AddData(innerMap, "All");
-//        }
-//
-//
-//    }
-//
-//    private void getDistrictWiseList(String s) {
-//        HashMap<String, List<String>> ByDistrictHashMap = new HashMap<>();
-//        ByDistrictHashMap = obj.UserInfoListByDistrict;
-//        List<String> Li = ByDistrictHashMap.get(s);
-//        if (Li != null)
-//            for (int i = 0; i < Li.size(); i++) {
-//                {
-//                    String UserEmail = Li.get(i);
-//                    HashMap<String, String> innerMap = obj.UserInfoListByEmail.get(UserEmail);
-//                    AddData(innerMap, "Dis");
-//
-//                }
-//
-//
-//            }
-//        else
-//            return;
-//        Li.clear();
-//    }
-//
-//    private void getSubDistrictWiseList(String s) {
-//        HashMap<String, List<String>> BySubDistrictHashMap = new HashMap<>();
-//        BySubDistrictHashMap = obj.UserInfoListBySubDistrict;
-//        List<String> Li = BySubDistrictHashMap.get(s);
-//        if (Li != null)
-//            for (int i = 0; i < Li.size(); i++) {
-//                {
-//                    String UserEmail = Li.get(i);
-//                    HashMap<String, String> innerMap = obj.UserInfoListByEmail.get(UserEmail);
-//                    AddData(innerMap, "Sub");
-//                    //  Log.i("OKAy", String.valueOf(innerMap));
-//
-//                }
-//
-//
-//            }
-//        else
-//            return;
-//        Li.clear();
-//    }
-//
-//    private void getBloodGroupWiseList(String s) {
-//        HashMap<String, List<String>> ByBloodHashMap = new HashMap<>();
-//        ByBloodHashMap = obj.UserInfoListByBloodGroup;
-//        List<String> Li =new ArrayList<>();
-//                if(ByBloodHashMap.get(s)==null)
-//                {
-//                    Li.clear();
-//                    return;
-//                }
-//                else
-//                    Li=ByBloodHashMap.get(s);
-//     Log.i("REsume,LI,Direct", String.valueOf(ByBloodHashMap.get(s)));
-//            for (int i = 0; i < Li.size(); i++) {
-//                {
-//                    String UserEmail = Li.get(i);
-//                    HashMap<String, String> innerMap = obj.UserInfoListByEmail.get(UserEmail);
-//                    AddData(innerMap, "Blood");
-//                    //  Log.i("OKAy", String.valueOf(innerMap));
-//
-//                }
+    private void getBloodGroupWiseList(String s) {
+        List<String>ListBlood= BloodGroupWiseHashMap.get(s);
+        if (ListBlood== null)
+            ListBlood=new ArrayList<>();
+        for (int i = 0; i < ListBlood.size(); i++) {
+            {
+                String UserEmail = ListBlood.get(i);
+                HashMap<String, String> innerMap =AllUserHashMap.get(UserEmail);
+                AddData(innerMap, "Blood");
+            }
+
+
+        }
+
+    }
 //
 //
-//            }
-//            Li.clear();
-//
-//    }
-//
-//
-//    private void AddData(HashMap<String, String> innerMap, String listName) {
-//        AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
-//        //Log.i("HEYYY",UserEmail+"->"+Li.size());
-//        String name = innerMap.get("Name");
-//        if (name != null)
-//            data.Name = name;
-//        else
-//            data.Name = "Unknown";
-//        String email = innerMap.get("Email");
-//        if (email != null)
-//            data.Email = email;
-//        else
-//            data.Email = "Unknown";
-//        String phone = innerMap.get("PhoneNumber");
-//        if (phone != null)
-//            data.PhoneNumber = phone;
-//        else
-//            data.PhoneNumber = "Unknown";
-//        String gender = innerMap.get("Gender");
-//        if (gender != null)
-//            data.Gender = gender;
-//        else
-//            data.Gender = "Unknown";
-//        String bloodGroup = innerMap.get("BloodGroup");
-//        if (bloodGroup != null)
-//            data.BloodGroup = bloodGroup;
-//        else
-//            data.BloodGroup = "Unknown";
-//        String dis = innerMap.get("District");
-//        if (dis != null)
-//            data.District = dis;
-//        else
-//            data.District = "Unknown";
-//        String subDis = innerMap.get("SubDistrict");
-//        if (subDis != null)
-//            data.SubDistrict = subDis;
-//        else
-//            data.SubDistrict = "Unknown";
-//        ///
-//        HashMap<String, String> tmp = MainActivity.model.getSignUserInfo().getValue();
-//        String CurrentUserEmail = tmp.get("Email");
-//        if (CurrentUserEmail.equals("null")) {
-//            data.Email = "Available";
-//            data.PhoneNumber = "Available";
-//        }
-//        //Log.i("OKAY",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict);
-//        if (listName.equals("All"))
-//            list.add(data);
-//        else if (listName.equals("Dis"))
-//            DistrictWiseList.add(data);
-//        else if (listName.equals("Sub"))
-//            SubDistrictWiseList.add(data);
-//        else if (listName.equals("Blood"))
-//            BloodGroupWiseList.add(data);
-//    }
+    private void AddData(HashMap<String, String> innerMap, String listName) {
+        AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
+        //Log.i("HEYYY",UserEmail+"->"+Li.size());
+        String name = innerMap.get("Name");
+        if (name != null)
+            data.Name = name;
+        String email = innerMap.get("Email");
+        if (email != null)
+            data.Email = email;
+        String phone = innerMap.get("PhoneNumber");
+        if (phone != null)
+            data.PhoneNumber = phone;
+        String gender = innerMap.get("Gender");
+        if (gender != null)
+            data.Gender = gender;
+        String bloodGroup = innerMap.get("BloodGroup");
+        if (bloodGroup != null)
+            data.BloodGroup = bloodGroup;
+        String dis = innerMap.get("District");
+        if (dis != null)
+            data.District = dis;
+        String subDis = innerMap.get("SubDistrict");
+        if (subDis != null)
+            data.SubDistrict = subDis;
+        ///
+        Log.i("OKAY",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict);
+        if (listName.equals("All"))
+            list.add(data);
+        else if (listName.equals("Dis"))
+            DistrictWiseList.add(data);
+        else if (listName.equals("Sub"))
+            SubDistrictWiseList.add(data);
+        else if (listName.equals("Blood"))
+            BloodGroupWiseList.add(data);
+    }
 
     @Override
     protected void onResume() {

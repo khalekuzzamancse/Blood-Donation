@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingBlood;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,6 +52,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         getSupportActionBar().setTitle("Search Blood");
         setBloodGroup();
         DistrictList();
+
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
         search.setOnClickListener(view -> {
          p=findViewById(R.id.ActivitySearch_ProgressBar);
@@ -70,10 +72,10 @@ public class Activity_SearchBlood extends AppCompatActivity {
             if(subDis.equals(""))
                 subDis="null";
 
-            Intent intent=new Intent(this,Acitivity_SearchResult_Recycler.class);
-            intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_bloodGroup,blood);
-            intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_District,dis);
-            intent.putExtra(Acitivity_SearchResult_Recycler.EXTRA_SubDistrict,subDis);
+            Intent intent=new Intent(this,Activity_AllUserInfoList.class);
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup,blood);
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_District,dis);
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict,subDis);
            p.setVisibility(View.INVISIBLE);
             startActivity(intent);
 

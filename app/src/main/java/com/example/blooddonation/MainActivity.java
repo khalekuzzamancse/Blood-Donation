@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         ///Livedata section
         model = new ViewModelProvider(this).get(ViewModel_UserProfileInfo.class);
 
-
         model.getSignUserInfo().observe(MainActivity.this, new Observer<HashMap<String, String>>() {
             @Override
             public void onChanged(HashMap<String, String> userInfo) {
