@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/layout_header"
+        app:headerLayout="@layout/header_navbar_not_singed_in"
         app:menu="@menu/menu_nav_drawer_when_user_not_signed_in"
 
         >
