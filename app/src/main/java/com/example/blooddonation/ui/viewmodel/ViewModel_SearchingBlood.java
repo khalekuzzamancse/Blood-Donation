@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.blooddonation.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -74,20 +75,27 @@ public class ViewModel_SearchingBlood extends ViewModel {
                             data.put("SubDistrict", subDistrict);
                             data.put("Age", age);
                             data.put("Email", email);
-                            HashMap<String, HashMap<String, String>> tmp = new HashMap<>();
-                            tmp = UserInfoListByEmail.getValue();
-                            tmp.put(email, data);
-                            UserInfoListByEmail.postValue(tmp);
-                            //getting the email and concert it to list
 
-                            //
-                            updateDistrictHashMap(email, district);
 
-                            //
-                            updateBloodGroupWiseHashMap(email, bloodGroup);
-                            //  Log.i("Alhamdulliah,BloodExisHashmap", String.valueOf(existingHashMap_BloodGroup));
-                            //subDistrictWise
-                            updateSubDistrictHashMap(email, subDistrict);
+                            String CurrentUserEmail = MainActivity.model.getSignUserInfo().getValue().get("Email");
+                            //we do not want to show the current singed in user information in the list
+                           if(!CurrentUserEmail.equals(email))
+                            {
+                                HashMap<String, HashMap<String, String>> tmp = new HashMap<>();
+                                tmp = UserInfoListByEmail.getValue();
+                                tmp.put(email, data);
+                                UserInfoListByEmail.postValue(tmp);
+                                //getting the email and concert it to list
+
+                                //
+                                updateDistrictHashMap(email, district);
+
+                                //
+                                updateBloodGroupWiseHashMap(email, bloodGroup);
+                                //  Log.i("Alhamdulliah,BloodExisHashmap", String.valueOf(existingHashMap_BloodGroup));
+                                //subDistrictWise
+                                updateSubDistrictHashMap(email, subDistrict);
+                            }
 
                         }
                     }
