@@ -48,7 +48,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         model.getUserInfoListByEmail().observe(this, new Observer<HashMap<String, HashMap<String, String>>>() {
             @Override
             public void onChanged(HashMap<String, HashMap<String, String>> stringHashMapHashMap) {
-                Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
+            //    Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
 
             }
         });
@@ -63,6 +63,13 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
             public void onChanged(HashMap<String, List<String>> stringListHashMap) {
                 Log.i("Alhamdulliah,SubDistrict", String.valueOf(stringListHashMap));
                 ;
+            }
+        });
+        model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
+            @Override
+            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
+
             }
         });
 
