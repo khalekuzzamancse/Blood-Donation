@@ -38,6 +38,9 @@ public class ViewModel_SearchingBlood extends ViewModel {
         //initializing BloodGroupList to avoid null pointer exception
 
 //        //initializing UserInfoListBySubDistrict to avoid null pointer exception
+        initializeHashMap_District();
+        initializeHashMap_SubDistrict();
+        initializeHashMap_BloodGroup();
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
