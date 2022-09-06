@@ -33,7 +33,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     private HashMap<String, List<String>> DistrictWiseHashMap;
     private HashMap<String, List<String>> subDistrictWiseHashMap;
     private HashMap<String, List<String>> BloodGroupWiseHashMap;
-    private HashMap<String,HashMap<String,String>> AllUserHashMap;
+    private HashMap<String, HashMap<String, String>> AllUserHashMap;
 
 
     private List<AllUserInfoListActivity_DataType> list;
@@ -53,81 +53,90 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         getSupportActionBar().setTitle("All User List");
 
 
-        DistrictWiseHashMap=new HashMap<>();
-        AllUserHashMap=new HashMap<>();
-        subDistrictWiseHashMap=new HashMap<>();
-        BloodGroupWiseHashMap=new HashMap<>();
+        DistrictWiseHashMap = new HashMap<>();
+        AllUserHashMap = new HashMap<>();
+        subDistrictWiseHashMap = new HashMap<>();
+        BloodGroupWiseHashMap = new HashMap<>();
 
 
-        list=new ArrayList<>();
-        DistrictWiseList=new ArrayList<>();
-        SubDistrictWiseList=new ArrayList<>();
-        BloodGroupWiseList=new ArrayList<>();
-        Intent intent=getIntent();
-        String Blood=intent.getStringExtra(EXTRA_bloodGroup);
-        String Dis=intent.getStringExtra(EXTRA_District);
-        String SubDis=intent.getStringExtra(EXTRA_SubDistrict);
+        list = new ArrayList<>();
+        DistrictWiseList = new ArrayList<>();
+        SubDistrictWiseList = new ArrayList<>();
+        BloodGroupWiseList = new ArrayList<>();
+        Intent intent = getIntent();
+        String Blood = intent.getStringExtra(EXTRA_bloodGroup);
+        String Dis = intent.getStringExtra(EXTRA_District);
+        String SubDis = intent.getStringExtra(EXTRA_SubDistrict);
+        Log.i("Getted", Blood + "->" + Dis + "->" + SubDis);
 
 
         model = new ViewModelProvider(this).get(ViewModel_SearchingBlood.class);
         model.getUserInfoListByEmail().observe(this, new Observer<HashMap<String, HashMap<String, String>>>() {
             @Override
             public void onChanged(HashMap<String, HashMap<String, String>> stringHashMapHashMap) {
-            //   Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
-                AllUserHashMap=stringHashMapHashMap;
+                //   Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
+                AllUserHashMap = stringHashMapHashMap;
                 getUserList();
-//                Log.i("USEALL", String.valueOf(stringHashMapHashMap));
-//                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, list);
-//                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-//                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-//                r.setAdapter(adapter);
+                if (Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+                    //Log.i("USEALL", String.valueOf(stringHashMapHashMap));
+                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, list);
+                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                    r.setAdapter(adapter);
+                }
+
 
             }
         });
-        model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
-            @Override
-            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-               // Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
-                BloodGroupWiseHashMap=stringListHashMap;
-             getBloodGroupWiseList(Blood);
-//                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
-//                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-//                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-//                r.setAdapter(adapter);
-            }
-        });
-        model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
-            @Override
-            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-             //   Log.i("Alhamdulliah,SubDistrict", String.valueOf(stringListHashMap));
-                ;
-                subDistrictWiseHashMap=stringListHashMap;
-                getSubDistrictWiseList(SubDis);
-//                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, SubDistrictWiseList);
-//                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-//                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-//                r.setAdapter(adapter);
+        if (!Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+            model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
+                @Override
+                public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                    // Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
+                    BloodGroupWiseHashMap = stringListHashMap;
+                    getBloodGroupWiseList(Blood);
+                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
+                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                    r.setAdapter(adapter);
+                }
+            });
+        }
+        if (!Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+            model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
+                @Override
+                public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                    //   Log.i("Alhamdulliah,SubDistrict", String.valueOf(stringListHashMap));
+                    ;
+                    subDistrictWiseHashMap = stringListHashMap;
+                    getSubDistrictWiseList(SubDis);
+                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, SubDistrictWiseList);
+                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                    r.setAdapter(adapter);
 
-            }
-        });
-        model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
-            @Override
-            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-              //  Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
-             DistrictWiseHashMap=stringListHashMap;
-            getDistrictWiseList(Dis);
-                AllUserInfoListActivity_Adapter adapter =  adapter=new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this,DistrictWiseList);
-                RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                r.setAdapter(adapter);
+                }
+            });
+        }
 
-            }
-        });
+        if (Blood.equals("null") && !Dis.equals("null") && SubDis.equals("null")) {
+            model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
+                @Override
+                public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                    //  Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
+                    DistrictWiseHashMap = stringListHashMap;
+                    getDistrictWiseList(Dis);
+                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, DistrictWiseList);
+                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                    r.setAdapter(adapter);
 
+                }
+            });
+        }
 
 
         getUserList();
-
 
 
     }
@@ -149,14 +158,13 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     private void getUserList() {
 
         for (String key1 : AllUserHashMap.keySet()) {
-                if (!key1.equals(""))
-                {
+            if (!key1.equals("")) {
 
-                    AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
-                    HashMap<String, String> innerMap = AllUserHashMap.get(key1);
-                    //   Log.i("OKAy",innerMap.get("Name")+"_>"+innerMap.get("Email"));
-                    AddData(innerMap, "All");
-                }
+                AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
+                HashMap<String, String> innerMap = AllUserHashMap.get(key1);
+                //   Log.i("OKAy",innerMap.get("Name")+"_>"+innerMap.get("Email"));
+                AddData(innerMap, "All");
+            }
 
 
         }
@@ -165,30 +173,30 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     }
 
     private void getDistrictWiseList(String s) {
-        List<String>ListDis = DistrictWiseHashMap.get(s);
-        if (ListDis==null)
-            ListDis=new ArrayList<>();
+        List<String> ListDis = DistrictWiseHashMap.get(s);
+        if (ListDis == null)
+            ListDis = new ArrayList<>();
 
-            for (int i = 0; i < ListDis.size(); i++) {
-                {
-                    String UserEmail = ListDis.get(i);
-                    HashMap<String, String> innerMap =AllUserHashMap.get(UserEmail);
-                    AddData(innerMap, "Dis");
-
-                }
-
+        for (int i = 0; i < ListDis.size(); i++) {
+            {
+                String UserEmail = ListDis.get(i);
+                HashMap<String, String> innerMap = AllUserHashMap.get(UserEmail);
+                AddData(innerMap, "Dis");
 
             }
+
+
+        }
     }
 
     private void getSubDistrictWiseList(String s) {
-        List<String>ListSubDis = subDistrictWiseHashMap.get(s);
-        if (ListSubDis== null)
-            ListSubDis=new ArrayList<>();
+        List<String> ListSubDis = subDistrictWiseHashMap.get(s);
+        if (ListSubDis == null)
+            ListSubDis = new ArrayList<>();
         for (int i = 0; i < ListSubDis.size(); i++) {
             {
                 String UserEmail = ListSubDis.get(i);
-                HashMap<String, String> innerMap =AllUserHashMap.get(UserEmail);
+                HashMap<String, String> innerMap = AllUserHashMap.get(UserEmail);
                 AddData(innerMap, "Sub");
 
             }
@@ -196,15 +204,16 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
         }
     }
-//
+
+    //
     private void getBloodGroupWiseList(String s) {
-        List<String>ListBlood= BloodGroupWiseHashMap.get(s);
-        if (ListBlood== null)
-            ListBlood=new ArrayList<>();
+        List<String> ListBlood = BloodGroupWiseHashMap.get(s);
+        if (ListBlood == null)
+            ListBlood = new ArrayList<>();
         for (int i = 0; i < ListBlood.size(); i++) {
             {
                 String UserEmail = ListBlood.get(i);
-                HashMap<String, String> innerMap =AllUserHashMap.get(UserEmail);
+                HashMap<String, String> innerMap = AllUserHashMap.get(UserEmail);
                 AddData(innerMap, "Blood");
             }
 
@@ -212,7 +221,8 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         }
 
     }
-//
+
+    //
 //
     private void AddData(HashMap<String, String> innerMap, String listName) {
         AllUserInfoListActivity_DataType data = new AllUserInfoListActivity_DataType();
@@ -239,7 +249,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         if (subDis != null)
             data.SubDistrict = subDis;
         ///
-        Log.i("OKAY",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict);
+        //    Log.i("OKAY",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict);
         if (listName.equals("All"))
             list.add(data);
         else if (listName.equals("Dis"))
@@ -252,7 +262,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.i("REsume","OK");
+        Log.i("REsume", "OK");
         super.onResume();
     }
 }
