@@ -46,7 +46,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_user_info_list);
 
-
+///
         Toolbar toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
