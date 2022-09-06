@@ -40,6 +40,8 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     private List<AllUserInfoListActivity_DataType> DistrictWiseList;
     private List<AllUserInfoListActivity_DataType> SubDistrictWiseList;
     private List<AllUserInfoListActivity_DataType> BloodGroupWiseList;
+    private List<AllUserInfoListActivity_DataType> BloodGroup_DistrictWiseList;
+    private List<AllUserInfoListActivity_DataType> BloodGroup_SubDistrictWiseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,9 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         DistrictWiseList = new ArrayList<>();
         SubDistrictWiseList = new ArrayList<>();
         BloodGroupWiseList = new ArrayList<>();
+        BloodGroup_DistrictWiseList = new ArrayList<>();
+        BloodGroup_SubDistrictWiseList = new ArrayList<>();
+
         Intent intent = getIntent();
         String Blood = intent.getStringExtra(EXTRA_bloodGroup);
         String Dis = intent.getStringExtra(EXTRA_District);
@@ -89,21 +94,51 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
             }
         });
         //insha-allah
-        if (!Blood.equals("null") &&Dis.equals("null") && SubDis.equals("null")) {
+        if ((!Blood.equals("null"))) {
             model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
                 public void onChanged(HashMap<String, List<String>> stringListHashMap) {
                     // Log.i("Alhamdulliah,BloodGroup", String.valueOf(stringListHashMap));
                     BloodGroupWiseHashMap = stringListHashMap;
                     getBloodGroupWiseList(Blood);
-                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
-                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                    r.setAdapter(adapter);
+                    if (Dis.equals("null") && SubDis.equals("null")) {
+                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
+                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                        r.setAdapter(adapter);
+                    }
+
                 }
             });
         }
-        if (Blood.equals("null") && !Dis.equals("null") && !SubDis.equals("null")) {
+
+
+        if (!Dis.equals("null")) {
+            model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
+                @Override
+                public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                    //  Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
+                    DistrictWiseHashMap = stringListHashMap;
+                    getDistrictWiseList(Dis);
+                    if (Blood.equals("null") && SubDis.equals("null")) {
+                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, DistrictWiseList);
+                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                        r.setAdapter(adapter);
+                    }
+                    if (!Blood.equals("null")) {
+                        getBloodGroup_DistrictWiseList(Blood);
+                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroup_DistrictWiseList);
+                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                        r.setAdapter(adapter);
+                    }
+
+
+                }
+            });
+        }
+        if (!SubDis.equals("null")) {
             model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
                 public void onChanged(HashMap<String, List<String>> stringListHashMap) {
@@ -111,33 +146,25 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                     ;
                     subDistrictWiseHashMap = stringListHashMap;
                     getSubDistrictWiseList(SubDis);
-                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, SubDistrictWiseList);
-                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                    r.setAdapter(adapter);
+                    if (Blood.equals("null") && !Dis.equals("null")) {
+                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, SubDistrictWiseList);
+                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                        r.setAdapter(adapter);
+                    }
+                    else if(!Blood.equals("null") && !Dis.equals("null"))
+                    {
+                        getBloodGroup_SubDistrictWiseList(Blood);
+                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroup_SubDistrictWiseList);
+                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+                        r.setAdapter(adapter);
+
+                    }
 
                 }
             });
         }
-
-        if (Blood.equals("null") && !Dis.equals("null") && SubDis.equals("null")) {
-            model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
-                @Override
-                public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-                    //  Log.i("Alhamdulliah,District", String.valueOf(stringListHashMap));
-                    DistrictWiseHashMap = stringListHashMap;
-                    getDistrictWiseList(Dis);
-                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, DistrictWiseList);
-                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                    r.setAdapter(adapter);
-
-                }
-            });
-        }
-
-
-        getUserList();
 
 
     }
@@ -259,6 +286,28 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
             SubDistrictWiseList.add(data);
         else if (listName.equals("Blood"))
             BloodGroupWiseList.add(data);
+    }
+
+
+    private void getBloodGroup_DistrictWiseList(String blood) {
+        for (int i = 0; i < DistrictWiseList.size(); i++) {
+            AllUserInfoListActivity_DataType obj = new AllUserInfoListActivity_DataType();
+            obj = DistrictWiseList.get(i);
+            if (obj != null)
+                if (obj.BloodGroup.equals(blood))
+                    BloodGroup_DistrictWiseList.add(obj);
+        }
+
+    }
+
+    private void getBloodGroup_SubDistrictWiseList(String blood) {
+        for (int i = 0; i < SubDistrictWiseList.size(); i++) {
+            AllUserInfoListActivity_DataType obj = new AllUserInfoListActivity_DataType();
+            obj = SubDistrictWiseList.get(i);
+            if (obj != null)
+                if (obj.BloodGroup.equals(blood))
+                    BloodGroup_SubDistrictWiseList.add(obj);
+        }
     }
 
     @Override
