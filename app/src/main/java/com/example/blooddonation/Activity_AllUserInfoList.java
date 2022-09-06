@@ -83,11 +83,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 AllUserHashMap = stringHashMapHashMap;
                 getUserList();
                 if (Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
-                    //Log.i("USEALL", String.valueOf(stringHashMapHashMap));
-                    AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, list);
-                    RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                    r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                    r.setAdapter(adapter);
+                   updateAdapter(list);
                 }
 
 
@@ -102,10 +98,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                     BloodGroupWiseHashMap = stringListHashMap;
                     getBloodGroupWiseList(Blood);
                     if (Dis.equals("null") && SubDis.equals("null")) {
-                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroupWiseList);
-                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                        r.setAdapter(adapter);
+                        updateAdapter(BloodGroupWiseList);
                     }
 
                 }
@@ -121,17 +114,11 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                     DistrictWiseHashMap = stringListHashMap;
                     getDistrictWiseList(Dis);
                     if (Blood.equals("null") && SubDis.equals("null")) {
-                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, DistrictWiseList);
-                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                        r.setAdapter(adapter);
+                        updateAdapter(DistrictWiseList);
                     }
                     if (!Blood.equals("null")) {
                         getBloodGroup_DistrictWiseList(Blood);
-                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroup_DistrictWiseList);
-                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                        r.setAdapter(adapter);
+                        updateAdapter(BloodGroup_DistrictWiseList);
                     }
 
 
@@ -147,18 +134,12 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                     subDistrictWiseHashMap = stringListHashMap;
                     getSubDistrictWiseList(SubDis);
                     if (Blood.equals("null") && !Dis.equals("null")) {
-                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, SubDistrictWiseList);
-                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                        r.setAdapter(adapter);
+                        updateAdapter(SubDistrictWiseList);
                     }
                     else if(!Blood.equals("null") && !Dis.equals("null"))
                     {
                         getBloodGroup_SubDistrictWiseList(Blood);
-                        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, BloodGroup_SubDistrictWiseList);
-                        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-                        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
-                        r.setAdapter(adapter);
+                        updateAdapter(BloodGroup_SubDistrictWiseList);
 
                     }
 
@@ -309,10 +290,18 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                     BloodGroup_SubDistrictWiseList.add(obj);
         }
     }
+    void updateAdapter(List<AllUserInfoListActivity_DataType>List)
+    {
+        //Log.i("USEALL", String.valueOf(stringHashMapHashMap));
+        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, List);
+        RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
+        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+        r.setAdapter(adapter);
+    }
+
 
     @Override
     protected void onResume() {
-        Log.i("REsume", "OK");
         super.onResume();
     }
 }

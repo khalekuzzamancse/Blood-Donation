@@ -56,12 +56,19 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
         String subDis = list.get(position).SubDistrict;
         holder.TV_AllUserInfoListActivity_VH_Location.setText(dis + "," + subDis);
 
+        String CurrentUserEmail = MainActivity.model.getSignUserInfo().getValue().get("Email");
+        if(CurrentUserEmail.equals("null"))
+        {
+            holder.TV_AllUserInfoListActivity_VH_Name.setText("Available");
+            holder.TV_AllUserInfoListActivity_VH_Phone.setText("Available");
+            holder.TV_AllUserInfoListActivity_VH_Email.setText("Available");
+        }
         ///
         holder.TV_AllUserInfoListActivity_VH_sendCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = MainActivity.model.getSignUserInfo().getValue().get("Email");
-                if (email.equals("null")) {
+
+                if (CurrentUserEmail.equals("null")) {
 
                     Snackbar.make(holder.TV_AllUserInfoListActivity_VH_sendCall, "Login,Please", Snackbar.LENGTH_SHORT).show();
                 } else {
