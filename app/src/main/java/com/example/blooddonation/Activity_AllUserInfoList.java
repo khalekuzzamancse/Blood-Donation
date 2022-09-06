@@ -88,7 +88,8 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
             }
         });
-        if (!Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+        //insha-allah
+        if (!Blood.equals("null") &&Dis.equals("null") && SubDis.equals("null")) {
             model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
                 public void onChanged(HashMap<String, List<String>> stringListHashMap) {
@@ -102,7 +103,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 }
             });
         }
-        if (!Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+        if (Blood.equals("null") && !Dis.equals("null") && !SubDis.equals("null")) {
             model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
                 public void onChanged(HashMap<String, List<String>> stringListHashMap) {
