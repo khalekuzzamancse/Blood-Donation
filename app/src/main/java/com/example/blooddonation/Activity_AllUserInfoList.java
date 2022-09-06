@@ -52,7 +52,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("All User List");
+        getSupportActionBar().setTitle("User List");
 
 
         DistrictWiseHashMap = new HashMap<>();
@@ -84,6 +84,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 getUserList();
                 if (Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
                    updateAdapter(list);
+
                 }
 
 

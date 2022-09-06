@@ -41,7 +41,8 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Update Profile");
-        showProfile();
+      //  showProfile();
+        getProfile();
         setGender();
         setBloodGroup();
         DistrictList();
@@ -98,9 +99,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
 //                                AutoCompleteTextView tBlood=findViewById(R.id.Activity_UpdateProfile__TextInputLayout_AutoCompleteTextView_BloodGroup);
 //                                if(tBlood!=null&&bloodGroup!=null)
 //                                    tBlood.setText(bloodGroup);
-//                                AutoCompleteTextView tGender=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_Gender);
-//                                if(tGender!=null&gender!=null)
-//                                    tGender.setText(gender);
+//
 //                                AutoCompleteTextView tDistrict=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_District);
 //                                if(tDistrict!=null&&dis!=null)
 //                                    tDistrict.setText(dis);
@@ -131,6 +130,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.layout_drop_down_menu_single_item,genderList);
         AutoCompleteTextView gender=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_Gender);
         gender.setAdapter(adapter);
+        gender.setText(MainActivity.model.getSignUserInfo().getValue().get("Gender"),false);
         gender.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -162,6 +162,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
                             AutoCompleteTextView d=
                                     findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_District);
                             d.setAdapter(adapter);
+                            d.setText(MainActivity.model.getSignUserInfo().getValue().get("District"),false);
 
                             d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
@@ -201,7 +202,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
                                 AutoCompleteTextView d=
                                         findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict);
                                 d.setAdapter(adapter);
-
+                                d.setText(MainActivity.model.getSignUserInfo().getValue().get("SubDistrict"),false);
                                 d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -239,7 +240,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.layout_drop_down_menu_single_item,BloodGroupList);
         AutoCompleteTextView bloodGroup=findViewById(R.id.Activity_UpdateProfile__TextInputLayout_AutoCompleteTextView_BloodGroup);
         bloodGroup.setAdapter(adapter);
-
+     bloodGroup.setText(MainActivity.model.getSignUserInfo().getValue().get("BloodGroup"),false);
         bloodGroup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -249,5 +250,33 @@ public class Activity_UpdateProfile extends AppCompatActivity {
             }
         });
     }
+    private void getProfile()
+    {
+
+        String name =   MainActivity.model.getSignUserInfo().getValue().get("Name");
+        String email = MainActivity.model.getSignUserInfo().getValue().get("Email");
+        String phone = MainActivity.model.getSignUserInfo().getValue().get("PhoneNumber");
+        String dis =  MainActivity.model.getSignUserInfo().getValue().get("District");
+        String subDis =  MainActivity.model.getSignUserInfo().getValue().get("SubDistrict");
+        String age = MainActivity.model.getSignUserInfo().getValue().get("Age");
+        String gender = MainActivity.model.getSignUserInfo().getValue().get("Gender");
+        String bloodGroup =  MainActivity.model.getSignUserInfo().getValue().get("BloodGroup");
+        String password= MainActivity.model.getSignUserInfo().getValue().get("Password");
+        Activity_Account_Delete.get_PassWord=password;
+        EditText tName=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Name);
+        if(tName!=null)
+            tName.setText(name);
+        EditText  tEmail=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Email);
+        if(tEmail!=null)
+            tEmail.setText(email);
+        EditText tPhone=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Phone);
+        if(tPhone!=null)
+            tPhone.setText(phone);
+        EditText tAge=findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Age);
+        tAge.setText(age);
+
+
+    }
+
 
 }

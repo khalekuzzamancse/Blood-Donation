@@ -46,7 +46,6 @@ public class ViewModel_UserProfileInfo extends ViewModel {
                                 //
                             } else {
 
-                                Log.i("Curr<Vie","Get");
                                 HashMap<String,String> tmp=new HashMap<>();
                                 DocumentSnapshot document =q;
                                 String name= (String) document.get("Name");
@@ -63,7 +62,12 @@ public class ViewModel_UserProfileInfo extends ViewModel {
                                 tmp.put("SubDistrict",subDis);
                                 String isDonor=(String) document.get("isDonor");
                                 tmp.put("isDonor",isDonor);
+                                String gender= (String) document.get("Gender");
+                                tmp.put("Gender",gender);
+                                String age=(String) document.get("Age");
+                                tmp.put("Age",age);
                                 SignUserInfo.postValue(tmp);
+
                             }
                         }
                     });
