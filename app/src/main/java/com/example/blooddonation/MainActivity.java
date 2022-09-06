@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_AboutUs) {
 //                    Intent intent = new Intent(MainActivity.this, Activity_AboutUs.class);
 //                    startActivity(intent);
-                    Intent intent = new Intent(MainActivity.this, Activity_AllUserInfoList.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(MainActivity.this, Activity_AllUserInfoList.class);
+//                    startActivity(intent);
 
 
 

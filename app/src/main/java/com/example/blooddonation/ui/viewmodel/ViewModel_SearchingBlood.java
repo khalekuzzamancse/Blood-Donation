@@ -27,6 +27,8 @@ public class ViewModel_SearchingBlood extends ViewModel {
     private MutableLiveData<HashMap<String, List<String>>> UserInfoListByDistrict;
     private MutableLiveData<HashMap<String, List<String>>> UserInfoListByBloodGroup;
     private MutableLiveData<HashMap<String, List<String>>> UserInfoListBySubDistrict;
+    private MutableLiveData<HashMap<String, List<String>>>DistrictListHashMap;
+
 
 
     public ViewModel_SearchingBlood() {
@@ -36,12 +38,15 @@ public class ViewModel_SearchingBlood extends ViewModel {
         HashMap<String, HashMap<String, String>> ini = new HashMap<>();
         ini.put(s, ini1);
         UserInfoListByEmail = new MutableLiveData<>(ini);
+
+
         //initializing BloodGroupList to avoid null pointer exception
 
 //        //initializing UserInfoListBySubDistrict to avoid null pointer exception
         initializeHashMap_District();
         initializeHashMap_SubDistrict();
         initializeHashMap_BloodGroup();
+        initializeDistrictListHashMap();
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -79,6 +84,7 @@ public class ViewModel_SearchingBlood extends ViewModel {
 
                             String CurrentUserEmail = MainActivity.model.getSignUserInfo().getValue().get("Email");
                             //we do not want to show the current singed in user information in the list
+                            updateDistrictListHashMap(district,subDistrict);
                            if(!CurrentUserEmail.equals(email))
                             {
                                 HashMap<String, HashMap<String, String>> tmp = new HashMap<>();
@@ -95,6 +101,8 @@ public class ViewModel_SearchingBlood extends ViewModel {
                                 //  Log.i("Alhamdulliah,BloodExisHashmap", String.valueOf(existingHashMap_BloodGroup));
                                 //subDistrictWise
                                 updateSubDistrictHashMap(email, subDistrict);
+                                //
+
                             }
 
                         }
@@ -125,8 +133,35 @@ public class ViewModel_SearchingBlood extends ViewModel {
         l.add("");
         HashMap<String, List<String>> hm = new HashMap<>();
         hm.put("", l);
-        initializeHashMap_District();
+       // initializeHashMap_District();
         UserInfoListByBloodGroup = new MutableLiveData<>(hm);
+    }
+
+    private void initializeDistrictListHashMap() {
+        List<String> L5 = new ArrayList<>();
+        L5.add("");
+        HashMap<String, List<String>> HM = new HashMap<>();
+        HM.put("", L5);
+      //  initializeHashMap_District();
+        DistrictListHashMap = new MutableLiveData<>(HM);
+
+    }
+    private void updateDistrictListHashMap(String district,String subDistrict)
+    {
+        HashMap<String, List<String>> exitingHashMap = new HashMap<>();
+        //pulling out the hashmap form Livedata
+        exitingHashMap = DistrictListHashMap.getValue();
+        List<String> existingList = new ArrayList<>();
+        //pulling out the existing List form the hashmap for the currently find subDistrict
+        existingList = exitingHashMap.get(district);
+        if (existingList == null)
+            existingList = new ArrayList<>();
+        existingList.add(subDistrict);
+        //     Log.i("Alhamdulliah,Exis", subDistrict+"->"+String.valueOf(existingList));
+        //adding  the new list to the hashmap
+        exitingHashMap.put(district, existingList);
+        Log.i("OKAY", String.valueOf(exitingHashMap));
+        DistrictListHashMap.postValue(exitingHashMap);
     }
 
 
@@ -197,5 +232,9 @@ public class ViewModel_SearchingBlood extends ViewModel {
 
     public MutableLiveData<HashMap<String, List<String>>> getUserInfoListByDistrict() {
         return UserInfoListByDistrict;
+    }
+
+    public MutableLiveData<HashMap<String, List<String>>> getDistrictListHashMap() {
+        return DistrictListHashMap;
     }
 }
