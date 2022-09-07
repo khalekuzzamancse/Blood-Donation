@@ -19,8 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:helperText="Optional"
-        app:helperTextTextColor="#0B67F3"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/black"
         >
 
         <AutoCompleteTextView
@@ -42,8 +42,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
-        app:helperText="Optional"
-        app:helperTextTextColor="#0B67F3"
         app:startIconDrawable="@drawable/icon_locaion"
         android:hint="District"
         app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
@@ -69,8 +67,7 @@
         android:layout_marginEnd="16dp"
         app:startIconDrawable="@drawable/icon_locaion"
         android:hint="Sub District"
-        app:helperText="Optional"
-        app:helperTextTextColor="#0B67F3"
+
         app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_District"
         app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_District"
         app:layout_constraintTop_toBottomOf="@id/Activity_SearchBlood_TextInputLayout_District">

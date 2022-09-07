@@ -5,18 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity_WhyDonateBlood">
-    <include layout="@layout/layout_toolbar_for_non_home_activity"/>
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/layout_toolbar_for_non_home_activity" />
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="339dp"
-        android:layout_marginEnd="212dp"
-        android:layout_marginBottom="373dp"
-        android:text="Why ???"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="Blood is the most precious gift that anyone can give to another person — the gift of life.
+A decision to donate your blood can save a life, or even several
+if your blood is separated into its components — red cells, platelets and plasma —
+which can be used individually for patients with specific conditions.
+Safe blood saves lives and improves health. Blood transfusion is needed for:
+women with complications of pregnancy, such as ectopic pregnancies and haemorrhage before, during or after childbirth.
+children with severe anaemia often resulting from malaria or malnutrition.
+people with severe trauma following man-made and natural disasters.
+many complex medical and surgical procedures and cancer patients.
+"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
     List<String> subDistrictList=new ArrayList<>();
     ProgressBar p;
-
+    EditText bloodGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +56,14 @@ public class Activity_SearchBlood extends AppCompatActivity {
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
         search.setOnClickListener(view -> {
          p=findViewById(R.id.ActivitySearch_ProgressBar);
-            p.setVisibility(View.VISIBLE);
+          //  p.setVisibility(View.VISIBLE);
 
             EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
           String blood=bloodGroup.getText().toString().trim();
             if(blood.equals(""))
-                blood="null";
+            { blood="null";
+            }
+
             EditText Dis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);
             String dis=Dis.getText().toString().trim();
             if(dis.equals(""))
@@ -76,7 +78,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
             intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup,blood);
             intent.putExtra(Activity_AllUserInfoList.EXTRA_District,dis);
             intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict,subDis);
-           p.setVisibility(View.INVISIBLE);
+         //  p.setVisibility(View.INVISIBLE);
             startActivity(intent);
 
 
@@ -208,6 +210,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
             }
         });
     }
+
 
 
 }
