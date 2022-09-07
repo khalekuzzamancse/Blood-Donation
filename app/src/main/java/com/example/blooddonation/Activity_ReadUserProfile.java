@@ -87,15 +87,36 @@ public class Activity_ReadUserProfile extends AppCompatActivity {
 private void setProfile()
 {
     HashMap<String,String> data=MainActivity.model.getSignUserInfo().getValue();
+    String currentUsrEmail=MainActivity.model.getSignUserInfo().getValue().get("Email");
 
     String name = data.get("Name");
     String email = data.get("Email");
     String phone =  data.get("PhoneNumber");
     String dis =  data.get("District");
+    if(dis!=null)
+    dis="District: "+dis;
+    else
+        dis="District: .....";
     String subDis = data.get("SubDistrict");
+    if(subDis!=null)
+    subDis="Sub District: "+subDis;
+    else
+        subDis="Sub District: .....";
     String age =  data.get("Age");
+    if(age!=null)
+    age="Age: "+age;
+    else
+        age="Age: .....";
     String gender =data.get("Gender");
+    if(gender!=null)
+    gender="Gender: "+gender;
+    else
+        gender="Gender: .....";
     String bloodGroup = data.get("BloodGroup");
+    if(bloodGroup!=null)
+    bloodGroup="Blood Group: "+bloodGroup;
+    else
+        gender="Blood Group: .....";
     String password=data.get("Password");
 //    Activity_Account_Delete.get_PassWord=password;
 //    Log.i("Password set for delete", Activity_Account_Delete.get_PassWord);

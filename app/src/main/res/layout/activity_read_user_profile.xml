@@ -11,18 +11,18 @@
         android:id="@+id/ActivityScrollable_IncludedToolbar"
         layout="@layout/layout_toolbar_for_non_home_activity"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="-2dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="5dp"
         android:id="@+id/Activity_showProfile_Profile_Image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="111dp"
+        android:layout_height="91dp"
         android:elevation="6dp"
         android:src="@drawable/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ActivityScrollable_IncludedToolbar" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/Activity_showProfile_card"
@@ -48,14 +48,15 @@
                 android:id="@+id/Activity_showProfile_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="5dp"
                 android:drawableLeft="@drawable/icon_person"
                 android:gravity="start"
-
                 android:text="Name"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,7 +77,7 @@
                 android:id="@+id/Activity_showProfile_Phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/icon_phone_number"
                 android:gravity="start"
                 android:text="Phone"
@@ -92,7 +93,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/icon_blood_group"
                 android:gravity="start"
-                android:text="A+"
+                android:text="Blood Group:   ......."
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Phone"
@@ -105,7 +106,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/icon_gender"
                 android:gravity="start"
-                android:text="Gender"
+                android:text="Gender:  ......."
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_BloodGroup"
@@ -118,7 +119,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/icon_locaion"
                 android:gravity="start"
-                android:text="District"
+                android:text="District:  ......."
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_Gender"
@@ -131,7 +132,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/icon_locaion"
                 android:gravity="start"
-                android:text="Sub District"
+                android:text="Sub District:  ......."
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_District"
@@ -144,7 +145,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/icon_age"
                 android:gravity="center"
-                android:text="Age"
+                android:text="Age:  ......."
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_subDistrict"
