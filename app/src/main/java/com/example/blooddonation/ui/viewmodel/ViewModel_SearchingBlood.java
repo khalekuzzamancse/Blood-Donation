@@ -61,6 +61,17 @@ public class ViewModel_SearchingBlood extends ViewModel {
 //                        Log.i("Alhamdulliah,Size", String.valueOf(l.size()));
 
                         for (DocumentSnapshot document : q) {
+                            //we want to show only donor list so  use add the user to the list
+                            //if isDonor==true
+                            //
+                            String isDonor= (String) document.get("isDonor");
+                            if(isDonor!=null)//some user may not isDonor filed so before comparing
+                                //isDonor Checking isDonor is null or not.
+                            {
+                                if(!isDonor.equals("true"))
+                                    continue;
+                            }
+
                             String name = (String) document.get("Name");
                             //  String Username=(String)document.get("UserName");
                             String phoneNumber = (String) document.get("PhoneNumber");

@@ -5,20 +5,14 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.blooddonation.DataType_DistrictList;
-import com.google.common.collect.ImmutableList;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.example.blooddonation.ui.datatypes.DataType_DistrictList;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ViewModel_AllDistrictList extends ViewModel {
     private MutableLiveData<HashMap<String, List<String>>> DistrictListHashMap;

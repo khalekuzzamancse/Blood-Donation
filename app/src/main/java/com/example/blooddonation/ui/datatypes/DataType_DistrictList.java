@@ -1,4 +1,4 @@
-package com.example.blooddonation;
+package com.example.blooddonation.ui.datatypes;
 import com.google.firebase.firestore.DocumentId;
 import java.util.List;
 public class DataType_DistrictList {

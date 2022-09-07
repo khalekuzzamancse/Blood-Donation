@@ -26,10 +26,6 @@
             android:exported="false"
             android:parentActivityName=".Activity_ReadUserProfile" />
         <activity
-            android:name=".Acitivity_SearchResult_Recycler"
-            android:exported="false"
-            android:parentActivityName=".Activity_SearchBlood" />
-        <activity
             android:name=".Activity_ReadUserProfile"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

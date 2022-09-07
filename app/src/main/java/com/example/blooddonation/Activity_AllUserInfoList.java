@@ -79,7 +79,6 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         model.getUserInfoListByEmail().observe(this, new Observer<HashMap<String, HashMap<String, String>>>() {
             @Override
             public void onChanged(HashMap<String, HashMap<String, String>> stringHashMapHashMap) {
-                //   Log.i("Alhamdulliah,ALl", String.valueOf(stringHashMapHashMap));
                 AllUserHashMap = stringHashMapHashMap;
                 getUserList();
                 if (Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
@@ -147,6 +146,8 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 }
             });
         }
+
+
 
 
     }
@@ -258,8 +259,17 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         String subDis = innerMap.get("SubDistrict");
         if (subDis != null)
             data.SubDistrict = subDis;
+        String donor=innerMap.get("isDonor");
+        if(donor==null)
+            donor="false";
+
+
         ///
         //    Log.i("OKAY",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict);
+
+        //want to show only the donor list,so before adding check, isDonor=="true"
+        //&&isDonor.equals("true")
+
         if (listName.equals("All"))
             list.add(data);
         else if (listName.equals("Dis"))
