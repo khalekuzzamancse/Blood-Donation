@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="50dp"
+    tools:layout_editor_absoluteY="7dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MainActivity_Contain_element1_1"
+        android:layout_width="0dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="18dp"
+        app:cardBackgroundColor="#728FCE"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/MainActivity_Contain_element1_2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MainActivity_Contain_element1_2"
+        android:layout_width="0dp"
+        android:layout_height="105dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#728FCE"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/MainActivity_Contain_element1_1"
+        app:layout_constraintTop_toTopOf="@+id/MainActivity_Contain_element1_1" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MainActivity_Contain_element2_2"
+        android:layout_width="0dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#728FCE"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/MainActivity_Contain_element2_1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="@+id/MainActivity_Contain_element1_1"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_Contain_element1_1" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MainActivity_Contain_element2_1"
+        android:layout_width="0dp"
+        android:layout_height="102dp"
+        app:cardBackgroundColor="#728FCE"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/MainActivity_Contain_element1_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/MainActivity_Contain_element2_2"
+        app:layout_constraintTop_toTopOf="@+id/MainActivity_Contain_element2_2"
+        app:layout_constraintVertical_weight="1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
