@@ -16,10 +16,12 @@
         android:layout_marginEnd="16dp"
         app:startIconDrawable="@drawable/icon_blood_group"
         android:hint="Blood Group"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:helperText="Required*"
+        app:helperText=""
         app:helperTextTextColor="@color/black"
         >
 

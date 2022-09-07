@@ -8,6 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingBlood;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -36,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Activity_SearchBlood extends AppCompatActivity {
+    TextInputLayout bloodGroupLayout;
 
     List<String> subDistrictList=new ArrayList<>();
     ProgressBar p;
@@ -53,16 +57,21 @@ public class Activity_SearchBlood extends AppCompatActivity {
         setBloodGroup();
         setLocation();
 
+        bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
+   bloodGroupLayout=findViewById(R.id.Activity_SearchBlood_TextInputLayout_BloodGroup);
+
         Button search=findViewById(R.id.Activity_SearchBlood_Button_Submit);
+        //check if the blood group filed is empty or not
+        //if the there are any error  message then the checkedBloodGroupField() will clear or do not clear the message
+       checkBloodGroupField();
         search.setOnClickListener(view -> {
+            bloodGroupLayout.setError(null);
          p=findViewById(R.id.ActivitySearch_ProgressBar);
           //  p.setVisibility(View.VISIBLE);
 
-            EditText bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
-          String blood=bloodGroup.getText().toString().trim();
-            if(blood.equals(""))
-            { blood="null";
-            }
+            String blood=bloodGroup.getText().toString().trim();
+
+
 
             EditText Dis=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);
             String dis=Dis.getText().toString().trim();
@@ -79,9 +88,16 @@ public class Activity_SearchBlood extends AppCompatActivity {
             intent.putExtra(Activity_AllUserInfoList.EXTRA_District,dis);
             intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict,subDis);
          //  p.setVisibility(View.INVISIBLE);
-            startActivity(intent);
+            //if the user not choosen a bloodGroup then we do not show the list
 
-
+            if(!bloodGroup.getText().toString().isEmpty())
+           startActivity(intent);
+            else
+            {
+                //if user not chosen a bloodGroup but clicked the submit button.
+                //then show the error message
+                bloodGroupLayout.setError("Please,Choose a blood Group");
+            }
 
 
         });
@@ -166,6 +182,28 @@ public class Activity_SearchBlood extends AppCompatActivity {
             }
         });
 
+    }
+private void checkBloodGroupField()
+    {
+        //since the text has changed so the bloodGroupField is not empty
+        //so we removing the error message.
+        bloodGroup.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+               //keep empty,beacase we remove the error message after text changed
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //keep empty,beacase we remove the error message after text changed
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //removing the error message
+                    bloodGroupLayout.setError(null);
+            }
+        });
     }
 
 

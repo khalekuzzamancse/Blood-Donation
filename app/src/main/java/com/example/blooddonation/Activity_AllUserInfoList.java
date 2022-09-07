@@ -82,6 +82,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 AllUserHashMap = stringHashMapHashMap;
                 getUserList();
                 if (Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+
                    updateAdapter(list);
 
                 }
