@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,16 +14,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingBlood;
 import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static ViewModel_UserProfileInfo model;
+    public static ViewModel_AllDistrictList districtListModel;
     public static String Extra_Login = "null";
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -35,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
-
 
         toolbar = findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
@@ -64,6 +72,22 @@ public class MainActivity extends AppCompatActivity {
                     navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
                 }
 
+
+            }
+        });
+
+        districtListModel= new ViewModelProvider(this).get(ViewModel_AllDistrictList.class);
+        districtListModel.getDistrictListHashMap().observe(this, new Observer<HashMap<String, List<String>>>() {
+            @Override
+            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+                stringListHashMap.remove("");
+                Log.i("Getting", String.valueOf(stringListHashMap));
+            }
+        });
+        districtListModel.getDistrictList().observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> strings) {
+                Log.i("Getting", String.valueOf(strings));
 
             }
         });
@@ -116,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        ViewModel_SearchingBlood obj = new ViewModel_SearchingBlood();
 //        obj.AllUserInfoList();
+
     }
 
     @Override

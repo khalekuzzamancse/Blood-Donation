@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Activity_Become_Donar extends AppCompatActivity {
+    public  static ViewModel_AllDistrictList m;
 
 
     @Override
@@ -48,7 +52,12 @@ public class Activity_Become_Donar extends AppCompatActivity {
 
             setGender();
             setBloodGroup();
-            DistrictList();
+        setLocation();
+
+
+
+
+
         Button submit=findViewById(R.id.Activity_BecomeDonar_Button_Submit);
         submit.setOnClickListener(view -> {
             ProgressBar p=findViewById(R.id.ActivityBecomeDonor_ProgressBar);
@@ -122,88 +131,45 @@ public class Activity_Become_Donar extends AppCompatActivity {
             }
         });
     }
-    private void DistrictList()
+    private void setLocation()
     {
         List<String> districtList=new ArrayList<>();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("DistrictList")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("Hello", document.getId() + " => " + document.getData());
-                                // String name=(String)document.get("Name");
-                                String name=(String)document.getId();
-                                Log.i("District",name);
-                                districtList.add(name);
-                            }
+        districtList=MainActivity.districtListModel.getDistrictList().getValue();
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_Become_Donar.this,R.layout.layout_drop_down_menu_single_item,districtList);
+        AutoCompleteTextView d=
+                findViewById(R.id.Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_District);
+        d.setAdapter(adapter);
 
-                            ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_Become_Donar.this,R.layout.layout_drop_down_menu_single_item,districtList);
-                            AutoCompleteTextView d=
-                                    findViewById(R.id.Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_District);
-                            d.setAdapter(adapter);
+        d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s=  parent.getItemAtPosition(position).toString();
+                Log.i("Clickeed",s);
+                setSubDistrict(s);
+            }
+        });
 
-                            d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    String s=  parent.getItemAtPosition(position).toString();
-                                    Log.i("Clickeed",s);
-                                    setSubDistrict(s);
-                                }
-                            });
-                        }
-
-
-                        else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
     }
     private void setSubDistrict(String s)
     {
+        List<String>subDistrictList=new ArrayList<>();
+        subDistrictList=MainActivity.districtListModel.getDistrictListHashMap().getValue().get(s);
+        Log.i("SubDistrict", String.valueOf(subDistrictList));
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("DistrictList")
-                .document(s)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                List<String> subDistrictList = (List<String>) document.get("SubDistrict");
-                                for (String it : subDistrictList) {
-                                    Log.d("Upozilla", it);
-                                }
-                                ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_Become_Donar.this,R.layout.layout_drop_down_menu_single_item,subDistrictList);
-                                AutoCompleteTextView d=
-                                        findViewById(R.id.Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_SubDistrict);
-                                d.setAdapter(adapter);
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(Activity_Become_Donar.this,R.layout.layout_drop_down_menu_single_item,subDistrictList);
+        AutoCompleteTextView d=
+                findViewById(R.id.Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_SubDistrict);
+        d.setAdapter(adapter);
 
-                                d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                        String s=  parent.getItemAtPosition(position).toString();
-                                        Log.i("Clickeed",s);
+        d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s=  parent.getItemAtPosition(position).toString();
+                Log.i("Clickeed",s);
 
+            }
+        });
 
-                                    }
-                                });
-
-
-
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
     }
 
     private void AddDonorInfo()

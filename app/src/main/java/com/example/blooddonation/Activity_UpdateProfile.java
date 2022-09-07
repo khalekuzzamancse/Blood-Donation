@@ -37,9 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Activity_UpdateProfile extends AppCompatActivity {
-    HashMap<String, List<String>> AllDistrictListHashMap;
-    private List<String> AllDistrictList;
-    private ViewModel_SearchingBlood model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +49,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         getProfile();
         setGender();
         setBloodGroup();
-        DistrictList();
-        AllDistrictListHashMap = new HashMap<>();
-        AllDistrictList = new ArrayList<>();
-        model = new ViewModelProvider(this).get(ViewModel_SearchingBlood.class);
-        model.getDistrictListHashMap().observe(this, new Observer<HashMap<String, List<String>>>() {
-            @Override
-            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-                AllDistrictListHashMap = stringListHashMap;
-                getAllDistrictList();
-                Log.i("OKAYHWAR", String.valueOf(AllDistrictList));
-
-            }
-        });
-
-
+        setLocation();
     }
 
     @Override
@@ -95,90 +78,51 @@ public class Activity_UpdateProfile extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String s = parent.getItemAtPosition(position).toString();
-                Log.i("Clickeed", s);
 
             }
         });
     }
 
-    private void DistrictList() {
+
+    private void setLocation() {
         List<String> districtList = new ArrayList<>();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("DistrictList")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("Hello", document.getId() + " => " + document.getData());
-                                // String name=(String)document.get("Name");
-                                String name = (String) document.getId();
-                                Log.i("District", name);
-                                districtList.add(name);
-                            }
+        districtList = MainActivity.districtListModel.getDistrictList().getValue();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_UpdateProfile.this, R.layout.layout_drop_down_menu_single_item, districtList);
+        AutoCompleteTextView d =
+                findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_District);
+        d.setAdapter(adapter);
+        d.setText(MainActivity.model.getSignUserInfo().getValue().get("District"), false);
 
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_UpdateProfile.this, R.layout.layout_drop_down_menu_single_item, districtList);
-                            AutoCompleteTextView d =
-                                    findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_District);
-                            d.setAdapter(adapter);
-                            d.setText(MainActivity.model.getSignUserInfo().getValue().get("District"), false);
+        d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = parent.getItemAtPosition(position).toString();
+                Log.i("Clickeed", s);
+                setSubDistrict(s);
+            }
+        });
 
-                            d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    String s = parent.getItemAtPosition(position).toString();
-                                    Log.i("Clickeed", s);
-                                    setSubDistrict(s);
-                                }
-                            });
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
     }
 
     private void setSubDistrict(String s) {
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("DistrictList")
-                .document(s)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                List<String> subDistrictList = (List<String>) document.get("SubDistrict");
-                                for (String it : subDistrictList) {
-                                    Log.d("Upozilla", it);
-                                }
-                                ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_UpdateProfile.this, R.layout.layout_drop_down_menu_single_item, subDistrictList);
-                                AutoCompleteTextView d = findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict);
-                                d.setAdapter(adapter);
-                                d.setText(MainActivity.model.getSignUserInfo().getValue().get("SubDistrict"), false);
-                                d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                        String s = parent.getItemAtPosition(position).toString();
-                                        Log.i("Clickeed", s);
+        List<String> subDistrictList = new ArrayList<>();
+        subDistrictList = MainActivity.districtListModel.getDistrictListHashMap().getValue().get(s);
 
 
-                                    }
-                                });
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_UpdateProfile.this, R.layout.layout_drop_down_menu_single_item, subDistrictList);
+        AutoCompleteTextView d = findViewById(R.id.Activity_UpdateProfile_TextInputLayout_AutoCompleteTextView_SubDistrict);
+        d.setAdapter(adapter);
+        d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = parent.getItemAtPosition(position).toString();
 
 
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-                    }
-                });
+            }
+        });
+
     }
+
 
     private void setBloodGroup() {
         List<String> BloodGroupList = new ArrayList<>();
@@ -231,17 +175,6 @@ public class Activity_UpdateProfile extends AppCompatActivity {
         EditText tAge = findViewById(R.id.Activity_UpdateProfile_TextInputLayout_EditText_Age);
         tAge.setText(age);
 
-
-    }
-
-    private void getAllDistrictList() {
-        for (String key1 : AllDistrictListHashMap.keySet()) {
-            if(!key1.equals(""))
-            {
-                AllDistrictList.add(key1);
-            }
-
-        }
 
     }
 

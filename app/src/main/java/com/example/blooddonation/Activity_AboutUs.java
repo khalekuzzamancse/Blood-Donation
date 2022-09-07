@@ -5,12 +5,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Activity_AboutUs extends AppCompatActivity {
     private  ViewModel_UserProfileInfo model;
@@ -19,14 +24,13 @@ public class Activity_AboutUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
-
+      //  Log.i("Getting","okay");
         Toolbar toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("About Us");
         TextView t=findViewById(R.id.textView);
         ConstraintLayout l=findViewById(R.id.ActivityLayoutAAboutUS);
-
 
        // Call();
 
@@ -44,5 +48,8 @@ public class Activity_AboutUs extends AppCompatActivity {
 
                 return super.onOptionsItemSelected(item);
         }
+
+
+
 
 }
