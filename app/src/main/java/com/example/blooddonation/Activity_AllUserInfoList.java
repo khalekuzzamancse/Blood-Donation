@@ -28,6 +28,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     public static final String EXTRA_bloodGroup = "BloodGroup";
     public static final String EXTRA_District = "District";
     public static final String EXTRA_SubDistrict = "SubDistrict";
+    public  static final String Extra_ComingFrom="NotMain";
     private ViewModel_SearchingBlood model;
 
     private HashMap<String, List<String>> DistrictWiseHashMap;
@@ -35,8 +36,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     private HashMap<String, List<String>> BloodGroupWiseHashMap;
     private HashMap<String, HashMap<String, String>> AllUserHashMap;
 
-
-    private List<AllUserInfoListActivity_DataType> list;
+    private List<AllUserInfoListActivity_DataType> list;//list hold the all donor or user info
     private List<AllUserInfoListActivity_DataType> DistrictWiseList;
     private List<AllUserInfoListActivity_DataType> SubDistrictWiseList;
     private List<AllUserInfoListActivity_DataType> BloodGroupWiseList;
@@ -72,7 +72,10 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         String Blood = intent.getStringExtra(EXTRA_bloodGroup);
         String Dis = intent.getStringExtra(EXTRA_District);
         String SubDis = intent.getStringExtra(EXTRA_SubDistrict);
-        Log.i("Getted", Blood + "->" + Dis + "->" + SubDis);
+        String comingFrom=intent.getStringExtra(Extra_ComingFrom);
+
+
+
 
 
         model = new ViewModelProvider(this).get(ViewModel_SearchingBlood.class);
@@ -80,17 +83,16 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
             @Override
             public void onChanged(HashMap<String, HashMap<String, String>> stringHashMapHashMap) {
                 AllUserHashMap = stringHashMapHashMap;
-                getUserList();
-                if (Blood.equals("null") && Dis.equals("null") && SubDis.equals("null")) {
+                getUserList();//updating all donor/user list
+                if(comingFrom.equals("Main"))
+                    updateAdapter(list);
 
-                   updateAdapter(list);
-
-                }
 
 
             }
         });
         //insha-allah
+
         if ((!Blood.equals("null"))) {
             model.getUserInfoListByBloodGroup().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
@@ -107,7 +109,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         }
 
 
-        if (!Dis.equals("null")) {
+     if (!Dis.equals("null")) {
             model.getUserInfoListByDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
                 public void onChanged(HashMap<String, List<String>> stringListHashMap) {
@@ -126,7 +128,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 }
             });
         }
-        if (!SubDis.equals("null")) {
+       if (!SubDis.equals("null")) {
             model.getUserInfoListBySubDistrict().observe(this, new Observer<HashMap<String, List<String>>>() {
                 @Override
                 public void onChanged(HashMap<String, List<String>> stringListHashMap) {
@@ -147,6 +149,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
                 }
             });
         }
+
 
 
 

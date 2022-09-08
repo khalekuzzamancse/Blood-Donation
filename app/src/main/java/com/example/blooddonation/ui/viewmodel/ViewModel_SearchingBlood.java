@@ -28,6 +28,8 @@ public class ViewModel_SearchingBlood extends ViewModel {
     private MutableLiveData<HashMap<String, List<String>>> UserInfoListByBloodGroup;
     private MutableLiveData<HashMap<String, List<String>>> UserInfoListBySubDistrict;
     private MutableLiveData<HashMap<String, List<String>>>DistrictListHashMap;
+    private MutableLiveData<Integer>TotalUser;
+    private MutableLiveData<Integer>TotalDonor;
 
 
 
@@ -38,6 +40,8 @@ public class ViewModel_SearchingBlood extends ViewModel {
         HashMap<String, HashMap<String, String>> ini = new HashMap<>();
         ini.put(s, ini1);
         UserInfoListByEmail = new MutableLiveData<>(ini);
+        TotalDonor=new MutableLiveData<>(0);
+        TotalUser=new MutableLiveData<>(0);
 
 
         //initializing BloodGroupList to avoid null pointer exception
@@ -61,6 +65,8 @@ public class ViewModel_SearchingBlood extends ViewModel {
 //                        Log.i("Alhamdulliah,Size", String.valueOf(l.size()));
 
                         for (DocumentSnapshot document : q) {
+
+
                             //we want to show only donor list so  use add the user to the list
                             //if isDonor==true
                             //
@@ -247,5 +253,13 @@ public class ViewModel_SearchingBlood extends ViewModel {
 
     public MutableLiveData<HashMap<String, List<String>>> getDistrictListHashMap() {
         return DistrictListHashMap;
+    }
+
+    public MutableLiveData<Integer> getTotalUser() {
+        return TotalUser;
+    }
+
+    public MutableLiveData<Integer> getTotalDonor() {
+        return TotalDonor;
     }
 }

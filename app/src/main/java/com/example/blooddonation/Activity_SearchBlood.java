@@ -87,6 +87,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
             intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup,blood);
             intent.putExtra(Activity_AllUserInfoList.EXTRA_District,dis);
             intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict,subDis);
+            intent.putExtra(Activity_AllUserInfoList.Extra_ComingFrom,"SearchBlood");
          //  p.setVisibility(View.INVISIBLE);
             //if the user not choosen a bloodGroup then we do not show the list
 

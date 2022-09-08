@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingBlood;
@@ -32,6 +33,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static ViewModel_UserProfileInfo model;
     public static ViewModel_AllDistrictList districtListModel;
+    private ViewModel_SearchingBlood model_searchingBlood;
     public static String Extra_Login = "null";
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -137,6 +139,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return true;
             }
+        });
+
+        TextView allDonor=findViewById(R.id.All_DonorList);
+        allDonor.setOnClickListener(view -> {
+            Intent intent=new Intent(this,Activity_AllUserInfoList.class);
+            intent.putExtra(Activity_AllUserInfoList.Extra_ComingFrom,"Main");
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup,"null");
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_District,"null");
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict,"null");
+
+            startActivity(intent);
         });
 
 
