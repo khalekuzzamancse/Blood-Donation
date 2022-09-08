@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+////
         TextView allDonor=findViewById(R.id.All_DonorList);
         allDonor.setOnClickListener(view -> {
             Intent intent=new Intent(this,Activity_AllUserInfoList.class);
