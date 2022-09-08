@@ -8,5 +8,6 @@ public class AllUserInfoListActivity_DataType {
     public String BloodGroup;
     public String District;
     public String SubDistrict;
+    public String Age;
 
 }

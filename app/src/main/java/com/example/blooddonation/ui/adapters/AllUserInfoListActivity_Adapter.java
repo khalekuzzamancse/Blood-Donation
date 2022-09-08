@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.blooddonation.MainActivity;
 import com.example.blooddonation.R;
 import com.example.blooddonation.ui.datatypes.AllUserInfoListActivity_DataType;
-import com.example.blooddonation.ui.datatypes.DataTypeForRecyclerView_ActivitySearchResult;
 import com.example.blooddonation.ui.viewholders.AllUserInfoListActivity_ViewHolder;
-import com.example.blooddonation.ui.viewholders.ViewHolderForRecyclerViewLoggedIn;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -52,6 +50,8 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
         holder.TV_AllUserInfoListActivity_VH_Gender.setText(gender);
         String bloodGroup = list.get(position).BloodGroup;
         holder.TV_AllUserInfoListActivity_VH_Blood_Group.setText(bloodGroup);
+        String age=list.get(position).Age;
+        holder.TV_AllUserInfoListActivity_VH_Age.setText(age);
         String dis = list.get(position).District;
         String subDis = list.get(position).SubDistrict;
         holder.TV_AllUserInfoListActivity_VH_Location.setText(dis + "," + subDis);

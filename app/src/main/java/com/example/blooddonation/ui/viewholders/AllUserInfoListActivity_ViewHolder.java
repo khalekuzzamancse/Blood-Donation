@@ -16,6 +16,8 @@ public class AllUserInfoListActivity_ViewHolder extends RecyclerView.ViewHolder 
     public TextView TV_AllUserInfoListActivity_VH_Gender;
     public TextView TV_AllUserInfoListActivity_VH_Blood_Group;
     public TextView TV_AllUserInfoListActivity_VH_Location;
+    public TextView TV_AllUserInfoListActivity_VH_Age;
+
     public ImageButton TV_AllUserInfoListActivity_VH_sendCall;
  //   public ImageButton TV_AllUserInfoListActivity_VH_sendEmail;
 
@@ -30,6 +32,7 @@ public class AllUserInfoListActivity_ViewHolder extends RecyclerView.ViewHolder 
         TV_AllUserInfoListActivity_VH_Blood_Group=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_BloodGroup);
         TV_AllUserInfoListActivity_VH_Location=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Location);
         TV_AllUserInfoListActivity_VH_sendCall=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_call);
+        TV_AllUserInfoListActivity_VH_Age=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Age);
       //  TV_AllUserInfoListActivity_VH_sendEmail=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_sendEmail);
 
     }

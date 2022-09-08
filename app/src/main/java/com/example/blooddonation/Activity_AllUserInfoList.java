@@ -257,6 +257,9 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         String dis = innerMap.get("District");
         if (dis != null)
             data.District = dis;
+        String age=innerMap.get("Age");
+        if(age!=null)
+            data.Age=age;
         String subDis = innerMap.get("SubDistrict");
         if (subDis != null)
             data.SubDistrict = subDis;
@@ -266,7 +269,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
 
         ///
-        //    Log.i("OKAY",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict);
+        Log.i("OKAY,AlL",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict+"->"+data.Age);
 
         //want to show only the donor list,so before adding check, isDonor=="true"
         //&&isDonor.equals("true")
