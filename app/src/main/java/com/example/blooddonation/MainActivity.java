@@ -151,6 +151,12 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+        TextView t=findViewById(R.id.SearchBloodMain_Activity);
+        t.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, Activity_SearchBlood.class);
+            startActivity(intent);
+
+        });
 
 
 //        ViewModel_SearchingBlood obj = new ViewModel_SearchingBlood();

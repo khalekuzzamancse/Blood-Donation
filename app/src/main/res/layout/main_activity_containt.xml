@@ -30,6 +30,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/SearchBloodMain_Activity"
                 android:layout_width="138dp"
                 android:layout_height="38dp"
                 android:text="Search Blood"
