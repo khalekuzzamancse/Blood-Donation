@@ -46,8 +46,8 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
         holder.TV_AllUserInfoListActivity_VH_Name.setText(name);
         String phoneNumber = list.get(position).PhoneNumber;
         holder.TV_AllUserInfoListActivity_VH_Phone.setText(phoneNumber);
-        String email = list.get(position).Email;
-        holder.TV_AllUserInfoListActivity_VH_Email.setText(email);
+    //    String email = list.get(position).Email;
+       // holder.TV_AllUserInfoListActivity_VH_Email.setText(email);
         String gender = list.get(position).Gender;
         holder.TV_AllUserInfoListActivity_VH_Gender.setText(gender);
         String bloodGroup = list.get(position).BloodGroup;
@@ -59,9 +59,9 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
         String CurrentUserEmail = MainActivity.model.getSignUserInfo().getValue().get("Email");
         if(CurrentUserEmail.equals("null"))
         {
-            holder.TV_AllUserInfoListActivity_VH_Name.setText("Available");
+
             holder.TV_AllUserInfoListActivity_VH_Phone.setText("Available");
-            holder.TV_AllUserInfoListActivity_VH_Email.setText("Available");
+//            holder.TV_AllUserInfoListActivity_VH_Email.setText("Available");
         }
         ///
         holder.TV_AllUserInfoListActivity_VH_sendCall.setOnClickListener(new View.OnClickListener() {
@@ -81,24 +81,24 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
 
             }
         });
-        holder.TV_AllUserInfoListActivity_VH_sendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = MainActivity.model.getSignUserInfo().getValue().get("Email");
-                if (email.equals("null")) {
-
-                    Snackbar.make(holder.TV_AllUserInfoListActivity_VH_sendEmail, "Login,Please", Snackbar.LENGTH_SHORT).show();
-                } else {
-                    String Email = holder.TV_AllUserInfoListActivity_VH_Email.getText().toString().trim();
-                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto", email, null));
-                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
-                    context.startActivity(Intent.createChooser(emailIntent, null));
-                }
-
-
-            }
-        });
+//        holder.TV_AllUserInfoListActivity_VH_sendEmail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String email = MainActivity.model.getSignUserInfo().getValue().get("Email");
+//                if (email.equals("null")) {
+//
+//                    Snackbar.make(holder.TV_AllUserInfoListActivity_VH_sendEmail, "Login,Please", Snackbar.LENGTH_SHORT).show();
+//                } else {
+//                    String Email = holder.TV_AllUserInfoListActivity_VH_Email.getText().toString().trim();
+//                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+//                            "mailto", email, null));
+//                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
+//                    context.startActivity(Intent.createChooser(emailIntent, null));
+//                }
+//
+//
+//            }
+//        });
 
 
     }

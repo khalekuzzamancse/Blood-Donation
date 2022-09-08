@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         model.getSignUserInfo().observe(MainActivity.this, new Observer<HashMap<String, String>>() {
             @Override
             public void onChanged(HashMap<String, String> userInfo) {
+
                 String email = userInfo.get("Email");
                 if (email.equals("null")) {
                     navigationView.getMenu().clear();
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         districtListModel.getDistrictListHashMap().observe(this, new Observer<HashMap<String, List<String>>>() {
             @Override
             public void onChanged(HashMap<String, List<String>> stringListHashMap) {
+
                 stringListHashMap.remove("");
                 Log.i("Getting", String.valueOf(stringListHashMap));
             }

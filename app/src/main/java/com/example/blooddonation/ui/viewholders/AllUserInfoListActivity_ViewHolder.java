@@ -11,26 +11,26 @@ public class AllUserInfoListActivity_ViewHolder extends RecyclerView.ViewHolder 
     //VH=ViewHolder
     //TV=TextView
     public TextView TV_AllUserInfoListActivity_VH_Name;
-    public TextView TV_AllUserInfoListActivity_VH_Email;
+  //  public TextView TV_AllUserInfoListActivity_VH_Email;
     public TextView TV_AllUserInfoListActivity_VH_Phone;
     public TextView TV_AllUserInfoListActivity_VH_Gender;
     public TextView TV_AllUserInfoListActivity_VH_Blood_Group;
     public TextView TV_AllUserInfoListActivity_VH_Location;
     public ImageButton TV_AllUserInfoListActivity_VH_sendCall;
-    public ImageButton TV_AllUserInfoListActivity_VH_sendEmail;
+ //   public ImageButton TV_AllUserInfoListActivity_VH_sendEmail;
 
 
     public AllUserInfoListActivity_ViewHolder(@NonNull View itemView) {
         super(itemView);
 
         TV_AllUserInfoListActivity_VH_Name=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Name);
-        TV_AllUserInfoListActivity_VH_Email=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Email);
+    //    TV_AllUserInfoListActivity_VH_Email=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Email);
         TV_AllUserInfoListActivity_VH_Phone=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_PhoneNumber);
         TV_AllUserInfoListActivity_VH_Gender=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Gender);
         TV_AllUserInfoListActivity_VH_Blood_Group=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_BloodGroup);
         TV_AllUserInfoListActivity_VH_Location=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_Location);
         TV_AllUserInfoListActivity_VH_sendCall=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_call);
-        TV_AllUserInfoListActivity_VH_sendEmail=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_sendEmail);
+      //  TV_AllUserInfoListActivity_VH_sendEmail=itemView.findViewById(R.id.RecyclerLayout_AllUserInfoList_sendEmail);
 
     }
 }
