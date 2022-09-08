@@ -65,7 +65,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         //if the there are any error  message then the checkedBloodGroupField() will clear or do not clear the message
        checkBloodGroupField();
         search.setOnClickListener(view -> {
-            bloodGroupLayout.setError(null);
+
          p=findViewById(R.id.ActivitySearch_ProgressBar);
           //  p.setVisibility(View.VISIBLE);
 
