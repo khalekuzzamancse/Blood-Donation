@@ -106,8 +106,10 @@
             android:gravity="end|bottom"
             android:src="@drawable/icon_phone_number"
             android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/RecyclerLayout_AllUserInfoList_PhoneNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/RecyclerLayout_AllUserInfoList_PhoneNumber"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,15 +14,31 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView_ActivityAllUserList"
-        android:layout_width="match_parent"
-        android:layout_height="637dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:layout_margin="16dp"
+        android:id="@+id/textView4"
+        android:textStyle="bold"
+        android:background="@drawable/background_about_us"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:backgroundTint="#2196F3"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Result For:"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 

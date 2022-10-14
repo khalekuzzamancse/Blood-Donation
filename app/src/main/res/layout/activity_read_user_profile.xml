@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/ActivityScrollable_IncludedToolbar"
-        layout="@layout/layout_toolbar_for_non_home_activity"
+        layout="@layout/toolbar_for_show_profile"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-2dp" />
 
@@ -151,29 +151,29 @@
                 app:layout_constraintStart_toStartOf="@+id/Activity_showProfile_subDistrict"
                 app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_subDistrict" />
 
-            <Button
-                android:textAllCaps="false"
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
-                android:text="Edit"
-             android:drawableLeft="@drawable/icon_edit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Age" />
+<!--            <Button-->
+<!--                android:textAllCaps="false"-->
+<!--                android:id="@+id/button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="28dp"-->
+<!--                android:text="Edit"-->
+<!--             android:drawableLeft="@drawable/icon_edit"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/Activity_showProfile_Age" />-->
 
-            <Button
-                android:textAllCaps="false"
-                android:id="@+id/delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:drawableLeft="@drawable/icoon_delete"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.846"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintTop_toTopOf="@+id/button" />
+<!--            <Button-->
+<!--                android:textAllCaps="false"-->
+<!--                android:id="@+id/delete"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Delete"-->
+<!--                android:drawableLeft="@drawable/icoon_delete"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.846"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/button"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/button" />-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

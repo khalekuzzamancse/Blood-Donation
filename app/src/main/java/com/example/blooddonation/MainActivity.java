@@ -33,11 +33,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static ViewModel_UserProfileInfo model;
     public static ViewModel_AllDistrictList districtListModel;
-    private ViewModel_SearchingBlood model_searchingBlood;
     public static String Extra_Login = "null";
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
+    private ViewModel_SearchingBlood model_searchingBlood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        districtListModel= new ViewModelProvider(this).get(ViewModel_AllDistrictList.class);
+        districtListModel = new ViewModelProvider(this).get(ViewModel_AllDistrictList.class);
         districtListModel.getDistrictListHashMap().observe(this, new Observer<HashMap<String, List<String>>>() {
             @Override
             public void onChanged(HashMap<String, List<String>> stringListHashMap) {
@@ -112,8 +112,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
 
 
-
-
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_SearchBlood) {
                     Intent intent = new Intent(MainActivity.this, Activity_SearchBlood.class);
                     startActivity(intent);
@@ -141,17 +139,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //
-        TextView allDonor=findViewById(R.id.All_DonorList);
+        TextView allDonor = findViewById(R.id.All_DonorList);
         allDonor.setOnClickListener(view -> {
-            Intent intent=new Intent(this,Activity_AllUserInfoList.class);
-            intent.putExtra(Activity_AllUserInfoList.Extra_ComingFrom,"Main");
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup,"null");
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_District,"null");
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict,"null");
+            Intent intent = new Intent(this, Activity_AllUserInfoList.class);
+            intent.putExtra(Activity_AllUserInfoList.Extra_ComingFrom, "Main");
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup, "null");
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_District, "null");
+            intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict, "null");
 
             startActivity(intent);
         });
-        TextView t=findViewById(R.id.SearchBloodMain_Activity);
+        TextView t = findViewById(R.id.SearchBloodMain_Activity);
         t.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, Activity_SearchBlood.class);
             startActivity(intent);

@@ -12,24 +12,39 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:layout_margin="16dp"
+        android:justificationMode="inter_word"
+        android:padding="16dp"
         android:text="Blood is the most precious gift that anyone can give to another person — the gift of life.
 A decision to donate your blood can save a life, or even several
 if your blood is separated into its components — red cells, platelets and plasma —
 which can be used individually for patients with specific conditions.
-Safe blood saves lives and improves health. Blood transfusion is needed for:
+Safe blood saves lives and improves health.\n\nBlood transfusion is needed for:
 women with complications of pregnancy, such as ectopic pregnancies and haemorrhage before, during or after childbirth.
 children with severe anaemia often resulting from malaria or malnutrition.
 people with severe trauma following man-made and natural disasters.
 many complex medical and surgical procedures and cancer patients.
 "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:alpha=".50"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include2"
+        app:srcCompat="@drawable/image_why_donat" />
 </androidx.constraintlayout.widget.ConstraintLayout>

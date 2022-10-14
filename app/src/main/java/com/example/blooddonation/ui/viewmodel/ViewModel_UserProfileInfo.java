@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ViewModel_UserProfileInfo extends ViewModel {
+public class  ViewModel_UserProfileInfo extends ViewModel {
     private FirebaseFirestore db;
     private  FirebaseAuth auth;
     FirebaseUser currentUser;

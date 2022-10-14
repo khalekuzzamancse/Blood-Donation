@@ -12,16 +12,41 @@
         layout="@layout/layout_toolbar_for_non_home_activity" />
 
     <TextView
+        android:elevation="5dp"
+        android:layout_margin="8dp"
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:background="@drawable/background_about_us"
+        android:justificationMode="inter_word"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:padding="16dp"
-        android:text="The About Us Page is one of the most significant pages of a website.This About Us Page is a company introduction page for a blog or websites' visitors. It is one of the best options for visitors. Because when the visitors will come to your website they will know about your company or organization or your business policies. This About Us Page Generator tool helps you to create customizable introductory content. Like the company's founder or internal information, year of establishment, when and where this business runs etc. This is an opportunity for your clients to introduce themselves and the form of business they do for his or her customers. Clicking faraway from the homepage, wherein it's far largest wanted for a fast view."
+        android:text="The About Us Page is one of the most significant pages of a website.This About Us Page is a company introduction page for a blog or websites' visitors.It is one of the best options for visitors. Because when the visitors will come to your website they will know about your company or organization or your business policies.\n\nThis About Us Page Generator tool helps you to create customizable introductory content. Like the company's founder or internal information, year of establishment, when and where this business runs etc. This is an opportunity for your clients to introduce themselves and the form of business they do for his or her customers. Clicking faraway from the homepage, wherein it's far largest wanted for a fast view."
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:backgroundTint="#D0FF5E07"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_about_us"
+        android:elevation="10dp"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:text="Supervised by Monishanker Halder\nAssistant Professor of CSE,JUST"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:justificationMode="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.251" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

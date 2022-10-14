@@ -1,5 +1,5 @@
 
-<com.google.android.material.card.MaterialCardView
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +7,9 @@
     android:clickable="true"
     android:id="@+id/NavbarHeader_Not_Singed_in"
     style="?attr/materialCardViewElevatedStyle"
-    app:cardElevation="2dp"
+    app:cardElevation="5dp"
    app:cardBackgroundColor="@color/light_purple"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
   >
 
@@ -19,20 +19,19 @@
 
 
         <ImageView
-
             android:id="@+id/NavbarHeader_Image"
-            android:layout_width="match_parent"
-            android:layout_height="166dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/blood_donation" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
 
 

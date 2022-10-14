@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.blooddonation.ui.adapters.AllUserInfoListActivity_Adapter;
 import com.example.blooddonation.ui.datatypes.AllUserInfoListActivity_DataType;
@@ -73,7 +74,9 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         String Dis = intent.getStringExtra(EXTRA_District);
         String SubDis = intent.getStringExtra(EXTRA_SubDistrict);
         String comingFrom=intent.getStringExtra(Extra_ComingFrom);
+        TextView tv=findViewById(R.id.textView4);
 
+        tv.setText("Search Result For: "+Blood);
 
 
 
@@ -244,32 +247,31 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         //Log.i("HEYYY",UserEmail+"->"+Li.size());
         String name = innerMap.get("Name");
         if (name != null)
-            data.Name = name;
+            data.Name = "Name: "+name;
         String email = innerMap.get("Email");
         if (email != null)
-            data.Email = email;
+            data.Email ="Email: "+email;
         String phone = innerMap.get("PhoneNumber");
         if (phone != null)
-            data.PhoneNumber = phone;
+            data.PhoneNumber ="Phone No: "+phone;
         String gender = innerMap.get("Gender");
         if (gender != null)
-            data.Gender = gender;
+            data.Gender ="Gender: "+gender;
         String bloodGroup = innerMap.get("BloodGroup");
         if (bloodGroup != null)
-            data.BloodGroup = bloodGroup;
+            data.BloodGroup = "Blood Group: "+bloodGroup;
         String dis = innerMap.get("District");
         if (dis != null)
-            data.District = dis;
+            data.District ="Location: "+dis;
         String age=innerMap.get("Age");
         if(age!=null)
-            data.Age=age;
+            data.Age="Age: "+age;
         String subDis = innerMap.get("SubDistrict");
         if (subDis != null)
             data.SubDistrict = subDis;
         String donor=innerMap.get("isDonor");
         if(donor==null)
             donor="false";
-
 
         ///
         Log.i("OKAY,AlL",data.Name+"->"+data.Email+"->"+data.PhoneNumber+"->"+data.Gender+"->"+data.BloodGroup+"->"+data.District+"->"+data.SubDistrict+"->"+data.Age);

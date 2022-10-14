@@ -55,7 +55,7 @@ public class Activity_UpdateProfile extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_item_for_non_home_activity_toolbar, menu);
+        inflater.inflate(R.menu.menu_edit_profile, menu);
         return true;
     }
 
