@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity_UpdateProfile">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_UpdateProfile_TextInputLayout_Name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_margin="20dp"
-        android:hint="Pick Date"
-        app:layout_constraintBottom_toTopOf="@+id/Activity_UpdateProfile_Button_Save"
-        app:startIconDrawable="@drawable/icon_person"
-        tools:layout_editor_absoluteX="0dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/UpdateDoanteDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/Activity_UpdateProfile_Button_Save"
+    <TextView
+        android:id="@+id/tvSelectDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#F8D7D7"
+        android:text="Select Date"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/etSelectDate"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/etSelectDate"
+        app:layout_constraintTop_toBottomOf="@+id/etSelectDate" />
+
+    <EditText
+        android:id="@+id/etSelectDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/background_about_us"
+        android:backgroundTint="@color/purple_200"
+        android:hint="Select Date"
+        android:gravity="center"
+        android:inputType="none"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:elevation="5dp"
+        android:id="@+id/Activity_UpdateProfile_Button_Save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_about_us"
+        android:backgroundTint="@color/teal_700"
         android:text="Save"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/Activity_UpdateProfile_TextInputLayout_Name" />
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/etSelectDate"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="@+id/etSelectDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectDate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
