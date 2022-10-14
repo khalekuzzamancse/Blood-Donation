@@ -11,6 +11,9 @@
         layout="@layout/layout_toolbar_for_non_home_activity" />
 
     <TextView
+        android:alpha="0.6"
+        android:elevation="10dp"
+        android:background="@drawable/background_about_us"
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,7 +30,7 @@ children with severe anaemia often resulting from malaria or malnutrition.
 people with severe trauma following man-made and natural disasters.
 many complex medical and surgical procedures and cancer patients.
 "
-        android:textColor="@color/black"
+        android:textColor="@color/secondary_crane_red"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
