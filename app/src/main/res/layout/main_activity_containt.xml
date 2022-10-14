@@ -9,127 +9,88 @@
     tools:layout_editor_absoluteY="7dp">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/MainActivity_Contain_element1_1"
+    <TextView
+        android:background="@drawable/background_about_us"
+        android:backgroundTint="#FFEB3B"
+        android:padding="10dp"
+        android:elevation="8dp"
+       android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:id="@+id/SearchBloodMain_Activity"
         android:layout_width="0dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="208dp"
-        android:layout_marginEnd="18dp"
-        app:cardBackgroundColor="#728FCE"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/MainActivity_Contain_element1_2"
-        app:layout_constraintHorizontal_chainStyle="packed"
-
-        app:layout_constraintHorizontal_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:drawableLeft="@drawable/icon_search"
+        android:gravity="center"
+        android:text="Search Blood"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/SearchBloodMain_Activity"
-                android:layout_width="138dp"
-                android:layout_height="38dp"
-                android:text="Search Blood"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/icon_search"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/MainActivity_Contain_element1_2"
+    <TextView
+        android:drawableTint="@color/black"
+        android:background="@drawable/background_about_us"
+        android:backgroundTint="#FFEB3B"
+        android:padding="10dp"
+        android:elevation="8dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/All_DonorList"
         android:layout_width="0dp"
-        android:layout_height="105dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_list"
+        android:gravity="center"
+        android:text="All Donor List"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:background="@drawable/background_about_us"
+        android:backgroundTint="#FFEB3B"
+        android:padding="10dp"
+        android:elevation="8dp"
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:drawableTint="@color/black"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:drawableLeft="@drawable/icon_helpline"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Help Line"
+        app:layout_constraintEnd_toStartOf="@+id/All_DonorList"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/SearchBloodMain_Activity"
+        app:layout_constraintTop_toBottomOf="@+id/SearchBloodMain_Activity" />
+
+    <TextView
+        android:background="@drawable/background_about_us"
+        android:backgroundTint="#FFEB3B"
+        android:padding="10dp"
+        android:elevation="8dp"
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:drawableLeft="@drawable/icon_person"
         android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="#728FCE"
-        app:cardElevation="8dp"
+        android:layout_height="wrap_content"
+        android:text="Total User"
+        android:gravity="center"
+        android:drawableTint="@color/black"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/SearchBloodMain_Activity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/MainActivity_Contain_element1_1"
-        app:layout_constraintTop_toTopOf="@+id/MainActivity_Contain_element1_1" >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/All_DonorList"
-                android:layout_width="138dp"
-                android:layout_height="38dp"
-                android:text="All Donor List"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/icon_list"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/MainActivity_Contain_element2_2"
-        android:layout_width="0dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="#728FCE"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/MainActivity_Contain_element2_1"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="@+id/MainActivity_Contain_element1_1"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivity_Contain_element1_1"
-
-        >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="138dp"
-                android:layout_height="38dp"
-                android:text="Help Line"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/icon_helpline"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/MainActivity_Contain_element2_1"
-        android:layout_width="0dp"
-        android:layout_height="102dp"
-        app:cardBackgroundColor="#728FCE"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/MainActivity_Contain_element1_2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/MainActivity_Contain_element2_2"
-        app:layout_constraintTop_toTopOf="@+id/MainActivity_Contain_element2_2"
-        app:layout_constraintVertical_weight="1">
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toEndOf="@+id/SearchBloodMain_Activity"
+        app:layout_constraintTop_toTopOf="@+id/SearchBloodMain_Activity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
