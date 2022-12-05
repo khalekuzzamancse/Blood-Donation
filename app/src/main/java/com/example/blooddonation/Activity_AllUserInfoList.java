@@ -2,6 +2,7 @@ package com.example.blooddonation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,12 +12,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.blooddonation.database.Callback;
 import com.example.blooddonation.database.FirebaseCustom;
 import com.example.blooddonation.ui.adapters.AllUserInfoListActivity_Adapter;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +30,10 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     public static final String EXTRA_District = "District";
     public static final String EXTRA_SubDistrict = "SubDistrict";
     public static final String Extra_ComingFrom = "NotMain";
-    private List<DomainUserInfo> list;
+
     RecyclerView r;
     AllUserInfoListActivity_Adapter adapter;
+    CircularProgressIndicator progressIndicator;
 
 
     @Override
@@ -36,6 +41,8 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_user_info_list);
 
+        //
+        progressIndicator=findViewById(R.id.progrssbar);
 ///
         Toolbar toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
@@ -55,29 +62,45 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
             tv.setText("All donar list");
 
         ////
-        list = new ArrayList<>();
 
         Callback callback = new Callback() {
             @Override
             public void receivedList(List<DomainUserInfo> List) {
-                list = List;
-                Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
+                progressIndicator.setVisibility(View.INVISIBLE);
+              //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
+                if (List.isEmpty())
+                    showSnackbar("Not Found");
                 updateAdapter(List);
+
+
             }
         };
         FirebaseCustom db = new FirebaseCustom();
         if (comingFrom.equals("Main"))
+        {
+            progressIndicator.setVisibility(View.VISIBLE);
             db.getAllDonorList(callback);
+        }
+
 
         //Note: the order of the ,if-else ladder is important
         if (!SubDis.equals("null")&&!Blood.equals("null") &&!Dis.equals("null"))
+        {
             db.getBloodGroupSubDisWiseList(Blood,Dis,SubDis,callback);
-       else if ((!Blood.equals("null"))&&(Dis.equals("null"))&&(SubDis.equals("null")))
-                db.getBloodGroupWiseList(Blood,callback);
+            progressIndicator.setVisibility(View.VISIBLE);
+
+        }
+
+       else if ((!Blood.equals("null"))&&(Dis.equals("null"))&&(SubDis.equals("null"))) {
+            db.getBloodGroupWiseList(Blood, callback);
+            progressIndicator.setVisibility(View.VISIBLE);
+        }
 //        else  if (!Dis.equals("null")&&Blood.equals("null") && SubDis.equals("null"))
 //            db.getDistrictWiseDonorList(Dis,callback);
-        else if(!Dis.equals("null")&&!Blood.equals("null") && SubDis.equals("null"))
-            db.getBloodGroupDisWiseList(Blood,Dis,callback);
+        else if(!Dis.equals("null")&&!Blood.equals("null") && SubDis.equals("null")) {
+            db.getBloodGroupDisWiseList(Blood, Dis, callback);
+            progressIndicator.setVisibility(View.VISIBLE);
+        }
 //        else if (!SubDis.equals("null")&&Blood.equals("null"))
 //            db.getSubDistrictWiseDonorList(Dis,SubDis,callback);
 
@@ -105,6 +128,13 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
         r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
         r.setAdapter(adapter);
     }
+    void showSnackbar(String msg) {
+        Snackbar snackbar = Snackbar
+                .make(progressIndicator, msg, Snackbar.LENGTH_LONG);
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
+        snackbar.show();
+    }
+
 
 }
 
