@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ViewModel_AllDistrictList extends ViewModel {
     private MutableLiveData<HashMap<String, List<String>>> DistrictListHashMap;
-    private MutableLiveData<List<String>>DistrictList;
+    private MutableLiveData<List<String>> DistrictList;
 
     public ViewModel_AllDistrictList() {
         List<String> L5 = new ArrayList<>();
@@ -26,24 +26,24 @@ public class ViewModel_AllDistrictList extends ViewModel {
         //  initializeHashMap_District();
         DistrictListHashMap = new MutableLiveData<>(HM);
         //initialize district list;
-        List<String>L=new ArrayList<>();
-        DistrictList=new MutableLiveData<>(L);
+        List<String> L = new ArrayList<>();
+        DistrictList = new MutableLiveData<>(L);
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db = FirebaseFirestore.getInstance();
-            db.collection("DistrictList")
-                    .addSnapshotListener((QuerySnapshot q, FirebaseFirestoreException e) -> {
-                        if (e != null) {
-                            //
-                        } else {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
+        db.collection("DistrictList")
+                .addSnapshotListener((QuerySnapshot q, FirebaseFirestoreException e) -> {
+                    if (e != null) {
+                        //
+                    } else {
 
-                                DataType_DistrictList d=new DataType_DistrictList();
-                                List<DataType_DistrictList> list = new ArrayList<>();
-                                list = q.toObjects(DataType_DistrictList.class);
-                                setData(list);
+                        DataType_DistrictList d = new DataType_DistrictList();
+                        List<DataType_DistrictList> list = new ArrayList<>();
+                        list = q.toObjects(DataType_DistrictList.class);
+                        setData(list);
 
-                        }
-                    });
+                    }
+                });
 
 
     }
@@ -56,25 +56,24 @@ public class ViewModel_AllDistrictList extends ViewModel {
     public MutableLiveData<HashMap<String, List<String>>> getDistrictListHashMap() {
         return DistrictListHashMap;
     }
-    private void setData(List<DataType_DistrictList>list)
-    {
 
-      for(int i=0;i<list.size();i++)
-      {
-          List<String>existingDistrictList=new ArrayList<>();
-          List<String> SubDistrictList=list.get(i).SubDistrict;
-          existingDistrictList=DistrictList.getValue();
-          String district=list.get(i).Id;
-          existingDistrictList.add(district);
-          DistrictList.postValue(existingDistrictList);
-          Log.i("Getting,MM", String.valueOf(existingDistrictList));
-          HashMap<String,List<String>>tmp=new HashMap<>();
-          tmp=DistrictListHashMap.getValue();
-          tmp.put(district,SubDistrictList);
-          Log.i("Getting,M", String.valueOf(tmp));
-          DistrictListHashMap.postValue(tmp);
+    private void setData(List<DataType_DistrictList> list) {
 
-      }
+        for (int i = 0; i < list.size(); i++) {
+            List<String> existingDistrictList = new ArrayList<>();
+            List<String> SubDistrictList = list.get(i).SubDistrict;
+            existingDistrictList = DistrictList.getValue();
+            String district = list.get(i).Id;
+            existingDistrictList.add(district);
+            DistrictList.postValue(existingDistrictList);
+            Log.i("Getting,MM", String.valueOf(existingDistrictList));
+            HashMap<String, List<String>> tmp = new HashMap<>();
+            tmp = DistrictListHashMap.getValue();
+            tmp.put(district, SubDistrictList);
+            Log.i("Getting,M", String.valueOf(tmp));
+            DistrictListHashMap.postValue(tmp);
+
+        }
 
 
     }

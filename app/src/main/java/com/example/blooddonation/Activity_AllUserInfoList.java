@@ -1,10 +1,7 @@
 package com.example.blooddonation;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,16 +17,8 @@ import com.example.blooddonation.database.Callback;
 import com.example.blooddonation.database.FirebaseCustom;
 import com.example.blooddonation.ui.adapters.AllUserInfoListActivity_Adapter;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
-import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingBlood;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Activity_AllUserInfoList extends AppCompatActivity {

@@ -5,29 +5,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
-import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingBlood;
 import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,14 +31,13 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     TextView helpline;
-    private ViewModel_SearchingBlood model_searchingBlood;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      //  startActivity(new Intent(this,Datatest_Activity.class));
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
         helpline=findViewById(R.id.helpline);
@@ -167,8 +158,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        ViewModel_SearchingBlood obj = new ViewModel_SearchingBlood();
-//        obj.AllUserInfoList();
 
     }
 
