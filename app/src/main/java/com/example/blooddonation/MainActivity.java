@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
+    TextView helpline;
     private ViewModel_SearchingBlood model_searchingBlood;
 
     @Override
@@ -44,8 +46,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+      //  startActivity(new Intent(this,Datatest_Activity.class));
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
+        helpline=findViewById(R.id.helpline);
+        helpline.setOnClickListener(view -> {
+
+            startActivity(new Intent(this,HelpLineActivity.class
+            ));
+        });
 
         toolbar = findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
@@ -78,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
         districtListModel = new ViewModelProvider(this).get(ViewModel_AllDistrictList.class);
         districtListModel.getDistrictListHashMap().observe(this, new Observer<HashMap<String, List<String>>>() {

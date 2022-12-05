@@ -49,7 +49,7 @@
 
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/helpline"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_margin="15dp"

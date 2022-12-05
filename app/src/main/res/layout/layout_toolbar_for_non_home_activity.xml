@@ -16,6 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/menu_item_for_non_home_activity_toolbar"
-            android:background="#BEF81A5A"
+            android:background="#2A40BC"
             />
     </com.google.android.material.appbar.AppBarLayout>

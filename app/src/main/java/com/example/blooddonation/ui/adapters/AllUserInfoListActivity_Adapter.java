@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blooddonation.MainActivity;
 import com.example.blooddonation.R;
-import com.example.blooddonation.ui.datatypes.AllUserInfoListActivity_DataType;
+import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.ui.viewholders.AllUserInfoListActivity_ViewHolder;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,9 +20,9 @@ import java.util.List;
 
 public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUserInfoListActivity_ViewHolder> {
     Context context;
-    List<AllUserInfoListActivity_DataType> list;
+    List<DomainUserInfo> list;
 
-    public AllUserInfoListActivity_Adapter(Context context, List<AllUserInfoListActivity_DataType> list) {
+    public AllUserInfoListActivity_Adapter(Context context, List<DomainUserInfo> list) {
         this.context = context;
         this.list = list;
     }

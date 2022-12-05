@@ -43,7 +43,9 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
     List<String> subDistrictList=new ArrayList<>();
     ProgressBar p;
-    EditText bloodGroup;
+    AutoCompleteTextView bloodGroup;
+    Button clear;
+    AutoCompleteTextView bG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         getSupportActionBar().setTitle("Search Blood");
         setBloodGroup();
         setLocation();
+        clear=findViewById(R.id.Activity_SearchBlood_Button_Cancel);
 
         bloodGroup=findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
    bloodGroupLayout=findViewById(R.id.Activity_SearchBlood_TextInputLayout_BloodGroup);
@@ -92,7 +95,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
             //if the user not choosen a bloodGroup then we do not show the list
 
             if(!bloodGroup.getText().toString().isEmpty())
-           startActivity(intent);
+          startActivity(intent);
             else
             {
                 //if user not chosen a bloodGroup but clicked the submit button.
@@ -101,6 +104,10 @@ public class Activity_SearchBlood extends AppCompatActivity {
             }
 
 
+        });
+        clear.setOnClickListener(view->{
+            bloodGroup.setText("null");
+            Log.i("Ckssdkfjkfjsd","kjfwf");
         });
 
 
@@ -141,6 +148,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
             }
         });
+
     }
 
 
