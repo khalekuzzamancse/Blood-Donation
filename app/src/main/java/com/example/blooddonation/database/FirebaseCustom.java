@@ -26,10 +26,8 @@ public class FirebaseCustom {
     FirebaseFirestore db;
     Callback callbackCustom;
     List<DomainUserInfo> list;
-    String userType = "";
-    boolean increment = false;
     private CallbackNoOfDoc callbackNoOfDoc,callbackTot_Donor;
-    private static String collectionName = "UserInfo";
+    private static final String collectionName = "UserInfo";
 
     OnCompleteListener<QuerySnapshot> callbackQS = new OnCompleteListener<QuerySnapshot>() {
         @Override

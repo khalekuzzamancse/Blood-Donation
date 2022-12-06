@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.blooddonation.database.Callback;
 import com.example.blooddonation.database.CallbackNoOfDoc;
+import com.example.blooddonation.database.CallbackUserProfile;
+import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.database.FirebaseCustom;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
@@ -52,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
         tot_userTV = findViewById(R.id.tot_user);
         FirebaseCustom db = new FirebaseCustom();
         //  progressIndicator.setVisibility(View.VISIBLE);
+
+
+        //
+//
+        CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
+            @Override
+            public void getProfile(DomainUserInfo profile) {
+
+            }
+        };
+        FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
+        authCustom.getUserInfo(callbackUserProfile);
 
         //callback for donor
         CallbackNoOfDoc callbackTotDonor = new CallbackNoOfDoc() {
