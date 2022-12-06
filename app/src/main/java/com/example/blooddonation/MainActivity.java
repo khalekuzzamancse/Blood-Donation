@@ -21,8 +21,8 @@ import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.database.BloodInfo;
 import com.example.blooddonation.database.FormFillUpInfo;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
-import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
-import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
+import com.example.blooddonation.viewmodel.ViewModel_AllDistrictList;
+import com.example.blooddonation.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        //<---------Getting district and sub district section start ----->
+        //<---------Getting district and sub district section start ----->
         ///call back for district list
         CallbackStringList callbackDistrictList=new CallbackStringList() {
             @Override
@@ -76,9 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        //
+        //calling the  method for sub district list
         locationInfo.getSubDistricts("Dhaka",callbackSubDistrictList);
-        ///
+        //<---------Getting district and sub district section end ----->
+        //<---------Getting district and sub district section end ----->
 
 
 
