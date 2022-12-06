@@ -2,6 +2,7 @@ package com.example.blooddonation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,13 +16,17 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.blooddonation.database.CallbackResult;
 import com.example.blooddonation.database.CallbackStringList;
 import com.example.blooddonation.database.CallbackUserProfile;
 import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.database.FormFillUpInfo;
+import com.example.blooddonation.database.WritingDocument;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +48,6 @@ public class EditProfileActivity extends AppCompatActivity {
             setBloodGroup();
             setDistrict();
             nameET.setText(info.Name);
-            emailET.setText(info.Email);
             phoneET.setText(info.PhoneNumber);
             //if the user is a donor then it have age other wise age is null
             // because non donor use not store the age information
@@ -52,6 +56,25 @@ public class EditProfileActivity extends AppCompatActivity {
 
         }
     };
+
+    //
+   private CallbackResult callbackResult = new CallbackResult() {
+
+        @Override
+        public void isSuccess(boolean response) {
+          //  progressBar.setVisibility(View.INVISIBLE);
+            if (response)
+                showSnackBar("Updated Successfully");
+            else
+                showSnackBar("Failed");
+//            Intent intent = getIntent();
+//            finish();
+//            startActivity(intent);
+//            Intent i = new Intent(Become_Donor_Activity.this, MainActivity.class);
+//            startActivity(i);
+        }
+    };
+    //
 
 
     @Override
@@ -63,6 +86,14 @@ public class EditProfileActivity extends AppCompatActivity {
         setToolbar();
         FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
         authCustom.getUserInfo(callbackUserProfile);
+
+        submitBTN.setOnClickListener(view -> {
+            updateInfo();
+
+        });
+        cancelBTN.setOnClickListener(view->{
+            onBackPressed();
+        });
 
     }
 
@@ -157,6 +188,43 @@ public class EditProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Update Profile");
+    }
+    private void updateInfo() {
+        HashMap<String, Object> data = new HashMap<>();
+        String name=nameET.getText().toString().trim();
+        data.put("Name",name);
+        String phone=phoneET.getText().toString().trim();
+        data.put("PhoneNumber",phone);
+        String Age = ageET.getText().toString().trim();
+        data.put("Age", Age);
+        String gender = genderACTV.getText().toString().trim();
+        data.put("Gender", gender);
+        String bloodGroup = bloodGroupACTV.getText().toString().trim();
+        data.put("BloodGroup", bloodGroup);
+        String dis = districtACTV.getText().toString().trim();
+        data.put("District", dis);
+        String subDis = subDistrictACTV.getText().toString().trim();
+        data.put("SubDistrict", subDis);
+        data.put("isDonor", "true");
+        WritingDocument document = new WritingDocument();
+        document.updateDocument(info.Email, data, callbackResult);
+         Log.i("DataGot", String.valueOf(data));
+    }
+    void showSnackBar(String msg) {
+        Snackbar snackbar = Snackbar
+                .make(submitBTN, msg, Snackbar.LENGTH_LONG);
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
+        snackbar.show();
+    }
+    ////replace the back button with navigationUp because
+    //1.Main activity read the data from the database
+    //2.based on user data some menu item will be hide
+    //3.if we use navigation up then main activity will be recreated
+    //4.as a result we got the updated data
+    //5.according to updated data menu item list will be updated
+    @Override
+    public void onBackPressed() {
+        onNavigateUp();
     }
 
 }

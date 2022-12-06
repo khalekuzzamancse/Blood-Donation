@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="Email"
+        android:visibility="gone"
         app:startIconDrawable="@drawable/icon_email">
 
         <com.google.android.material.textfield.TextInputEditText
