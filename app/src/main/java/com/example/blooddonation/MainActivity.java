@@ -65,8 +65,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+        //getting the district list
         FormFillUpInfo locationInfo=new FormFillUpInfo();
-        locationInfo.getDistricts(callbackDistrictList);
+       locationInfo.getDistricts(callbackDistrictList);
+        //callback for sub district list
+        CallbackStringList callbackSubDistrictList=new CallbackStringList() {
+            @Override
+            public void receivedList(List<String> list) {
+                Log.i("LISTTTT", String.valueOf(list));
+
+            }
+        };
+        //
+        locationInfo.getSubDistricts("Dhaka",callbackSubDistrictList);
+        ///
+
 
 
         //

@@ -1,11 +1,19 @@
 package com.example.blooddonation.database;
 
-import androidx.annotation.NonNull;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -42,6 +50,18 @@ public class FormFillUpInfo {
         }
     };
 
+    EventListener<DocumentSnapshot> callbackDocSnapShot = new EventListener<DocumentSnapshot>() {
+        @Override
+        public void onEvent(@Nullable DocumentSnapshot document, @Nullable FirebaseFirestoreException error) {
+
+            if (document != null && document.exists()) {
+                //  Log.i("Fetched-Doc ", String.valueOf(document.getData()));
+                List<String> list = (List<String>) document.get("SubDistrict");
+                callback.receivedList(list);
+            }
+        }
+    };
+
     public void getDistricts(CallbackStringList callback) {
         this.callback = callback;
         CollectionReference cref = db.collection(collectionName);
@@ -63,5 +83,13 @@ public class FormFillUpInfo {
         return list;
     }
 
+    public void getSubDistricts(String district, CallbackStringList callback) {
+        this.callback = callback;
+        DocumentReference docRef = db.collection(collectionName).document(district);
+        docRef.addSnapshotListener(callbackDocSnapShot);
+    }
+
 
 }
+
+
