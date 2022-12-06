@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    TextView helpline, tot_userTV, tot_donorTv, allDonor,searchTV;
+    TextView helpline, tot_userTV, tot_donorTv, allDonor, searchTV;
     private String tot_Donor = "", tot_User = "";
-
+    DomainUserInfo userInfo;
+    FirebaseAuthCustom currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +44,19 @@ public class MainActivity extends AppCompatActivity {
         //  progressIndicator.setVisibility(View.VISIBLE);
         initialize();
         setToolbar();
+        hideMenuItem();
+        //we have to called hideMenu option two times
+        //1:when the main activity is just stared and we check the user singed in or not
+        //2:after main activity start,read the user profile(if singed in) then
+        //2.1 based on signed in info hide some menu
+
+        //getting the login user profile info,
+
         CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
             @Override
             public void getProfile(DomainUserInfo profile) {
-
+                userInfo = profile;
+                hideMenuItem();
             }
         };
         FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
@@ -75,14 +85,11 @@ public class MainActivity extends AppCompatActivity {
         db.getTotalUser(callbackNoOfDoc);
 
 
-
         helpline.setOnClickListener(view -> {
 
             startActivity(new Intent(this, HelpLineActivity.class
             ));
         });
-
-
 
 
         ///Livedata section
@@ -92,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if(id==R.id.login)
-                item.setVisible(false);
+                if (id == R.id.login)
+                    item.setVisible(false);
                 if (id == R.id.login) {
                     Intent intent = new Intent(MainActivity.this, Activity_Login.class);
                     startActivity(intent);
@@ -147,6 +154,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void hideMenuItem() {
+        Menu menu = navigationView.getMenu();
+        // if the user not singed in then hide
+        //become a donor,profile and logout option from the menu
+        if (currentUser.getUser() == null) {
+            menu.removeItem(R.id.become_a_donor);
+            menu.removeItem(R.id.logout);
+            menu.removeItem(R.id.show_profile);
+        }
+        //if the user is already login and he is donor then
+        //hide the login option ->since he already login
+        //hide the become donor because he is already a donor
+        else if (currentUser.getUser() != null &&userInfo.BloodGroup!=null) {
+            menu.removeItem(R.id.login);
+            menu.removeItem(R.id.become_a_donor);
+        }
+        //if the user is already login and he is not donor then
+        //hide the login option ->since he already login
+        else if (currentUser.getUser() != null && userInfo.BloodGroup==null) {
+            menu.removeItem(R.id.login);
+        }
+
+
+    }
+
     private void setToolbar() {
         toolbar = findViewById(R.id.ActivityMain_ToolBar);
         setSupportActionBar(toolbar);
@@ -156,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
     }
-    private void initialize()
-    {
+
+    private void initialize() {
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
         helpline = findViewById(R.id.helpline);
@@ -165,18 +198,8 @@ public class MainActivity extends AppCompatActivity {
         tot_userTV = findViewById(R.id.tot_user);
         allDonor = findViewById(R.id.All_DonorList);
         searchTV = findViewById(R.id.SearchBloodMain_Activity);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.nav_bar_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        return super.onOptionsItemSelected(item);
+        userInfo = new DomainUserInfo();
+        currentUser= new FirebaseAuthCustom();
     }
 
 

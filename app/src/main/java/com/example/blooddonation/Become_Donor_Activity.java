@@ -189,4 +189,14 @@ public class Become_Donor_Activity extends AppCompatActivity {
     }
 
 
+    ////replace the back button with navigationUp because
+    //1.Main activity read the data from the database
+    //2.based on user data some menu item will be hide
+    //3.if we use navigation up then main activity will be recreated
+    //4.as a result we got the updated data
+    //5.according to updated data menu item list will be updated
+    @Override
+    public void onBackPressed() {
+        onNavigateUp();
+    }
 }

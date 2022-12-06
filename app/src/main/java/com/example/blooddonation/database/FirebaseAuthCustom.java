@@ -17,18 +17,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FirebaseAuthCustom {
-    CallbackUserProfile callback;
-    FirebaseFirestore db;
-    FirebaseUser user;
+    private CallbackUserProfile callback;
+private     FirebaseFirestore db;
+ private    FirebaseUser user;
     private static final String collection = "UserInfo";
-    List<DomainUserInfo> list;
 
     public FirebaseAuthCustom() {
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    EventListener<DocumentSnapshot> callbackDocSnapShot = new EventListener<DocumentSnapshot>() {
+   private EventListener<DocumentSnapshot> callbackDocSnapShot = new EventListener<DocumentSnapshot>() {
         @Override
         public void onEvent(@Nullable DocumentSnapshot document, @Nullable FirebaseFirestoreException error) {
 
@@ -55,6 +54,12 @@ public class FirebaseAuthCustom {
             return user.getEmail();
         else
             return "";
+    }
+    public FirebaseUser getUser()
+    {
+        if(user==null)
+            return null;
+        return user;
     }
 
 }

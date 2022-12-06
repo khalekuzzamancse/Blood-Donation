@@ -70,18 +70,6 @@ public class FormFillUpInfo {
     }
 
 
-    public List<String> getBloodGroups() {
-        List<String> list = new ArrayList<>();
-        list.add("A+");
-        list.add("A-");
-        list.add("B+");
-        list.add("B-");
-        list.add("O+");
-        list.add("O-");
-        list.add("AB+");
-        list.add("AB-");
-        return list;
-    }
 
     public void getSubDistricts(String district, CallbackStringList callback) {
         this.callback = callback;
