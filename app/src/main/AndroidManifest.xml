@@ -34,7 +34,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Activity_AllUserInfoList"
+            android:name=".AllUserInfoList_Activity"
             android:exported="false"
             android:parentActivityName=".Activity_SearchBlood" />
         <activity
@@ -66,7 +66,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Activity_Become_Donar"
+            android:name=".Become_Donor_Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

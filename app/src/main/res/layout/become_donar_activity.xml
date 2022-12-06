@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Activity_Become_Donar">
+    tools:context=".Become_Donor_Activity">
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Age"
+        android:layout_margin="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+
         app:startIconDrawable="@drawable/icon_input"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
         android:hint="Age"
-     app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
        >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_EditText_Age"
+            android:id="@+id/ageET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -33,21 +29,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_Gender"
+        android:layout_margin="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
         app:startIconDrawable="@drawable/icon_gender"
-        android:layout_marginEnd="16dp"
         android:hint="Gender"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Age"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Age"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Age">
+       >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_Gender"
+            android:id="@+id/genderACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -58,21 +49,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
+        android:layout_margin="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
         app:startIconDrawable="@drawable/icon_blood_group"
         android:hint="Blood Group"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_Gender"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_Gender"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_Gender">
+       >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_BloodGroup"
+            android:id="@+id/bloodGroupACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -81,21 +67,16 @@
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="8dp"
         app:startIconDrawable="@drawable/icon_locaion"
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_District"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
         android:hint="District"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_BloodGroup">
+      >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_District"
+            android:id="@+id/districtACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -104,21 +85,16 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="8dp"
         app:startIconDrawable="@drawable/icon_locaion"
-        android:id="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
         android:hint="Sub District"
-        app:layout_constraintEnd_toEndOf="@id/Activity_BecomeDonar_TextInputLayout_District"
-        app:layout_constraintStart_toStartOf="@id/Activity_BecomeDonar_TextInputLayout_District"
-        app:layout_constraintTop_toBottomOf="@id/Activity_BecomeDonar_TextInputLayout_District">
+       >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_BecomeDonar_TextInputLayout_AutoCompleteTextView_SubDistrict"
+            android:id="@+id/subDistrictACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -127,39 +103,39 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
     <Button
+        android:layout_margin="16dp"
+        android:layout_weight="1"
         android:textAllCaps="false"
-        android:id="@+id/Activity_BecomeDonar_Button_Submit"
+        android:id="@+id/submitBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="Submit"
-        app:layout_constraintEnd_toStartOf="@+id/Activity_BecomeDonar_Button_Cancel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict" />
+        />
 
     <Button
+        android:layout_margin="16dp"
+        android:layout_weight="1"
         android:textAllCaps="false"
-        android:id="@+id/Activity_BecomeDonar_Button_Cancel"
+        android:id="@+id/cancelBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="@+id/Activity_BecomeDonar_TextInputLayout_SubDistrict"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/Activity_BecomeDonar_Button_Submit"
-        app:layout_constraintTop_toTopOf="@+id/Activity_BecomeDonar_Button_Submit" />
+         />
+
+</LinearLayout>
+
     <ProgressBar
-        android:id="@+id/ActivityBecomeDonor_ProgressBar"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_marginTop="352dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.283"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+</LinearLayout>

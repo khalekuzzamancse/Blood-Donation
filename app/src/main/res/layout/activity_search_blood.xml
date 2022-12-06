@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Activity_SearchBlood">
     <include layout="@layout/layout_toolbar_for_non_home_activity"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_SearchBlood_TextInputLayout_BloodGroup"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="16dp"
         app:startIconDrawable="@drawable/icon_blood_group"
         android:hint="Blood Group"
         app:errorEnabled="true"
         app:helperTextEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:helperText=""
         app:helperTextTextColor="@color/black"
         >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup"
+            android:id="@+id/bloodGroupACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -37,7 +31,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_SearchBlood_TextInputLayout_District"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,12 +39,10 @@
         android:layout_marginEnd="16dp"
         app:startIconDrawable="@drawable/icon_locaion"
         android:hint="District"
-        app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
-        app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup"
-        app:layout_constraintTop_toBottomOf="@id/Activity_SearchBlood_TextInputLayout_BloodGroup">
+      >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District"
+            android:id="@+id/districtACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -59,8 +50,8 @@
             android:textColor="@color/black"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,13 +60,10 @@
         android:layout_marginEnd="16dp"
         app:startIconDrawable="@drawable/icon_locaion"
         android:hint="Sub District"
-
-        app:layout_constraintEnd_toEndOf="@id/Activity_SearchBlood_TextInputLayout_District"
-        app:layout_constraintStart_toStartOf="@id/Activity_SearchBlood_TextInputLayout_District"
-        app:layout_constraintTop_toBottomOf="@id/Activity_SearchBlood_TextInputLayout_District">
+        >
 
         <AutoCompleteTextView
-            android:id="@+id/Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict"
+            android:id="@+id/subDistrictACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -84,32 +72,35 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
     <Button
+
+        android:layout_margin="16dp"
+       android:layout_weight="1"
         android:textAllCaps="false"
-        android:id="@+id/Activity_SearchBlood_Button_Submit"
-        android:layout_width="wrap_content"
+        android:id="@+id/submitBTN"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="Search"
-        app:layout_constraintEnd_toStartOf="@+id/Activity_SearchBlood_Button_Cancel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
-        app:layout_constraintTop_toBottomOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict" />
+        />
 
     <Button
+        android:layout_margin="16dp"
+        android:layout_weight="1"
         android:textAllCaps="false"
-        android:id="@+id/Activity_SearchBlood_Button_Cancel"
-        android:layout_width="wrap_content"
+        android:id="@+id/cancelBTN"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/Activity_SearchBlood_TextInputLayout_SubDistrict"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/Activity_SearchBlood_Button_Submit"
-        app:layout_constraintTop_toTopOf="@+id/Activity_SearchBlood_Button_Submit" />
+
+        />
+</LinearLayout>
+
     <ProgressBar
-        android:id="@+id/ActivitySearch_ProgressBar"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -120,4 +111,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.blooddonation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -22,8 +23,9 @@ import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
+import java.util.Objects;
 
-public class Activity_AllUserInfoList extends AppCompatActivity {
+public class AllUserInfoList_Activity extends AppCompatActivity {
     public static final String EXTRA_bloodGroup = "BloodGroup";
     public static final String EXTRA_District = "District";
     public static final String EXTRA_SubDistrict = "SubDistrict";
@@ -44,7 +46,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 ///
         Toolbar toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("User List");
 
 
@@ -61,17 +63,14 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
         ////
 
-        Callback callback = new Callback() {
-            @Override
-            public void receivedList(List<DomainUserInfo> List) {
-                progressIndicator.setVisibility(View.INVISIBLE);
-              //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
-                if (List.isEmpty())
-                    showSnackbar("Not Found");
-                updateAdapter(List);
+        Callback callback = List -> {
+            progressIndicator.setVisibility(View.INVISIBLE);
+          //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
+            if (List.isEmpty())
+                showSnackbar();
+            updateAdapter(List);
 
 
-            }
         };
         BloodInfo db = new BloodInfo();
         if (comingFrom.equals("Main"))
@@ -107,7 +106,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_item_for_non_home_activity_toolbar, menu);
         return true;
@@ -121,14 +120,14 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
 
     void updateAdapter(List<DomainUserInfo> List) {
-        adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, List);
+        adapter = new AllUserInfoListActivity_Adapter(AllUserInfoList_Activity.this, List);
         r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+        r.setLayoutManager(new LinearLayoutManager(AllUserInfoList_Activity.this));
         r.setAdapter(adapter);
     }
-    void showSnackbar(String msg) {
+    void showSnackbar() {
         Snackbar snackbar = Snackbar
-                .make(progressIndicator, msg, Snackbar.LENGTH_LONG);
+                .make(progressIndicator, "Not Found", Snackbar.LENGTH_LONG);
         snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
         snackbar.show();
     }

@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Activity_Login.class);
                     startActivity(intent);
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_BecomeADonor) {
-                    Intent intent = new Intent(MainActivity.this, Activity_Become_Donar.class);
+                    Intent intent = new Intent(MainActivity.this, Become_Donor_Activity.class);
                     startActivity(intent);
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_AboutUs) {
                     Intent intent = new Intent(MainActivity.this, Activity_AboutUs.class);
@@ -218,11 +218,11 @@ public class MainActivity extends AppCompatActivity {
 //
         TextView allDonor = findViewById(R.id.All_DonorList);
         allDonor.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Activity_AllUserInfoList.class);
-            intent.putExtra(Activity_AllUserInfoList.Extra_ComingFrom, "Main");
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup, "null");
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_District, "null");
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict, "null");
+            Intent intent = new Intent(this, AllUserInfoList_Activity.class);
+            intent.putExtra(AllUserInfoList_Activity.Extra_ComingFrom, "Main");
+            intent.putExtra(AllUserInfoList_Activity.EXTRA_bloodGroup, "null");
+            intent.putExtra(AllUserInfoList_Activity.EXTRA_District, "null");
+            intent.putExtra(AllUserInfoList_Activity.EXTRA_SubDistrict, "null");
 
             startActivity(intent);
         });
