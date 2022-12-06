@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ActivityScrollable_IncludedToolbar">
 
         <include
-            layout="@layout/activity_read_user_profile"
+            layout="@layout/show_profile_activity"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

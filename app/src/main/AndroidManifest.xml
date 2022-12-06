@@ -40,13 +40,13 @@
         <activity
             android:name=".Activity_UpdateProfile"
             android:exported="false"
-            android:parentActivityName=".Activity_ReadUserProfile" />
+            android:parentActivityName=".ShowProfile_Activity" />
         <activity
             android:name=".Activity_Account_Delete"
             android:exported="false"
-            android:parentActivityName=".Activity_ReadUserProfile" />
+            android:parentActivityName=".ShowProfile_Activity" />
         <activity
-            android:name=".Activity_ReadUserProfile"
+            android:name=".ShowProfile_Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

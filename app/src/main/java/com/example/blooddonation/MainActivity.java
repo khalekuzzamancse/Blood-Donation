@@ -9,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else if (id == R.id.show_profile) {
-                    Intent intent = new Intent(MainActivity.this, Activity_ReadUserProfile.class);
+                    Intent intent = new Intent(MainActivity.this, ShowProfile_Activity.class);
                     startActivity(intent);
                 }
                 return true;
