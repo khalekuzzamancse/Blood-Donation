@@ -12,21 +12,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
-import com.example.blooddonation.database.Callback;
 import com.example.blooddonation.database.CallbackNoOfDoc;
+import com.example.blooddonation.database.CallbackStringList;
 import com.example.blooddonation.database.CallbackUserProfile;
 import com.example.blooddonation.database.FirebaseAuthCustom;
-import com.example.blooddonation.database.FirebaseCustom;
+import com.example.blooddonation.database.BloodInfo;
+import com.example.blooddonation.database.FormFillUpInfo;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,8 +51,22 @@ public class MainActivity extends AppCompatActivity {
         helpline = findViewById(R.id.helpline);
         tot_donorTv = findViewById(R.id.tot_donor);
         tot_userTV = findViewById(R.id.tot_user);
-        FirebaseCustom db = new FirebaseCustom();
+        BloodInfo db = new BloodInfo();
         //  progressIndicator.setVisibility(View.VISIBLE);
+
+
+
+
+        ///call back for district list
+        CallbackStringList callbackDistrictList=new CallbackStringList() {
+            @Override
+            public void receivedList(List<String> list) {
+                Log.i("LISTTTT", String.valueOf(list));
+
+            }
+        };
+        FormFillUpInfo locationInfo=new FormFillUpInfo();
+        locationInfo.getDistricts(callbackDistrictList);
 
 
         //
@@ -72,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void receivedSize(int size) {
                 tot_Donor = String.valueOf(size);
-                Log.i("ReceivedData-Donor", String.valueOf(tot_Donor));
                 tot_donorTv.setText("Total Donor : " + tot_Donor);
             }
         };
@@ -85,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void receivedSize(int size) {
                 tot_User = String.valueOf(size);
-                Log.i("ReceivedData-User", String.valueOf(tot_User));
                 tot_userTV.setText("Total User : " + tot_User);
             }
         };

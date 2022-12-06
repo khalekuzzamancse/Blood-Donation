@@ -1,28 +1,19 @@
 package com.example.blooddonation.database;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class FirebaseCustom {
+public class BloodInfo {
     FirebaseFirestore db;
     Callback callbackCustom;
     List<DomainUserInfo> list;
@@ -36,7 +27,6 @@ public class FirebaseCustom {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     DomainUserInfo info = new DomainUserInfo();
                     info = document.toObject(DomainUserInfo.class);
-                    task.getResult().size();
                     list.add(info);
                     //   Log.i("ReceivedData-FirebaseCustom", document.getId() + " => " + document.getData());
                 }
@@ -74,7 +64,7 @@ public class FirebaseCustom {
     //<-----------Methods----->
     //<-----------Methods----->
     //<-----------Methods----->
-    public FirebaseCustom() {
+    public BloodInfo() {
 
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();

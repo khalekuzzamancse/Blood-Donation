@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,13 +15,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.blooddonation.database.Callback;
-import com.example.blooddonation.database.FirebaseCustom;
+import com.example.blooddonation.database.BloodInfo;
 import com.example.blooddonation.ui.adapters.AllUserInfoListActivity_Adapter;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Activity_AllUserInfoList extends AppCompatActivity {
@@ -75,7 +73,7 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
 
             }
         };
-        FirebaseCustom db = new FirebaseCustom();
+        BloodInfo db = new BloodInfo();
         if (comingFrom.equals("Main"))
         {
             progressIndicator.setVisibility(View.VISIBLE);
