@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginBottom="100dp"
     android:layout_height="wrap_content"
     android:background="@drawable/mainacitivitybg">
 
@@ -69,28 +70,40 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/SearchBloodMain_Activity"
             app:layout_constraintTop_toBottomOf="@+id/SearchBloodMain_Activity" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_about_us"
+    android:backgroundTint="#FFEB3B"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:layout_margin="8dp"
+    >
+    <TextView
+        android:id="@+id/tot_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:drawableTint="@color/black"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tot_donor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:drawableTint="@color/black"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
 
-        <TextView
-            android:id="@+id/tot_user"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/background_about_us"
-            android:backgroundTint="#FFEB3B"
-            android:drawableLeft="@drawable/icon_person"
-            android:drawableTint="@color/black"
-            android:elevation="8dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Total User"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/SearchBloodMain_Activity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/SearchBloodMain_Activity"
-            app:layout_constraintTop_toTopOf="@+id/SearchBloodMain_Activity" />
+</LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

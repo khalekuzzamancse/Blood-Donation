@@ -27,7 +27,9 @@ public class FirebaseCustom {
     Callback callbackCustom;
     List<DomainUserInfo> list;
     String userType = "";
-    boolean increment=false;
+    boolean increment = false;
+    private CallbackNoOfDoc callbackNoOfDoc,callbackTot_Donor;
+    private static String collectionName = "UserInfo";
 
     OnCompleteListener<QuerySnapshot> callbackQS = new OnCompleteListener<QuerySnapshot>() {
         @Override
@@ -36,6 +38,7 @@ public class FirebaseCustom {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     DomainUserInfo info = new DomainUserInfo();
                     info = document.toObject(DomainUserInfo.class);
+                    task.getResult().size();
                     list.add(info);
                     //   Log.i("ReceivedData-FirebaseCustom", document.getId() + " => " + document.getData());
                 }
@@ -46,26 +49,29 @@ public class FirebaseCustom {
             }
         }
     };
-    EventListener<DocumentSnapshot> callbackDocSnapShot = new EventListener<DocumentSnapshot>() {
+    OnCompleteListener<QuerySnapshot> callbackCollectionSize = new OnCompleteListener<QuerySnapshot>() {
         @Override
-        public void onEvent(@Nullable DocumentSnapshot document, @Nullable FirebaseFirestoreException error) {
-
-            if (document != null && document.exists()) {
-                if (userType.equals("User")&&!increment) {
-
-                    String num = (String) document.get("TotalUser");
-                    Log.i("UserNUM-Or", num);
-                    num = String.valueOf(Integer.parseInt(num) + 1);
-                    Log.i("UserNUM-In", num);
-                    addDocument(num);
-                    increment=true;
-
-                }
-
-                Log.i("Fetched-Doc ", String.valueOf(document.getData()));
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()) {
+                int len = task.getResult().size();
+            //  Log.i("ReceivedData-FirebaseLen", String.valueOf(len));
+                callbackNoOfDoc.receivedSize(len);
             }
         }
     };
+    OnCompleteListener<QuerySnapshot> callbackQSTot_Donor = new OnCompleteListener<QuerySnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()) {
+                int len = task.getResult().size();
+                //  Log.i("ReceivedData-FirebaseLen", String.valueOf(len));
+                callbackTot_Donor.receivedSize(len);
+            }
+        }
+    };
+
+
+
 
     //<-----------Methods----->
     //<-----------Methods----->
@@ -128,25 +134,28 @@ public class FirebaseCustom {
                 .whereEqualTo("SubDistrict", subDistrict)
                 .get();
         snapshotTask.addOnCompleteListener(callbackQS);
-    }
-
-    public void incrementUserNumber(String userType) {
-        this.userType = userType;
-        CollectionReference cref = db.collection("UserInfo");
-        DocumentReference docRef = cref.document("userNumbers");
-        docRef.addSnapshotListener(callbackDocSnapShot);
 
     }
 
-    public void addDocument(String num) {
-        HashMap<String, Object> data = new HashMap<>();
-        data.put("TotalUser", num);
-        Log.i("UserNUM-Inc", String.valueOf(data));
-        CollectionReference cref = db.collection("UserInfo");
-        DocumentReference docRef = cref.document("userNumbers");
-        docRef.set(data, SetOptions.merge());
 
+
+
+    /// call back for aggerage function
+    public void getTotalUser(CallbackNoOfDoc callbackNoOfDoc) {
+        this.callbackNoOfDoc = callbackNoOfDoc;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference cref = db.collection(collectionName);
+        Task<QuerySnapshot> snapshotTask = cref.get();
+        snapshotTask.addOnCompleteListener(callbackCollectionSize);
     }
+    public void getTotalDonor(CallbackNoOfDoc callbackTot_Donor) {
+        this.callbackTot_Donor = callbackTot_Donor;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference cref = db.collection(collectionName);
+        Task<QuerySnapshot> snapshotTask = cref.  whereEqualTo("isDonor", "true").get();
+        snapshotTask.addOnCompleteListener(callbackQSTot_Donor);
+    }
+
 
 
 }

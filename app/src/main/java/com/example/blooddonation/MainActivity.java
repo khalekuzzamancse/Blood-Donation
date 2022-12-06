@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.blooddonation.database.Callback;
+import com.example.blooddonation.database.CallbackNoOfDoc;
 import com.example.blooddonation.database.FirebaseCustom;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
@@ -23,6 +24,7 @@ import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    TextView helpline;
+    TextView helpline, tot_userTV, tot_donorTv;
+    private String tot_Donor = "", tot_User = "";
 
 
     @Override
@@ -45,24 +48,34 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
         helpline = findViewById(R.id.helpline);
-
-        TextView tv = findViewById(R.id.tot_user);
-        FirebaseCustom custom = new FirebaseCustom();
-        Callback callback = new Callback() {
-            @Override
-            public void receivedList(List<DomainUserInfo> List) {
-                //  progressIndicator.setVisibility(View.INVISIBLE);
-                //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
-                //   updateAdapter(List);
-                String num = String.valueOf(List.size());
-                Log.i("TotalUser", num);
-                tv.setText("Total Donor" + "\n" + num);
-//
-            }
-        };
+        tot_donorTv = findViewById(R.id.tot_donor);
+        tot_userTV = findViewById(R.id.tot_user);
         FirebaseCustom db = new FirebaseCustom();
         //  progressIndicator.setVisibility(View.VISIBLE);
-        db.getAllDonorList(callback);
+
+        //callback for donor
+        CallbackNoOfDoc callbackTotDonor = new CallbackNoOfDoc() {
+            @Override
+            public void receivedSize(int size) {
+                tot_Donor = String.valueOf(size);
+                Log.i("ReceivedData-Donor", String.valueOf(tot_Donor));
+                tot_donorTv.setText("Total Donor : " + tot_Donor);
+            }
+        };
+        db.getTotalDonor(callbackTotDonor);
+
+        // <----------------->
+        //
+
+        CallbackNoOfDoc callbackNoOfDoc = new CallbackNoOfDoc() {
+            @Override
+            public void receivedSize(int size) {
+                tot_User = String.valueOf(size);
+                Log.i("ReceivedData-User", String.valueOf(tot_User));
+                tot_userTV.setText("Total User : " + tot_User);
+            }
+        };
+        db.getTotalUser(callbackNoOfDoc);
 
         helpline.setOnClickListener(view -> {
 
