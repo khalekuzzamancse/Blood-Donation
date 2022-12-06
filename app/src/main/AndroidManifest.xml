@@ -38,7 +38,7 @@
             android:exported="false"
             android:parentActivityName=".Activity_SearchBlood" />
         <activity
-            android:name=".Activity_UpdateProfile"
+            android:name=".EditProfileActivity"
             android:exported="false"
             android:parentActivityName=".ShowProfile_Activity" />
         <activity

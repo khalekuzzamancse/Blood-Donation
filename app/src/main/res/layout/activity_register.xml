@@ -11,7 +11,6 @@
 <!--        />-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Activity_Register_TextInputLayout_Name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,9 +21,7 @@
         android:hint="Name"
         app:helperText="Required*"
         app:helperTextTextColor="@color/secondary_crane_red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+       >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Activity_Register_TextInputLayout_EditText_Name"
@@ -46,10 +43,7 @@
         app:startIconDrawable="@drawable/icon_phone_number"
         android:hint="Phone Number"
         app:helperText="Required*"
-        app:helperTextTextColor="@color/secondary_crane_red"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Email"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Email"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Email">
+        app:helperTextTextColor="@color/secondary_crane_red">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Activity_Register_TextInputLayout_EditText_PhoneNumber"
@@ -70,11 +64,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="Email"
-
-        app:helperTextTextColor="@color/secondary_crane_red"
-        app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Name"
-        app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Name"
-        app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Name">
+        app:helperTextTextColor="@color/secondary_crane_red">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Activity_Register_TextInputLayout_EditText_Email"

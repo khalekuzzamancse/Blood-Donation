@@ -91,7 +91,7 @@ public class ShowProfile_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.Activity_ProifleMenuEditProfile)
-            startActivity(new Intent(this, Activity_UpdateProfile.class));
+            startActivity(new Intent(this, EditProfileActivity.class));
         else if (id == R.id.Activity_ProifleMenuDonatDateUpdate)
             startActivity(new Intent(this, Activity_UpdateDonatDate.class));
 
