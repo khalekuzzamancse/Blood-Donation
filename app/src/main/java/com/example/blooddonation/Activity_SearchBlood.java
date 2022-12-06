@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.example.blooddonation.database.CallbackStringList;
 import com.example.blooddonation.database.FormFillUpInfo;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -30,7 +31,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
 
     List<String> subDistrictList = new ArrayList<>();
     ProgressBar progressBar;
-    AutoCompleteTextView bloodGroupTV;
+    AutoCompleteTextView bloodGroupTV, districtTV;
     Button clear, search;
     AutoCompleteTextView bG;
     FormFillUpInfo fillUpInfo;
@@ -45,6 +46,8 @@ public class Activity_SearchBlood extends AppCompatActivity {
         setToolbar();
         setBloodGroup();
         //  setLocation();
+        //    setDistrict();
+
 
         //check if the blood group filed is empty or not
         //if the there are any error  message then the checkedBloodGroupField() will clear or do not clear the message
@@ -113,13 +116,10 @@ public class Activity_SearchBlood extends AppCompatActivity {
         AutoCompleteTextView bloodGroup = findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_BloodGroup);
         bloodGroup.setAdapter(adapter);
 
-        bloodGroup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s = parent.getItemAtPosition(position).toString();
-                Log.i("Clickeed", s);
+        bloodGroup.setOnItemClickListener((parent, view, position, id) -> {
+            String s = parent.getItemAtPosition(position).toString();
+            Log.i("Clickeed", s);
 
-            }
         });
 
     }
@@ -132,6 +132,8 @@ public class Activity_SearchBlood extends AppCompatActivity {
         search = findViewById(R.id.Activity_SearchBlood_Button_Submit);
         toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         progressBar = findViewById(R.id.ActivitySearch_ProgressBar);
+        AutoCompleteTextView districtTV =
+                findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_District);
     }
 
     private void setToolbar() {
@@ -140,6 +142,22 @@ public class Activity_SearchBlood extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Search Blood");
 
+    }
+
+    private void setDistrict() {
+        CallbackStringList cb = list -> {
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_SearchBlood.this,
+                    R.layout.layout_drop_down_menu_single_item, list);
+            districtTV.setAdapter(adapter);
+
+            districtTV.setOnItemClickListener((parent, view, position, id) -> {
+                String s = parent.getItemAtPosition(position).toString();
+                Log.i("Clickeed", s);
+
+            });
+
+        };
+        fillUpInfo.getDistricts(cb);
     }
 
 //    private void setBloodGroup()
@@ -199,13 +217,10 @@ public class Activity_SearchBlood extends AppCompatActivity {
                 findViewById(R.id.Activity_SearchBlood_TextInputLayout_AutoCompleteTextView_SubDistrict);
         d.setAdapter(adapter);
 
-        d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s = parent.getItemAtPosition(position).toString();
-                Log.i("Clickeed", s);
+        d.setOnItemClickListener((parent, view, position, id) -> {
+            String s1 = parent.getItemAtPosition(position).toString();
+            Log.i("Clickeed", s1);
 
-            }
         });
 
     }
