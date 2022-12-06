@@ -16,9 +16,14 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
+import com.example.blooddonation.database.CallbackResult;
 import com.example.blooddonation.database.CallbackStringList;
+import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.database.FormFillUpInfo;
+import com.example.blooddonation.database.WritingDocument;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +37,26 @@ public class Become_Donor_Activity extends AppCompatActivity {
     ArrayAdapter<String> genderAdapter, bloodGroupAdapter, districtAdapter, subDistrictAdapter;
     FormFillUpInfo fillUpInfo;
     Toolbar toolbar;
+
     ProgressBar progressBar;
+    //
+    CallbackResult callbackResult = new CallbackResult() {
+
+        @Override
+        public void isSuccess(boolean response) {
+            progressBar.setVisibility(View.INVISIBLE);
+            if (response)
+                showSnackBar("Updated Successfully");
+            else
+                showSnackBar("Failed");
+//            Intent intent = getIntent();
+//            finish();
+//            startActivity(intent);
+//            Intent i = new Intent(Become_Donor_Activity.this, MainActivity.class);
+//            startActivity(i);
+        }
+    };
+    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +74,8 @@ public class Become_Donor_Activity extends AppCompatActivity {
             p.setVisibility(View.VISIBLE);
             AddDonorInfo();
 
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-
         });
+        //call back for updating document
 
 
     }
@@ -121,8 +140,9 @@ public class Become_Donor_Activity extends AppCompatActivity {
         String subDis = subDistrictACTV.getText().toString().trim();
         data.put("SubDistrict", subDis);
         data.put("isDonor", "true");
-
-        Log.i("DataGot", String.valueOf(data));
+        WritingDocument document = new WritingDocument();
+        document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data, callbackResult);
+        // Log.i("DataGot", String.valueOf(data));
     }
 
     private void initialize() {
@@ -160,5 +180,13 @@ public class Become_Donor_Activity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    void showSnackBar(String msg) {
+        Snackbar snackbar = Snackbar
+                .make(submitBTN, msg, Snackbar.LENGTH_LONG);
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
+        snackbar.show();
+    }
+
 
 }

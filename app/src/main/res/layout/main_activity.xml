@@ -23,7 +23,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header_navbar_not_singed_in"
-        app:menu="@menu/menu_nav_drawer_when_user_not_signed_in"
+        app:menu="@menu/nav_bar_menu"
         >
 
     </com.google.android.material.navigation.NavigationView>

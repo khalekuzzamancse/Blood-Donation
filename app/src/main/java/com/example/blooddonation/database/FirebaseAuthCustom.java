@@ -36,7 +36,7 @@ public class FirebaseAuthCustom {
                 //  Log.i("Fetched-Doc ", String.valueOf(document.getData()));
                 DomainUserInfo info = document.toObject(DomainUserInfo.class);
                 Log.i("UserInfo", info.toString());
-                 callback.getProfile(info);
+                callback.getProfile(info);
             }
         }
     };
@@ -50,5 +50,11 @@ public class FirebaseAuthCustom {
 
     }
 
+    public String getUserEmail() {
+        if (user != null)
+            return user.getEmail();
+        else
+            return "";
+    }
 
 }

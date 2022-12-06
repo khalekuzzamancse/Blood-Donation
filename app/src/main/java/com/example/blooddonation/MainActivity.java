@@ -5,30 +5,23 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.blooddonation.database.CallbackNoOfDoc;
-import com.example.blooddonation.database.CallbackStringList;
 import com.example.blooddonation.database.CallbackUserProfile;
 import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.database.BloodInfo;
-import com.example.blooddonation.database.FormFillUpInfo;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.HashMap;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static ViewModel_UserProfileInfo model;
@@ -37,55 +30,19 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    TextView helpline, tot_userTV, tot_donorTv;
+    TextView helpline, tot_userTV, tot_donorTv, allDonor,searchTV;
     private String tot_Donor = "", tot_User = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
 
-        drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
-        navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
-        helpline = findViewById(R.id.helpline);
-        tot_donorTv = findViewById(R.id.tot_donor);
-        tot_userTV = findViewById(R.id.tot_user);
         BloodInfo db = new BloodInfo();
         //  progressIndicator.setVisibility(View.VISIBLE);
-
-
-
-        //<---------Getting district and sub district section start ----->
-        //<---------Getting district and sub district section start ----->
-        ///call back for district list
-        CallbackStringList callbackDistrictList=new CallbackStringList() {
-            @Override
-            public void receivedList(List<String> list) {
-                Log.i("LISTTTT", String.valueOf(list));
-
-            }
-        };
-        //getting the district list
-        FormFillUpInfo locationInfo=new FormFillUpInfo();
-       locationInfo.getDistricts(callbackDistrictList);
-        //callback for sub district list
-        CallbackStringList callbackSubDistrictList=new CallbackStringList() {
-            @Override
-            public void receivedList(List<String> list) {
-                Log.i("LISTTTT", String.valueOf(list));
-
-            }
-        };
-        //calling the  method for sub district list
-        locationInfo.getSubDistricts("Dhaka",callbackSubDistrictList);
-        //<---------Getting district and sub district section end ----->
-        //<---------Getting district and sub district section end ----->
-
-
-
-        //
-//
+        initialize();
+        setToolbar();
         CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
             @Override
             public void getProfile(DomainUserInfo profile) {
@@ -117,98 +74,54 @@ public class MainActivity extends AppCompatActivity {
         };
         db.getTotalUser(callbackNoOfDoc);
 
+
+
         helpline.setOnClickListener(view -> {
 
             startActivity(new Intent(this, HelpLineActivity.class
             ));
         });
 
-        toolbar = findViewById(R.id.ActivityMain_ToolBar);
-        setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
-                (this, drawerLayout, toolbar, R.string.OpenDrawer, R.string.CloseDrawer);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+
+
+
         ///Livedata section
-        model = new ViewModelProvider(this).get(ViewModel_UserProfileInfo.class);
-
-        model.getSignUserInfo().observe(MainActivity.this, new Observer<HashMap<String, String>>() {
-            @Override
-            public void onChanged(HashMap<String, String> userInfo) {
-
-                String email = userInfo.get("Email");
-                if (email.equals("null")) {
-                    navigationView.getMenu().clear();
-                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
-
-                }
-                String isDonor = userInfo.get("isDonor");
-                if (isDonor.equals("true")) {
-                    navigationView.getMenu().clear();
-                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_donor);
-                } else {
-                    navigationView.getMenu().clear();
-                    navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_donar);
-                }
-
-
-            }
-        });
-
-
-        districtListModel = new ViewModelProvider(this).get(ViewModel_AllDistrictList.class);
-        districtListModel.getDistrictListHashMap().observe(this, new Observer<HashMap<String, List<String>>>() {
-            @Override
-            public void onChanged(HashMap<String, List<String>> stringListHashMap) {
-
-                stringListHashMap.remove("");
-                Log.i("Getting", String.valueOf(stringListHashMap));
-            }
-        });
-        districtListModel.getDistrictList().observe(this, new Observer<List<String>>() {
-            @Override
-            public void onChanged(List<String> strings) {
-                Log.i("Getting", String.valueOf(strings));
-
-            }
-        });
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.ActivityMain_NavDrawerMenu_Login) {
+                if(id==R.id.login)
+                item.setVisible(false);
+                if (id == R.id.login) {
                     Intent intent = new Intent(MainActivity.this, Activity_Login.class);
                     startActivity(intent);
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_BecomeADonor) {
+                } else if (id == R.id.become_a_donor) {
                     Intent intent = new Intent(MainActivity.this, Become_Donor_Activity.class);
                     startActivity(intent);
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_AboutUs) {
+                } else if (id == R.id.about_us) {
                     Intent intent = new Intent(MainActivity.this, Activity_AboutUs.class);
                     startActivity(intent);
 
 
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_SearchBlood) {
+                } else if (id == R.id.search_blood) {
                     Intent intent = new Intent(MainActivity.this, Activity_SearchBlood.class);
                     startActivity(intent);
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_WhyDonateBlood) {
+                } else if (id == R.id.why_donate_blood) {
                     Intent intent = new Intent(MainActivity.this, Activity_WhyDonateBlood.class);
                     startActivity(intent);
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_ContactUs) {
+                } else if (id == R.id.contact_us) {
                     Intent intent = new Intent(MainActivity.this, Activity_ContactSendMessage.class);
                     startActivity(intent);
 
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_LogOut) {
+                } else if (id == R.id.logout) {
                     FirebaseAuth.getInstance().signOut();
-                    Log.i("Curr", "signout");
-//                    TextView t=findViewById(R.id.headerTextView);
-//                    t.setText("something");
                     Intent intent = getIntent();
                     finish();
                     startActivity(intent);
 
-                } else if (id == R.id.ActivityMain_NavDrawerMenu_showProfile) {
+                } else if (id == R.id.show_profile) {
                     Intent intent = new Intent(MainActivity.this, Activity_ReadUserProfile.class);
                     startActivity(intent);
                 }
@@ -216,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //
-        TextView allDonor = findViewById(R.id.All_DonorList);
+
         allDonor.setOnClickListener(view -> {
             Intent intent = new Intent(this, AllUserInfoList_Activity.class);
             intent.putExtra(AllUserInfoList_Activity.Extra_ComingFrom, "Main");
@@ -226,33 +139,44 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
-        TextView t = findViewById(R.id.SearchBloodMain_Activity);
-        t.setOnClickListener(view -> {
+
+        searchTV.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, Activity_SearchBlood.class);
             startActivity(intent);
 
         });
 
+    }
+    private void setToolbar() {
+        toolbar = findViewById(R.id.ActivityMain_ToolBar);
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
+                (this, drawerLayout, toolbar, R.string.OpenDrawer, R.string.CloseDrawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
+    }
+    private void initialize()
+    {
+        drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
+        navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
+        helpline = findViewById(R.id.helpline);
+        tot_donorTv = findViewById(R.id.tot_donor);
+        tot_userTV = findViewById(R.id.tot_user);
+        allDonor = findViewById(R.id.All_DonorList);
+        searchTV = findViewById(R.id.SearchBloodMain_Activity);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.nav_bar_menu, menu);
+        return true;
     }
 
     @Override
-    protected void onResume() {
-        HashMap<String, String> data = model.getSignUserInfo().getValue();
-        String email = data.get("Email");
-        if (email.equals("null")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.menu_nav_drawer_when_user_not_signed_in);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        }
-        Intent i = getIntent();
-        String s = i.getStringExtra(MainActivity.Extra_Login);
-        if (s != null && s.equals("FromLogin")) {
-            Snackbar.make(toolbar, "Login Successful", Snackbar.LENGTH_SHORT).show();
-        }
-        super.onResume();
-
-
+        return super.onOptionsItemSelected(item);
     }
 
 

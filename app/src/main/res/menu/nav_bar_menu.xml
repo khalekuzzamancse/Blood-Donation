@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/become_a_donor"
+        android:title="Become A Donor"
+        android:icon="@drawable/become_donor"
+        />
+    <item android:id="@+id/search_blood"
+        android:title="SearchBlood"
+        android:icon="@drawable/icon_search"
+        />
+    <item android:id="@+id/login"
+        android:title="Login"
+        android:icon="@drawable/icon_loign"
+        />
+    <item android:id="@+id/contact_us"
+        android:title="Contact Us"
+        android:icon="@drawable/contact_us"
+
+        />
+    <item android:id="@+id/about_us"
+        android:title="AboutUs"
+        android:icon="@drawable/about_us"
+        />
+    <item android:id="@+id/why_donate_blood"
+
+        android:title="Why Donate Blood"
+        android:icon="@drawable/why_donate"
+
+        />
+    <item android:id="@+id/show_profile"
+        android:icon="@drawable/icon_show_profile"
+        android:title="Profile"
+
+        />
+    <item android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/icon_logout"
+        />
+
+
+</menu>
