@@ -12,8 +12,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.blooddonation.database.Callback;
+import com.example.blooddonation.database.FirebaseCustom;
+import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
@@ -40,10 +44,29 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
-        helpline=findViewById(R.id.helpline);
+        helpline = findViewById(R.id.helpline);
+
+        TextView tv = findViewById(R.id.tot_user);
+        FirebaseCustom custom = new FirebaseCustom();
+        Callback callback = new Callback() {
+            @Override
+            public void receivedList(List<DomainUserInfo> List) {
+                //  progressIndicator.setVisibility(View.INVISIBLE);
+                //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
+                //   updateAdapter(List);
+                String num = String.valueOf(List.size());
+                Log.i("TotalUser", num);
+                tv.setText("Total Donor" + "\n" + num);
+//
+            }
+        };
+        FirebaseCustom db = new FirebaseCustom();
+        //  progressIndicator.setVisibility(View.VISIBLE);
+        db.getAllDonorList(callback);
+
         helpline.setOnClickListener(view -> {
 
-            startActivity(new Intent(this,HelpLineActivity.class
+            startActivity(new Intent(this, HelpLineActivity.class
             ));
         });
 
@@ -156,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
-
 
 
     }
