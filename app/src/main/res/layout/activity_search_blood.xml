@@ -8,6 +8,7 @@
     tools:context=".Activity_SearchBlood">
     <include layout="@layout/layout_toolbar_for_non_home_activity"/>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/blodGroupContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear"
+        android:visibility="gone"
 
         />
 </LinearLayout>

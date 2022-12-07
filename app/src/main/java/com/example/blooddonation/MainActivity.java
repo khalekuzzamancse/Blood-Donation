@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -21,6 +22,9 @@ import com.example.blooddonation.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.type.Date;
+
+import java.time.LocalDate;
 
 public class MainActivity extends AppCompatActivity {
     public static ViewModel_UserProfileInfo model;
@@ -50,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
         //2.1 based on signed in info hide some menu
 
         //getting the login user profile info,
-
-
 
 
         CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
@@ -169,13 +171,13 @@ public class MainActivity extends AppCompatActivity {
         //if the user is already login and he is donor then
         //hide the login option ->since he already login
         //hide the become donor because he is already a donor
-        else if (currentUser.getUser() != null &&userInfo.BloodGroup!=null) {
+        else if (currentUser.getUser() != null && userInfo.BloodGroup != null) {
             menu.removeItem(R.id.login);
             menu.removeItem(R.id.become_a_donor);
         }
         //if the user is already login and he is not donor then
         //hide the login option ->since he already login
-        else if (currentUser.getUser() != null && userInfo.BloodGroup==null) {
+        else if (currentUser.getUser() != null && userInfo.BloodGroup == null) {
             menu.removeItem(R.id.login);
         }
 
@@ -201,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
         allDonor = findViewById(R.id.All_DonorList);
         searchTV = findViewById(R.id.SearchBloodMain_Activity);
         userInfo = new DomainUserInfo();
-        currentUser= new FirebaseAuthCustom();
+        currentUser = new FirebaseAuthCustom();
     }
 
 

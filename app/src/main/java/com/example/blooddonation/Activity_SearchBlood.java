@@ -70,7 +70,6 @@ public class Activity_SearchBlood extends AppCompatActivity {
             intent.putExtra(AllUserInfoList_Activity.Extra_ComingFrom, "SearchBlood");
             //  p.setVisibility(View.INVISIBLE);
             //if the user not choosen a bloodGroup then we do not show the list
-
             if (!bloodGroupACTV.getText().toString().isEmpty())
                 startActivity(intent);
             else {
@@ -120,6 +119,7 @@ public class Activity_SearchBlood extends AppCompatActivity {
         districtACTV = findViewById(R.id.districtACTV);
         subDistrictACTV = findViewById(R.id.subDistrictACTV);
         bloodGroupACTV = findViewById(R.id.bloodGroupACTV);
+        bloodGroupLayout=findViewById(R.id.blodGroupContainer);
     }
 
 

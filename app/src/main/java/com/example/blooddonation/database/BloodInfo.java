@@ -20,7 +20,7 @@ public class BloodInfo {
     FirebaseFirestore db;
     Callback callbackCustom;
     List<DomainUserInfo> list;
-    private CallbackNoOfDoc callbackNoOfDoc,callbackTot_Donor;
+    private CallbackNoOfDoc callbackNoOfDoc, callbackTot_Donor;
     private static final String collectionName = "UserInfo";
 
     OnCompleteListener<QuerySnapshot> callbackQS = new OnCompleteListener<QuerySnapshot>() {
@@ -28,9 +28,17 @@ public class BloodInfo {
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
-                    DomainUserInfo info = new DomainUserInfo();
-                    info = document.toObject(DomainUserInfo.class);
-                    list.add(info);
+                    //checking 3 month is completed or not to donate
+                    //if today date is greater than 3  month from his donate date
+                    //then we add him to the list
+                    //other wise we do not show him in the search result
+                    if (checkDonateDate(document))
+                    {
+                        DomainUserInfo info = new DomainUserInfo();
+                        info = document.toObject(DomainUserInfo.class);
+                        list.add(info);
+                    }
+
                     //   Log.i("ReceivedData-FirebaseCustom", document.getId() + " => " + document.getData());
                 }
                 callbackCustom.receivedList(list);
@@ -40,7 +48,7 @@ public class BloodInfo {
             }
         }
     };
-//
+    //
 //    LocalDate date = LocalDate.now();
 //    int m = date.getMonth().getValue();
 //    int d = date.getDayOfMonth();
@@ -52,7 +60,7 @@ public class BloodInfo {
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
             if (task.isSuccessful()) {
                 int len = task.getResult().size();
-            //  Log.i("ReceivedData-FirebaseLen", String.valueOf(len));
+                //  Log.i("ReceivedData-FirebaseLen", String.valueOf(len));
                 callbackNoOfDoc.receivedSize(len);
             }
         }
@@ -67,8 +75,6 @@ public class BloodInfo {
             }
         }
     };
-
-
 
 
     //<-----------Methods----->
@@ -136,8 +142,6 @@ public class BloodInfo {
     }
 
 
-
-
     /// call back for aggerage function
     public void getTotalUser(CallbackNoOfDoc callbackNoOfDoc) {
         this.callbackNoOfDoc = callbackNoOfDoc;
@@ -146,14 +150,28 @@ public class BloodInfo {
         Task<QuerySnapshot> snapshotTask = cref.get();
         snapshotTask.addOnCompleteListener(callbackCollectionSize);
     }
+
     public void getTotalDonor(CallbackNoOfDoc callbackTot_Donor) {
         this.callbackTot_Donor = callbackTot_Donor;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference cref = db.collection(collectionName);
-        Task<QuerySnapshot> snapshotTask = cref.  whereEqualTo("isDonor", "true").get();
+        Task<QuerySnapshot> snapshotTask = cref.whereEqualTo("isDonor", "true").get();
         snapshotTask.addOnCompleteListener(callbackQSTot_Donor);
     }
 
+    private boolean checkDonateDate(QueryDocumentSnapshot document) {
+        String futureDate = (String) document.get("nextDonateDate");
+        if (futureDate != null) {
+            LocalDate todayDate = LocalDate.now();
+            LocalDate nextDonateDate = LocalDate.parse(futureDate);
+            if (todayDate.isAfter(nextDonateDate))
+                return true;
+            else
+                return false;
+        }
+
+        return true;
+    }
 
 
 }

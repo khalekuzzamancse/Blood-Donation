@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blooddonation.MainActivity;
 import com.example.blooddonation.R;
+import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.ui.viewholders.AllUserInfoListActivity_ViewHolder;
 import com.google.android.material.snackbar.Snackbar;
@@ -56,7 +57,7 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
         String subDis = list.get(position).SubDistrict;
         holder.TV_AllUserInfoListActivity_VH_Location.setText(dis + "," + subDis);
 
-        String CurrentUserEmail = MainActivity.model.getSignUserInfo().getValue().get("Email");
+        String CurrentUserEmail =new FirebaseAuthCustom().getUserEmail();
         if(CurrentUserEmail.equals("null"))
         {
 

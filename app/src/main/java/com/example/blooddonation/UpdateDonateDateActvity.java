@@ -26,7 +26,7 @@ import java.util.HashMap;
 public class UpdateDonateDateActvity extends AppCompatActivity {
     private TextView tvSelectDate;
     private EditText etSelectDate;
-    int days = 0;
+    String date = "";
     Button save;
     private CallbackResult callbackResult = new CallbackResult() {
 
@@ -60,11 +60,18 @@ public class UpdateDonateDateActvity extends AppCompatActivity {
                 DatePickerDialog dialog = new DatePickerDialog(UpdateDonateDateActvity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month++;
-                        days = month * 30 + year * 365 + dayOfMonth;
-
-                        etSelectDate.setText(String.valueOf(dayOfMonth + "-" + month + "-" + year));
-
+                        date = "";
+                        month = month + 1;
+                        date = date + year + "-";
+                        if (month < 9)
+                            date = date + "0" + month + "-";
+                        else
+                            date = date + month + "-";
+                        if (dayOfMonth < 9)
+                            date = date + "0" + dayOfMonth;
+                        else
+                            date = date + dayOfMonth;
+                        etSelectDate.setText(date);
                     }
                 }, year, month, day);
                 dialog.show();
@@ -74,12 +81,14 @@ public class UpdateDonateDateActvity extends AppCompatActivity {
         });
 
         save.setOnClickListener(view -> {
-            days = days + 90;
-            HashMap<String, Object> data = new HashMap<>();
-            String nextDate=String.valueOf(days);
-            data.put("nextDonateDate",nextDate);
-            WritingDocument document = new WritingDocument();
-            document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data, callbackResult);
+            if (!date.isEmpty()) {
+                HashMap<String, Object> data = new HashMap<>();
+                LocalDate futureDate = LocalDate.parse(date).plusMonths(3);
+                data.put("nextDonateDate", String.valueOf(futureDate));
+                WritingDocument document = new WritingDocument();
+                document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data, callbackResult);
+            }
+
         });
 
     }
