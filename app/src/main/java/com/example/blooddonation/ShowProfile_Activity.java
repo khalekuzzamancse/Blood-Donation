@@ -93,7 +93,7 @@ public class ShowProfile_Activity extends AppCompatActivity {
         if (id == R.id.Activity_ProifleMenuEditProfile)
             startActivity(new Intent(this, EditProfileActivity.class));
         else if (id == R.id.Activity_ProifleMenuDonatDateUpdate)
-            startActivity(new Intent(this, Activity_UpdateDonatDate.class));
+            startActivity(new Intent(this, UpdateDonateDateActvity.class));
 
         return super.onOptionsItemSelected(item);
     }

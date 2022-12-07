@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         //getting the login user profile info,
 
+
+
+
         CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
             @Override
             public void getProfile(DomainUserInfo profile) {

@@ -1,5 +1,7 @@
 package com.example.blooddonation.database;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
@@ -10,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,13 @@ public class BloodInfo {
             }
         }
     };
+//
+//    LocalDate date = LocalDate.now();
+//    int m = date.getMonth().getValue();
+//    int d = date.getDayOfMonth();
+//    int y = date.getYear();
+//    int todays = m * 30 + y * 365 + d;
+//            Log.i("NEXTDAY", String.valueOf(days-todays));
     OnCompleteListener<QuerySnapshot> callbackCollectionSize = new OnCompleteListener<QuerySnapshot>() {
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
