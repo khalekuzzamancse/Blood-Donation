@@ -1,6 +1,7 @@
 package com.example.blooddonation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -11,16 +12,32 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.blooddonation.database.CallbackResult;
+import com.example.blooddonation.database.FirebaseAuthCustom;
+import com.example.blooddonation.database.WritingDocument;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class UpdateDonateDateActvity extends AppCompatActivity {
     private TextView tvSelectDate;
     private EditText etSelectDate;
     int days = 0;
     Button save;
+    private CallbackResult callbackResult = new CallbackResult() {
+
+        @Override
+        public void isSuccess(boolean response) {
+            if (response)
+                showSnackBar("Updated Successfully");
+            else
+                showSnackBar("Failed");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +75,20 @@ public class UpdateDonateDateActvity extends AppCompatActivity {
 
         save.setOnClickListener(view -> {
             days = days + 90;
-
+            HashMap<String, Object> data = new HashMap<>();
+            String nextDate=String.valueOf(days);
+            data.put("nextDonateDate",nextDate);
+            WritingDocument document = new WritingDocument();
+            document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data, callbackResult);
         });
 
     }
+
+    void showSnackBar(String msg) {
+        Snackbar snackbar = Snackbar
+                .make(etSelectDate, msg, Snackbar.LENGTH_LONG);
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
+        snackbar.show();
+    }
+
 }
