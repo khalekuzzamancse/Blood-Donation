@@ -1,15 +1,10 @@
 package com.example.blooddonation;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,16 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Activity_Login extends AppCompatActivity {
 private   ProgressBar p;
@@ -48,7 +39,7 @@ public static String Extra_Login="null";
 
         register=findViewById(R.id.ActivityLogin_Button_Register);
         register.setOnClickListener((view)->{
-            Intent intent=new Intent(this,Activity_Register.class);
+            Intent intent=new Intent(this, Register_Activity.class);
             startActivity(intent);
         });
         Button login=findViewById(R.id.ActivityLogin_Button_Login);

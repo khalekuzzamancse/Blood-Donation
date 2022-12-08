@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Activity_Register">
+    tools:context=".Register_Activity">
 <!--    <include-->
 <!--        layout="@layout/layout_toolbar_for_non_home_activity"-->
 <!--        />-->
