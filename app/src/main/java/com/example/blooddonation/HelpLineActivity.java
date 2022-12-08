@@ -81,4 +81,10 @@ public class HelpLineActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onNavigateUp() {
+        onBackPressed();
+        return super.onNavigateUp();
+    }
 }

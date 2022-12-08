@@ -59,7 +59,7 @@ public class AllUserInfoList_Activity extends AppCompatActivity {
         if (!Blood.equals("null"))
             tv.setText("Search Result For: " + Blood);
         else
-            tv.setText("All donar list");
+            tv.setText("Available donar list");
 
         ////
 
