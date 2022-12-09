@@ -49,11 +49,10 @@ public class Become_Donor_Activity extends AppCompatActivity {
                 showSnackBar("Updated Successfully");
             else
                 showSnackBar("Failed");
-//            Intent intent = getIntent();
-//            finish();
-//            startActivity(intent);
-//            Intent i = new Intent(Become_Donor_Activity.this, MainActivity.class);
-//            startActivity(i);
+            //   Intent intent = getIntent();
+            finish();
+            Intent i = new Intent(Become_Donor_Activity.this, MainActivity.class);
+            startActivity(i);
         }
     };
     //

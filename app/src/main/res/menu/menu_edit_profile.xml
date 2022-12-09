@@ -9,6 +9,7 @@
         android:icon="@drawable/icon_blood_group"/>
     <item android:id="@+id/Activity_ProifleMenuEditDeleteProfile"
         android:title="Delete Profile"
+        android:visible="false"
         android:icon="@drawable/icoon_delete"/>
 
 </menu>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,7 @@ public class UpdateDonateDateActvity extends AppCompatActivity {
                 showSnackBar("Updated Successfully");
             else
                 showSnackBar("Failed");
+
         }
     };
 
@@ -88,6 +90,9 @@ public class UpdateDonateDateActvity extends AppCompatActivity {
                 WritingDocument document = new WritingDocument();
                 document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data, callbackResult);
             }
+            finish();
+            startActivity(new Intent(UpdateDonateDateActvity.this, ShowProfile_Activity.class));
+
 
         });
 
