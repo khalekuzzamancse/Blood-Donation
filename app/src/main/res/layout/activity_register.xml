@@ -71,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -87,6 +88,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:hint="User Name"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/secondary_crane_red"
         app:startIconDrawable="@drawable/icon_person"
         app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_PhoneNumber"
         app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_PhoneNumber"
@@ -113,6 +116,8 @@
         app:startIconDrawable="@drawable/icon_lock"
         android:hint="Password"
         app:endIconMode="password_toggle"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/secondary_crane_red"
         app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_UserName"
         app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_UserName"
         app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_UserName">
@@ -123,6 +128,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:maxLines="1"
+
             android:textColor="@color/black"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -135,9 +141,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
+
         app:startIconDrawable="@drawable/icon_lock"
         android:hint="Confirm Password"
         app:endIconMode="password_toggle"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/secondary_crane_red"
         app:layout_constraintEnd_toEndOf="@id/Activity_Register_TextInputLayout_Password"
         app:layout_constraintStart_toStartOf="@id/Activity_Register_TextInputLayout_Password"
         app:layout_constraintTop_toBottomOf="@id/Activity_Register_TextInputLayout_Password">

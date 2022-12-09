@@ -8,16 +8,13 @@
     tools:context=".Activity_SearchBlood">
     <include layout="@layout/layout_toolbar_for_non_home_activity"/>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="16dp"
         android:id="@+id/blodGroupContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/icon_blood_group"
         android:hint="Blood Group"
-        app:errorEnabled="true"
-        app:helperTextEnabled="true"
-        app:helperText=""
-        app:helperTextTextColor="@color/black"
         >
 
         <AutoCompleteTextView
@@ -27,7 +24,7 @@
             android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+           />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,9 +32,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         app:startIconDrawable="@drawable/icon_locaion"
         android:hint="District"
       >
@@ -56,9 +51,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         app:startIconDrawable="@drawable/icon_locaion"
         android:hint="Sub District"
         >
@@ -79,7 +72,7 @@
     android:layout_height="wrap_content">
     <Button
 
-        android:layout_margin="16dp"
+        android:layout_margin="30dp"
        android:layout_weight="1"
         android:textAllCaps="false"
         android:id="@+id/submitBTN"
