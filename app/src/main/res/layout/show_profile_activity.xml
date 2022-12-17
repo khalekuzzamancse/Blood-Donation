@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="-2dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:id="@+id/Activity_showProfile_Profile_Image"
         android:layout_width="111dp"
@@ -26,10 +26,9 @@
 
             <TextView
                 android:id="@+id/name_TV"
+                android:layout_margin="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_person"
                 android:gravity="start"
                 android:textColor="@color/white"
@@ -37,10 +36,10 @@
                />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/email_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_email"
                 android:gravity="start"
                 android:textColor="@color/white"
@@ -48,10 +47,10 @@
                 />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/phone_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_phone_number"
                 android:gravity="start"
                 android:textColor="@color/white"
@@ -59,10 +58,10 @@
               />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/blood_group_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_blood_group"
                 android:gravity="start"
                 android:textColor="@color/white"
@@ -70,10 +69,10 @@
                />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/gender_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_gender"
                 android:gravity="start"
                 android:textColor="@color/white"
@@ -84,19 +83,18 @@
                 android:id="@+id/district_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="3dp"
                 android:drawableLeft="@drawable/icon_locaion"
                 android:gravity="start"
-                android:layout_marginStart="8dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
              />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/sub_district_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_locaion"
                 android:gravity="start"
                 android:textColor="@color/white"
@@ -104,10 +102,10 @@
                />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/age_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:drawableLeft="@drawable/icon_age"
                 android:gravity="center"
                 android:textColor="@color/white"

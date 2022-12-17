@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.blooddonation.database.CallbackResult;
 import com.example.blooddonation.database.CallbackStringList;
@@ -64,14 +65,19 @@ public class EditProfileActivity extends AppCompatActivity {
         public void isSuccess(boolean response) {
           //  progressBar.setVisibility(View.INVISIBLE);
             if (response)
-                showSnackBar("Updated Successfully");
+               // showSnackBar("Updated Successfully");
+                Toast.makeText(EditProfileActivity.this, "Updated Successfully",
+                        Toast.LENGTH_LONG).show();
             else
-                showSnackBar("Failed");
+               // showSnackBar("Failed");
+                Toast.makeText(EditProfileActivity.this, "Failed",
+                        Toast.LENGTH_LONG).show();
 //            Intent intent = getIntent();
 //            finish();
 //            startActivity(intent);
 //            Intent i = new Intent(Become_Donor_Activity.this, MainActivity.class);
 //            startActivity(i);
+            onBackPressed();
         }
     };
     //

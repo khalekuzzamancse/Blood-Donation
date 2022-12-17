@@ -27,8 +27,6 @@ import com.google.type.Date;
 import java.time.LocalDate;
 
 public class MainActivity extends AppCompatActivity {
-    public static ViewModel_UserProfileInfo model;
-    public static ViewModel_AllDistrictList districtListModel;
     public static String Extra_Login = "null";
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -103,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.login)
-                    item.setVisible(false);
                 if (id == R.id.login) {
                     Intent intent = new Intent(MainActivity.this, Activity_Login.class);
                     startActivity(intent);
