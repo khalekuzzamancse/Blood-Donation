@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class WritingDocument  {
     CallbackResult callbackResult;
@@ -31,6 +32,17 @@ public class WritingDocument  {
         Task<Void> snapshotTask = docRef.set(updatedData, SetOptions.merge());
         snapshotTask.addOnCompleteListener(callbackAddDoc);
     }
+    public void updateDocument(String documentName, HashMap<String, Object> updatedData) {
+        CollectionReference cRef = db.collection(collectionName);
+        DocumentReference docRef = cRef.document(documentName);
+       docRef.set(updatedData, SetOptions.merge());
 
+    }
+    public void updateLocation(HashMap<String, Object> updatedData) {
+        CollectionReference cRef = db.collection("Location");
+        DocumentReference docRef = cRef.document(UUID.randomUUID().toString());
+        docRef.set(updatedData, SetOptions.merge());
+
+    }
 
 }

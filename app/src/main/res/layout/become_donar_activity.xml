@@ -100,6 +100,16 @@
             android:maxLines="1"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/currentLocation"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="InputCurrentLocation"
+        android:visibility="visible"
+        android:textAllCaps="false" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,15 +125,7 @@
             android:text="Submit"
             android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/cancelBTN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:text="Cancel"
-            android:visibility="gone"
-            android:textAllCaps="false" />
+
 
     </LinearLayout>
 
@@ -133,7 +135,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-
         />
 
 </LinearLayout>

@@ -4,13 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.blooddonation.database.CallbackNoOfDoc;
@@ -20,11 +27,17 @@ import com.example.blooddonation.database.BloodInfo;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
 import com.example.blooddonation.viewmodel.ViewModel_AllDistrictList;
 import com.example.blooddonation.viewmodel.ViewModel_UserProfileInfo;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.type.Date;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     public static String Extra_Login = "null";
@@ -46,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         initialize();
         setToolbar();
         hideMenuItem();
+
+
         //we have to called hideMenu option two times
         //1:when the main activity is just stared and we check the user singed in or not
         //2:after main activity start,read the user profile(if singed in) then
@@ -53,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         //getting the login user profile info,
 
-
+        startActivity(new Intent(this, MapsMarkerActivity.class));
         CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
             @Override
             public void getProfile(DomainUserInfo profile) {
@@ -200,10 +215,13 @@ public class MainActivity extends AppCompatActivity {
         searchTV = findViewById(R.id.SearchBloodMain_Activity);
         userInfo = new DomainUserInfo();
         currentUser = new FirebaseAuthCustom();
+
     }
 
 
+
 }
+
 
 
 

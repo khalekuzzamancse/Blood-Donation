@@ -31,6 +31,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+
         <TextView
             android:id="@+id/All_DonorList"
             android:layout_width="match_parent"
@@ -138,6 +139,8 @@
 
 
         </LinearLayout>
+
+
 
 
     </LinearLayout>

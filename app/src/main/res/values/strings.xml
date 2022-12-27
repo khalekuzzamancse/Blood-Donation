@@ -2,4 +2,6 @@
     <string name="app_name">Blood Donation</string>
     <string name="OpenDrawer">Open</string>
     <string name="CloseDrawer">Close</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_maps_marker">MapsMarkerActivity</string>
 </resources>

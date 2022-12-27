@@ -1,12 +1,18 @@
 package com.example.blooddonation;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -16,6 +22,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.blooddonation.database.CallbackResult;
@@ -23,10 +30,15 @@ import com.example.blooddonation.database.CallbackStringList;
 import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.database.FormFillUpInfo;
 import com.example.blooddonation.database.WritingDocument;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Become_Donor_Activity extends AppCompatActivity {
@@ -37,6 +49,7 @@ public class Become_Donor_Activity extends AppCompatActivity {
     ArrayAdapter<String> genderAdapter, bloodGroupAdapter, districtAdapter, subDistrictAdapter;
     FormFillUpInfo fillUpInfo;
     Toolbar toolbar;
+    Button currentLocation;
 
     ProgressBar progressBar;
     //
@@ -74,7 +87,12 @@ public class Become_Donor_Activity extends AppCompatActivity {
             AddDonorInfo();
 
         });
-        //call back for updating document
+
+
+        currentLocation.setOnClickListener(view -> {
+            getCurrentLocation();
+
+        });
 
 
     }
@@ -106,6 +124,7 @@ public class Become_Donor_Activity extends AppCompatActivity {
             subDistrictAdapter = new ArrayAdapter<>(Become_Donor_Activity.this,
                     R.layout.layout_drop_down_menu_single_item, list);
             subDistrictACTV.setAdapter(subDistrictAdapter);
+
 
         }
     };
@@ -157,6 +176,7 @@ public class Become_Donor_Activity extends AppCompatActivity {
         subDistrictACTV = findViewById(R.id.subDistrictACTV);
         bloodGroupACTV = findViewById(R.id.bloodGroupACTV);
         genderACTV = findViewById(R.id.genderACTV);
+        currentLocation = findViewById(R.id.currentLocation);
     }
 
     private void setToolbar() {
@@ -185,6 +205,62 @@ public class Become_Donor_Activity extends AppCompatActivity {
                 .make(submitBTN, msg, Snackbar.LENGTH_LONG);
         snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
         snackbar.show();
+    }
+
+    private void getCurrentLocation() {
+
+        FusedLocationProviderClient a = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        a.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+//                            LatLng s = new LatLng(location.getLatitude(), location.getLongitude());
+//                            mMap.addMarker(new MarkerOptions().position(s).title(""));
+//                            mMap.moveCamera(CameraUpdateFactory.newLatLng(s));
+                            //   Log.i("LOcationaaa",location.);
+
+                            Geocoder geocoder = new Geocoder(Become_Donor_Activity.this, Locale.getDefault());
+                            List<Address> addresses = null;
+                            try {
+
+                                addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                                Log.i("FoundLocationB", String.valueOf(addresses.get(0).getLatitude())
+                                        + "," + addresses.get(0).getLongitude());
+                               addLocation(String.valueOf(addresses.get(0).getLatitude()),String.valueOf(addresses.get(0).getLongitude()));
+
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+                    }
+                });
+    }
+
+    private void addLocation(String latitude, String longitude) {
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("latitude", latitude);
+        data.put("longitude", longitude);
+        WritingDocument document = new WritingDocument();
+        document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data);
+        document.updateLocation(data);
+        Intent intent = new Intent(Become_Donor_Activity.this, MapsActivity.class);
+        startActivity(intent);
+
     }
 
 
