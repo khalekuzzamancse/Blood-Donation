@@ -73,6 +73,7 @@ public class AllUserInfoList_Activity extends AppCompatActivity {
 
         };
         BloodInfo db = new BloodInfo();
+        //
         if (comingFrom.equals("Main"))
         {
             progressIndicator.setVisibility(View.VISIBLE);

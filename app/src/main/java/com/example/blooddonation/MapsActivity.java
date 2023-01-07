@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -50,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_maps);
 
+
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -85,16 +87,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         // LatLng sydney = new LatLng(-34, 151);
-        LatLng sydney = new LatLng(25.94, 89.11);
+        double lat = 25.94, lon = 89.11;
+        Intent intent = getIntent();
+        if (intent.getStringExtra("lat") != null && intent.getStringExtra("lon") != null) {
+            lat = Double.parseDouble(intent.getStringExtra("lat"));
+            lon = Double.parseDouble(intent.getStringExtra("lon"));
+            Log.i("BBBBBB",lat+" "+lon);
+        }
+        LatLng sydney = new LatLng(lat, lon);
 
-       // Sydney =
+        // Sydney =
 
-    //    BitmapDescriptorFactory.fromResource(R.drawable.background_about_us));
-        //   mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-   mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //    BitmapDescriptorFactory.fromResource(R.drawable.background_about_us));
+          mMap.addMarker(new MarkerOptions().position(sydney).title("Here.."));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 //        LatLng currentLatLng = new LatLng(location.getLatitude(),
 //                location.getLongitude());
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(sydney, 5.5f);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(sydney, 15.5f);
         googleMap.moveCamera(update);
     }
 

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         //getting the login user profile info,
 
-        startActivity(new Intent(this, MapsMarkerActivity.class));
+       // startActivity(new Intent(this, MapsMarkerActivity.class));
         CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
             @Override
             public void getProfile(DomainUserInfo profile) {

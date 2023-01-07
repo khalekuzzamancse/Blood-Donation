@@ -3,6 +3,7 @@ package com.example.blooddonation.ui.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blooddonation.MainActivity;
+import com.example.blooddonation.MapsActivity;
 import com.example.blooddonation.R;
 import com.example.blooddonation.database.FirebaseAuthCustom;
 import com.example.blooddonation.ui.datatypes.DomainUserInfo;
@@ -80,6 +82,16 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
                 }
 
 
+            }
+        });
+        holder.TV_AllUserInfoListActivity_VH_Location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, MapsActivity.class);
+                intent.putExtra("lat",list.get(position).lat);
+                intent.putExtra("lon",list.get(position).lon);
+              context.startActivity(intent);
+            Log.i("AAAAAAAAA",list.get(position).lat+" "+list.get(position).lat);
             }
         });
 //        holder.TV_AllUserInfoListActivity_VH_sendEmail.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,9 @@ public class DomainUserInfo {
     public String District;
     public String SubDistrict;
     public String Age;
+    public String lat="25.94";
+    public String lon="89.11";
+
 
     @Override
     public String toString() {
@@ -21,6 +24,8 @@ public class DomainUserInfo {
                 ", District='" + District + '\'' +
                 ", SubDistrict='" + SubDistrict + '\'' +
                 ", Age='" + Age + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lon='" + lon + '\'' +
                 '}';
     }
 }
