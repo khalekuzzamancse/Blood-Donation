@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    TextView helpline, tot_userTV, tot_donorTv, allDonor, searchTV;
+    TextView helpline, tot_userTV, tot_donorTv, allDonor, searchTV,mapMarker;
     private String tot_Donor = "", tot_User = "";
     DomainUserInfo userInfo;
     FirebaseAuthCustom currentUser;
@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(new Intent(this, HelpLineActivity.class
             ));
+        });
+        mapMarker.setOnClickListener(view -> {
+            startActivity(new Intent(this,MapsMarkerActivity.class));
         });
 
 
@@ -213,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
         tot_userTV = findViewById(R.id.tot_user);
         allDonor = findViewById(R.id.All_DonorList);
         searchTV = findViewById(R.id.SearchBloodMain_Activity);
+        mapMarker=findViewById(R.id.mapMarker);
         userInfo = new DomainUserInfo();
         currentUser = new FirebaseAuthCustom();
 

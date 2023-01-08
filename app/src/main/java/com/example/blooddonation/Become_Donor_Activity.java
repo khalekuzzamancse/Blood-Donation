@@ -49,7 +49,7 @@ public class Become_Donor_Activity extends AppCompatActivity {
     ArrayAdapter<String> genderAdapter, bloodGroupAdapter, districtAdapter, subDistrictAdapter;
     FormFillUpInfo fillUpInfo;
     Toolbar toolbar;
-    Button currentLocation;
+    AutoCompleteTextView currentLocation;
 
     ProgressBar progressBar;
     //
@@ -236,6 +236,9 @@ public class Become_Donor_Activity extends AppCompatActivity {
                             try {
 
                                 addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                                String s=addresses.get(0).getCountryName()+","+ "," +
+                                        String.valueOf(addresses.get(0).getLatitude())+","+ String.valueOf(addresses.get(0).getLongitude());
+                                currentLocation.setText(s);
                                 Log.i("FoundLocationB", String.valueOf(addresses.get(0).getLatitude())
                                         + "," + addresses.get(0).getLongitude());
                                addLocation(String.valueOf(addresses.get(0).getLatitude()),String.valueOf(addresses.get(0).getLongitude()));
@@ -255,6 +258,7 @@ public class Become_Donor_Activity extends AppCompatActivity {
         HashMap<String, Object> data = new HashMap<>();
         data.put("latitude", latitude);
         data.put("longitude", longitude);
+       // currentLocation.setText(latitude+","+longitude);
         WritingDocument document = new WritingDocument();
         document.updateDocument(new FirebaseAuthCustom().getUserEmail(), data);
         document.updateLocation(data);

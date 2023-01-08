@@ -30,6 +30,21 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/mapMarker"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/background_about_us"
+            android:backgroundTint="#FFEB3B"
+            android:drawableLeft="@drawable/ic_location"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="View On Map"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -103,8 +118,8 @@
         android:textStyle="bold"
         />
 
-</LinearLayout>
 
+</LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,9 +154,5 @@
 
 
         </LinearLayout>
-
-
-
-
     </LinearLayout>
 </ScrollView>

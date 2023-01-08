@@ -84,7 +84,7 @@ public class AllUserInfoListActivity_Adapter extends RecyclerView.Adapter<AllUse
 
             }
         });
-        holder.TV_AllUserInfoListActivity_VH_Location.setOnClickListener(new View.OnClickListener() {
+        holder.map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context, MapsActivity.class);

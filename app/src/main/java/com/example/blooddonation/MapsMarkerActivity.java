@@ -77,7 +77,7 @@ public class MapsMarkerActivity extends FragmentActivity implements OnMapReadyCa
                 .title("A+")
                 .icon(BitmapDescriptorFactory.fromBitmap(
                         getBitmapFromVectorDrawable(
-                                this, R.drawable.icon_blood_group))));
+                                this, R.drawable.a_plus))));
 
     }
 
